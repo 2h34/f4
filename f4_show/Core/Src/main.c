@@ -23,17 +23,34 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "stdint.h"
+#include "beep.h"
+#include "led.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
+typedef enum
+{
+  STATE_OFF = 0,
+  STATE_FLOW,
+  STATE_BREATH
+} led_state_t;
+
+typedef enum
+{
+  KEY_NONE = 0,
+  KEY_SHORT,
+  KEY_LONG
+} key_event_t;
+
 
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+#define KEY_DEBOUNCE_MS  20U
+#define LONG_PRESS_MS    1000U
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -44,13 +61,27 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
+static led_state_t current_state = STATE_OFF;
+static volatile key_event_t key_event = KEY_NONE;
+static volatile uint32_t tick_2ms_count = 0;
+// volatile uint8_t tick_2ms_flag = 0;
+
+// uint32_t press_time;
+// uint32_t release_time;
+// uint32_t last_edge_time;
+
+// uint16_t flow_tick_count = 0;
+
+
+// uint8_t breath_value = 0;
+// breath_state_t current_breath = 0;
 
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 /* USER CODE BEGIN PFP */
-
+static void StateMachine_Process(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -97,6 +128,18 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    StateMachine_Process();
+
+    BEEP_Process(tick_2ms_count);
+
+    if (current_state == STATE_FLOW)
+    {
+        LED_FlowProcess(tick_2ms_count);
+    }
+    else if (current_state == STATE_BREATH)
+    {
+        LED_BreathProcess(tick_2ms_count);
+    }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -150,6 +193,97 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+  static uint32_t press_time = 0;
+  static uint32_t last_edge_time = 0;
+  
+
+  GPIO_PinState pin_state;
+
+  if (GPIO_Pin != INPUT_1_Pin)
+  {
+    return;
+  }
+  uint32_t now = HAL_GetTick();
+  if (now - last_edge_time < KEY_DEBOUNCE_MS)
+  {
+    // 消抖，20ms内忽略
+    return;
+  }
+  last_edge_time = now;
+  // 后面再写消抖和长短按判断
+  pin_state = HAL_GPIO_ReadPin(INPUT_1_GPIO_Port, INPUT_1_Pin);
+  if (pin_state == GPIO_PIN_SET)
+  {
+    // 按下
+    press_time = now;
+  }
+  else
+  {
+    // 弹起
+    if (now - press_time >= LONG_PRESS_MS)
+    {
+      // 长按
+      key_event = KEY_LONG;
+    }
+    else
+    {
+      // 短按
+      key_event = KEY_SHORT;
+    }
+  }
+
+
+}
+
+//状态机函数
+static void StateMachine_Process(void)
+{
+    led_state_t old_state;
+
+    if (key_event == KEY_NONE)
+    {
+        return;
+    }
+    old_state = current_state;
+    switch (current_state)
+    {
+        case STATE_OFF:
+        case STATE_BREATH:
+        case STATE_FLOW:
+        if (key_event == KEY_SHORT)
+        {
+            current_state = STATE_BREATH;
+        }
+        else if (key_event == KEY_LONG)
+        {
+            current_state = STATE_FLOW;
+        }
+        break;
+
+        default:
+        break;
+    }
+    
+    if (current_state != old_state)
+    {
+      // 状态发生变化，执行相应的操作
+      BEEP_Trigger(tick_2ms_count); 
+      if (current_state == STATE_FLOW)
+      {
+        LED_FlowEnter(tick_2ms_count);
+      }
+      else if (current_state == STATE_BREATH)
+      {
+        LED_BreathEnter(tick_2ms_count);
+      }
+
+    }
+    key_event = KEY_NONE;
+}
+
+
 
 /* USER CODE END 4 */
 
@@ -171,7 +305,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
     HAL_IncTick();
   }
   /* USER CODE BEGIN Callback 1 */
-
+  if (htim->Instance == TIM2)
+  {
+    tick_2ms_count++;
+  }
   /* USER CODE END Callback 1 */
 }
 

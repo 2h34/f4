@@ -9,7 +9,9 @@
 #define LED_TOGGLE(x) HAL_GPIO_TogglePin(LED_##x##_GPIO_Port, LED_##x##_Pin)
 
 
-
-
+void LED_FlowEnter(uint32_t current_tick);
+void LED_FlowProcess(uint32_t current_tick);
+void LED_BreathEnter(uint32_t current_tick);
+void LED_BreathProcess(uint32_t current_tick);
 
 #endif // __LED_H
