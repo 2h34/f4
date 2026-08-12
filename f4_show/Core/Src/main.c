@@ -132,18 +132,20 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    StateMachine_Process();
+    // StateMachine_Process();
+
+    uart_app_process(tick_2ms_count);
 
     BEEP_Process(tick_2ms_count);
 
-    if (current_state == STATE_FLOW)
-    {
-        LED_FlowProcess(tick_2ms_count);
-    }
-    else if (current_state == STATE_BREATH)
-    {
-        LED_BreathProcess(tick_2ms_count);
-    }
+    // if (current_state == STATE_FLOW)
+    // {
+    //     LED_FlowProcess(tick_2ms_count);
+    // }
+    // else if (current_state == STATE_BREATH)
+    // {
+    //     LED_BreathProcess(tick_2ms_count);
+    // }
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -242,50 +244,50 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 }
 
 //状态机函数
-static void StateMachine_Process(void)
-{
-    led_state_t old_state;
+// static void StateMachine_Process(void)
+// {
+//     led_state_t old_state;
 
-    if (key_event == KEY_NONE)
-    {
-        return;
-    }
-    old_state = current_state;
-    switch (current_state)
-    {
-        case STATE_OFF:
-        case STATE_BREATH:
-        case STATE_FLOW:
-        if (key_event == KEY_SHORT)
-        {
-            current_state = STATE_BREATH;
-        }
-        else if (key_event == KEY_LONG)
-        {
-            current_state = STATE_FLOW;
-        }
-        break;
+//     if (key_event == KEY_NONE)
+//     {
+//         return;
+//     }
+//     old_state = current_state;
+//     switch (current_state)
+//     {
+//         case STATE_OFF:
+//         case STATE_BREATH:
+//         case STATE_FLOW:
+//         if (key_event == KEY_SHORT)
+//         {
+//             current_state = STATE_BREATH;
+//         }
+//         else if (key_event == KEY_LONG)
+//         {
+//             current_state = STATE_FLOW;
+//         }
+//         break;
 
-        default:
-        break;
-    }
+//         default:
+//         break;
+//     }
     
-    if (current_state != old_state)
-    {
-      // 状态发生变化，执行相应的操作
-      BEEP_Trigger(tick_2ms_count); 
-      if (current_state == STATE_FLOW)
-      {
-        LED_FlowEnter(tick_2ms_count);
-      }
-      else if (current_state == STATE_BREATH)
-      {
-        LED_BreathEnter(tick_2ms_count);
-      }
+//     if (current_state != old_state)
+//     {
+//       // 状态发生变化，执行相应的操作
+//       BEEP_Trigger(tick_2ms_count); 
+//       if (current_state == STATE_FLOW)
+//       {
+//         LED_FlowEnter(tick_2ms_count);
+//       }
+//       else if (current_state == STATE_BREATH)
+//       {
+//         LED_BreathEnter(tick_2ms_count);
+//       }
 
-    }
-    key_event = KEY_NONE;
-}
+//     }
+//     key_event = KEY_NONE;
+// }
 
 
 

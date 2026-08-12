@@ -3,8 +3,17 @@
 
 #define BEEP_DURATION_TICKS  50U
 
-static uint8_t beep_active = 0;
+typedef enum
+{
+    BEEP_STATE_IDLE = 0,
+    BEEP_STATE_ON,
+    BEEP_STATE_OFF
+} beep_state_t;
+
+static beep_state_t beep_state = BEEP_STATE_IDLE;
+static uint8_t beep_remain = 0;
 static uint32_t beep_start_tick = 0;
+
 
 void BEEP_ON(void)
 {
@@ -17,19 +26,57 @@ void BEEP_OFF(void)
 }
 
 
-void BEEP_Trigger(uint32_t current_tick)
-{
-    BEEP_ON();
 
+void BEEP_Trigger(uint32_t current_tick,uint16_t count)
+{
+    if (count == 0)
+    {
+        return;
+    }
+    BEEP_ON();
     beep_start_tick = current_tick;
-    beep_active = 1;
+    beep_remain = count;
+    beep_state = BEEP_STATE_ON;
 }
 
 void BEEP_Process(uint32_t current_tick)
 {
-    if (beep_active && (current_tick - beep_start_tick >= BEEP_DURATION_TICKS))
+    if (beep_state == BEEP_STATE_IDLE)
     {
-        BEEP_OFF();
-        beep_active = 0;
+        return;
     }
+    if (beep_state == BEEP_STATE_ON)
+    {
+        /* code */
+        if (current_tick - beep_start_tick >= BEEP_DURATION_TICKS)
+        {
+            BEEP_OFF();
+            beep_remain--;
+            beep_state = BEEP_STATE_OFF;
+            beep_start_tick = current_tick;
+        }      
+    }
+    else if ( beep_state == BEEP_STATE_OFF) 
+    {
+        if (beep_remain > 0)
+        {
+            if (current_tick - beep_start_tick >= BEEP_DURATION_TICKS)
+            {
+                BEEP_ON();
+                beep_state = BEEP_STATE_ON;
+                beep_start_tick = current_tick;
+            }  
+        }
+        else
+        {
+            beep_state = BEEP_STATE_IDLE;
+        }
+    }
+
+    
+    
+            
+        
 }
+
+
