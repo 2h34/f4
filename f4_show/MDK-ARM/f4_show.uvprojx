@@ -759,6 +759,11 @@
               <FileType>1</FileType>
               <FilePath>..\IRQ\Src\uart_app.c</FilePath>
             </File>
+            <File>
+              <FileName>vofa_app.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\IRQ\Src\vofa_app.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -29,6 +29,7 @@
 #include "beep.h"
 #include "led.h"
 #include "uart_app.h"
+#include "vofa_app.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -133,6 +134,8 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    vofa_app_process();
+
     // StateMachine_Process();
 
     uart_app_process(tick_2ms_count);

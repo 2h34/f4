@@ -28,6 +28,7 @@
 "f4_show\beep.o"
 "f4_show\led.o"
 "f4_show\uart_app.o"
+"f4_show\vofa_app.o"
 --strict --scatter "f4_show\f4_show.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
