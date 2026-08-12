@@ -9,10 +9,12 @@
                 "c:\\Users\\glance\\Desktop\\f4\\f4_show\\Drivers\\CMSIS\\Device\\ST\\STM32F4xx\\Include",
                 "c:\\Users\\glance\\Desktop\\f4\\f4_show\\Drivers\\CMSIS\\Include",
                 "c:\\Users\\glance\\Desktop\\f4\\f4_show\\HDL\\Inc",
+                "c:\\Users\\glance\\Desktop\\f4\\f4_show\\IRQ\\Inc",
                 "c:\\Users\\glance\\Desktop\\f4\\f4_show\\MDK-ARM",
                 "c:\\Users\\glance\\Desktop\\f4\\f4_show\\Core\\Src",
                 "c:\\Users\\glance\\Desktop\\f4\\f4_show\\Drivers\\STM32F4xx_HAL_Driver\\Src",
                 "c:\\Users\\glance\\Desktop\\f4\\f4_show\\HDL\\Src",
+                "c:\\Users\\glance\\Desktop\\f4\\f4_show\\IRQ\\Src",
                 "${default}"
             ],
             "defines": [

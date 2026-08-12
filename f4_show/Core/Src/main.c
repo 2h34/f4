@@ -28,6 +28,7 @@
 #include "stdint.h"
 #include "beep.h"
 #include "led.h"
+#include "uart_app.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -199,49 +200,49 @@ void SystemClock_Config(void)
 }
 
 /* USER CODE BEGIN 4 */
-void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
-{
-  static uint32_t press_time = 0;
-  static uint32_t last_edge_time = 0;
+// void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+// {
+//   static uint32_t press_time = 0;
+//   static uint32_t last_edge_time = 0;
   
 
-  GPIO_PinState pin_state;
+//   GPIO_PinState pin_state;
 
-  if (GPIO_Pin != INPUT_1_Pin)
-  {
-    return;
-  }
-  uint32_t now = HAL_GetTick();
-  if (now - last_edge_time < KEY_DEBOUNCE_MS)
-  {
-    // 消抖，20ms内忽略
-    return;
-  }
-  last_edge_time = now;
-  // 后面再写消抖和长短按判断
-  pin_state = HAL_GPIO_ReadPin(INPUT_1_GPIO_Port, INPUT_1_Pin);
-  if (pin_state == GPIO_PIN_SET)
-  {
-    // 按下
-    press_time = now;
-  }
-  else
-  {
-    // 弹起
-    if (now - press_time >= LONG_PRESS_MS)
-    {
-      // 长按
-      key_event = KEY_LONG;
-    }
-    else
-    {
-      // 短按
-      key_event = KEY_SHORT;
-    }
-  }
+//   if (GPIO_Pin != INPUT_1_Pin)
+//   {
+//     return;
+//   }
+//   uint32_t now = HAL_GetTick();
+//   if (now - last_edge_time < KEY_DEBOUNCE_MS)
+//   {
+//     // 消抖，20ms内忽略
+//     return;
+//   }
+//   last_edge_time = now;
+//   // 后面再写消抖和长短按判断
+//   pin_state = HAL_GPIO_ReadPin(INPUT_1_GPIO_Port, INPUT_1_Pin);
+//   if (pin_state == GPIO_PIN_SET)
+//   {
+//     // 按下
+//     press_time = now;
+//   }
+//   else
+//   {
+//     // 弹起
+//     if (now - press_time >= LONG_PRESS_MS)
+//     {
+//       // 长按
+//       key_event = KEY_LONG;
+//     }
+//     else
+//     {
+//       // 短按
+//       key_event = KEY_SHORT;
+//     }
+//   }
 
 
-}
+// }
 
 //状态机函数
 // static void StateMachine_Process(void)

@@ -38,7 +38,7 @@ void uart_app_process(uint32_t current_tick)
         }
         for (uint16_t i = 0; i < count; i++)
         {
-            Beep_Trigger(current_tick, count);
+            BEEP_Trigger(current_tick, count);
         }
         
     }
