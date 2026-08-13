@@ -54,9 +54,9 @@ void MX_CAN1_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN CAN1_Init 2 */
-  CAN_FilterTypeDef CAN_FilterConfig;
 
-  
+
+
   /* USER CODE END CAN1_Init 2 */
 
 }

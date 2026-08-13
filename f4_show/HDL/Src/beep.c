@@ -14,7 +14,6 @@ static beep_state_t beep_state = BEEP_STATE_IDLE;
 static uint8_t beep_remain = 0;
 static uint32_t beep_start_tick = 0;
 
-
 void BEEP_ON(void)
 {
     HAL_GPIO_WritePin(BEEP_GPIO_Port, BEEP_Pin, GPIO_PIN_SET);
@@ -71,12 +70,13 @@ void BEEP_Process(uint32_t current_tick)
         {
             beep_state = BEEP_STATE_IDLE;
         }
-    }
-
-    
-    
-            
-        
+    }   
+                   
 }
 
+
+uint8_t beep_is_work(void)
+{
+    return(beep_state != BEEP_STATE_IDLE);
+}
 

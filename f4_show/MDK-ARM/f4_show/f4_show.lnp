@@ -2,6 +2,7 @@
 "f4_show\startup_stm32f405xx.o"
 "f4_show\main.o"
 "f4_show\gpio.o"
+"f4_show\can.o"
 "f4_show\dma.o"
 "f4_show\tim.o"
 "f4_show\usart.o"
@@ -10,6 +11,7 @@
 "f4_show\stm32f4xx_hal_timebase_tim.o"
 "f4_show\stm32f4xx_hal_tim.o"
 "f4_show\stm32f4xx_hal_tim_ex.o"
+"f4_show\stm32f4xx_hal_can.o"
 "f4_show\stm32f4xx_hal_rcc.o"
 "f4_show\stm32f4xx_hal_rcc_ex.o"
 "f4_show\stm32f4xx_hal_flash.o"
@@ -29,6 +31,7 @@
 "f4_show\led.o"
 "f4_show\uart_app.o"
 "f4_show\vofa_app.o"
+"f4_show\can_app.o"
 --strict --scatter "f4_show\f4_show.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

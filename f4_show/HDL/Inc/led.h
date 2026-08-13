@@ -13,5 +13,6 @@ void LED_FlowEnter(uint32_t current_tick);
 void LED_FlowProcess(uint32_t current_tick);
 void LED_BreathEnter(uint32_t current_tick);
 void LED_BreathProcess(uint32_t current_tick);
+void LED_OFF_();
 
 #endif // __LED_H

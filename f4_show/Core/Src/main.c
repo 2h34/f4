@@ -23,6 +23,7 @@
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
+#include "can_app.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -35,12 +36,7 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-typedef enum
-{
-  STATE_OFF = 0,
-  STATE_FLOW,
-  STATE_BREATH
-} led_state_t;
+
 
 typedef enum
 {
@@ -48,7 +44,6 @@ typedef enum
   KEY_SHORT,
   KEY_LONG
 } key_event_t;
-
 
 /* USER CODE END PTD */
 
@@ -64,9 +59,9 @@ typedef enum
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
+extern volatile led_state_t current_state;
 
 /* USER CODE BEGIN PV */
-static led_state_t current_state = STATE_OFF;
 static volatile key_event_t key_event = KEY_NONE;
 static volatile uint32_t tick_2ms_count = 0;
 // volatile uint8_t tick_2ms_flag = 0;
@@ -136,18 +131,22 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-    vofa_app_process();
+    // vofa_app_process();
 
     // StateMachine_Process();
 
-    uart_app_process(tick_2ms_count);
+    // uart_app_process(tick_2ms_count);
 
     BEEP_Process(tick_2ms_count);
-
-    // if (current_state == STATE_FLOW)
-    // {
-    //     LED_FlowProcess(tick_2ms_count);
-    // }
+    can_app_process(tick_2ms_count);
+    if (current_state == STATE_FLOW)
+    {
+        LED_FlowProcess(tick_2ms_count);
+    }
+    else if (current_state == STATE_OFF)
+    {
+        LED_OFF_();
+    }
     // else if (current_state == STATE_BREATH)
     // {
     //     LED_BreathProcess(tick_2ms_count);

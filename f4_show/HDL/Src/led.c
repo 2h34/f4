@@ -1,11 +1,14 @@
 #include "led.h"
 #include "tim.h"
 
+
 typedef enum
 {
   BREATH_UP = 0,
   BREATH_DOWN
 } breath_state_t;
+
+
 
 static uint8_t flow_led_index = 0;
 static uint32_t flow_last_switch_tick = 0;
@@ -24,7 +27,6 @@ void LED_FlowEnter(uint32_t current_tick)
     LED_ON(1);
     // LED2灭
     LED_OFF(2);
-    
     // 记录当前亮的是LED1
     flow_led_index = 0;
     // 记录本轮流水灯开始计时的tick
@@ -54,6 +56,8 @@ void LED_FlowProcess(uint32_t current_tick)
         }
     
 }
+
+
 
 void LED_BreathEnter(uint32_t current_tick)
 {
@@ -95,4 +99,15 @@ void LED_BreathProcess(uint32_t current_tick)
     }
     __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, breath_value);
     __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, 999U - breath_value);
+}
+
+void LED_OFF_()
+{
+    LED_OFF(1);
+    LED_OFF(2);
+}
+
+void LED_PROCESS_ON_OFF()
+{
+    
 }
