@@ -23,7 +23,7 @@
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
-#include "can_app.h"
+
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -32,6 +32,7 @@
 #include "led.h"
 #include "uart_app.h"
 #include "vofa_app.h"
+#include "can_app.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -59,11 +60,12 @@ typedef enum
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
-extern volatile led_state_t current_state;
+
 
 /* USER CODE BEGIN PV */
 static volatile key_event_t key_event = KEY_NONE;
 static volatile uint32_t tick_2ms_count = 0;
+extern volatile led_state_t current_state;
 // volatile uint8_t tick_2ms_flag = 0;
 
 // uint32_t press_time;
@@ -113,7 +115,7 @@ int main(void)
   SystemClock_Config();
 
   /* USER CODE BEGIN SysInit */
-
+  
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
@@ -125,6 +127,7 @@ int main(void)
   MX_CAN1_Init();
   /* USER CODE BEGIN 2 */
   uart_app_init();
+  can_app_init();
   /* USER CODE END 2 */
 
   /* Infinite loop */

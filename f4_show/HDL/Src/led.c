@@ -20,9 +20,9 @@ static breath_state_t breath_state = BREATH_UP;
 
 void LED_FlowEnter(uint32_t current_tick)
 {
-    
-    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, 0);
-    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, 0);
+    // 停止呼吸灯
+    // __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, 0);
+    // __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, 0);
     // LED1亮
     LED_ON(1);
     // LED2灭

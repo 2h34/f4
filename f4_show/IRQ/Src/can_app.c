@@ -76,6 +76,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
     (can_rx_header.DLC == 1U))
     {
         if (can_rx_header.ExtId == 0x01020201U)
+        {
             if (can_rx_data[0] == 1)
             {
                 /* code */
@@ -90,7 +91,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
                 flow_request = 1;
                 flow_target_state=0;
             }
-        
+        }
             
     }
 }
@@ -130,7 +131,15 @@ void can_app_process(uint32_t current_tick)
     if (flow_request == 1U)
     {
         /* code */
-        LED_FlowEnter(current_tick);
+        if (flow_target_state == 0U)
+        {
+            LED_OFF(1);
+            LED_OFF(2);
+        }
+        else if (flow_target_state == 1U)
+        {
+            LED_FlowEnter(current_tick);
+        }
         flow_request = 0;
         CAN_TxHeaderTypeDef tx_header ={0};
         uint8_t can_tx_data[8];
