@@ -12,7 +12,7 @@ static uint8_t beep_workmode = 0U;
 
 static volatile uint8_t flow_request = 0U;
 static volatile uint8_t flow_target_state = 0U;
-volatile led_state_t current_state = STATE_OFF;
+
 
 
 void can_app_init(void)
@@ -80,14 +80,12 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
             if (can_rx_data[0] == 1)
             {
                 /* code */
-                current_state = STATE_FLOW;
                 flow_request = 1;
                 flow_target_state = 1;
             }
             if (can_rx_data[0] == 0)
             {
                 /* code */
-                current_state = STATE_OFF;
                 flow_request = 1;
                 flow_target_state=0;
             }
@@ -131,14 +129,13 @@ void can_app_process(uint32_t current_tick)
     if (flow_request == 1U)
     {
         /* code */
-        if (flow_target_state == 0U)
+        if (flow_target_state == 1U)
         {
-            LED_OFF(1);
-            LED_OFF(2);
+            LED_Setmode(STATE_FLOW,current_tick);
         }
-        else if (flow_target_state == 1U)
+        else if (flow_target_state == 0U)
         {
-            LED_FlowEnter(current_tick);
+            LED_Setmode(STATE_OFF,current_tick);
         }
         flow_request = 0;
         CAN_TxHeaderTypeDef tx_header ={0};

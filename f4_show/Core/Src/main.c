@@ -65,7 +65,6 @@ typedef enum
 /* USER CODE BEGIN PV */
 static volatile key_event_t key_event = KEY_NONE;
 static volatile uint32_t tick_2ms_count = 0;
-extern volatile led_state_t current_state;
 // volatile uint8_t tick_2ms_flag = 0;
 
 // uint32_t press_time;
@@ -142,14 +141,7 @@ int main(void)
 
     BEEP_Process(tick_2ms_count);
     can_app_process(tick_2ms_count);
-    if (current_state == STATE_FLOW)
-    {
-        LED_FlowProcess(tick_2ms_count);
-    }
-    else if (current_state == STATE_OFF)
-    {
-        LED_OFF_();
-    }
+    LED_Process(tick_2ms_count);
     // else if (current_state == STATE_BREATH)
     // {
     //     LED_BreathProcess(tick_2ms_count);
