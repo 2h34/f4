@@ -70,11 +70,6 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
             beep_count = can_rx_data[0];
             beep_request = 1;
         }
-    }
-    if ((can_rx_header.IDE == CAN_ID_EXT) &&
-    (can_rx_header.RTR == CAN_RTR_DATA) &&
-    (can_rx_header.DLC == 1U))
-    {
         if (can_rx_header.ExtId == 0x01020201U)
         {
             if (can_rx_data[0] == 1)
@@ -90,7 +85,6 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
                 flow_target_state=0;
             }
         }
-            
     }
 }
 
@@ -108,7 +102,7 @@ void can_app_process(uint32_t current_tick)
     {
         /* code */
         CAN_TxHeaderTypeDef tx_header ={0};
-        uint8_t can_tx_data[8];
+        uint8_t can_tx_data[8] = {0};
         uint32_t tx_mailbox;
 
         can_tx_data[0]='O';can_tx_data[1]='K';
@@ -139,7 +133,7 @@ void can_app_process(uint32_t current_tick)
         }
         flow_request = 0;
         CAN_TxHeaderTypeDef tx_header ={0};
-        uint8_t can_tx_data[8];
+        uint8_t can_tx_data[8] = {0};
         uint32_t tx_mailbox;
 
         can_tx_data[0]='O';can_tx_data[1]='K';can_tx_data[2]=(char)flow_target_state;

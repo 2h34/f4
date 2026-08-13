@@ -16,7 +16,7 @@ static uint32_t flow_last_switch_tick = 0;
 // static uint32_t breath_last_tick = 0;
 // static uint16_t breath_value = 0;
 // static breath_state_t breath_state = BREATH_UP;
-volatile led_state_t current_state = STATE_OFF;
+static led_state_t current_state = STATE_OFF;
 
 
 void LED_FlowEnter(uint32_t current_tick)
