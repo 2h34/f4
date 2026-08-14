@@ -3,7 +3,7 @@
 <title>Static Call Graph - [f4_show\f4_show.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image f4_show\f4_show.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6180002: Last Updated: Thu Aug 13 20:39:21 2026
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6180002: Last Updated: Thu Aug 13 20:52:37 2026
 <BR><P>
 <H3>Maximum Stack Usage =        288 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -707,7 +707,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_CAN_IRQHandler
 </UL>
 
-<P><STRONG><a name="[81]"></a>HAL_CAN_RxFifo0MsgPendingCallback</STRONG> (Thumb, 322 bytes, Stack size 16 bytes, can_app.o(.text.HAL_CAN_RxFifo0MsgPendingCallback))
+<P><STRONG><a name="[81]"></a>HAL_CAN_RxFifo0MsgPendingCallback</STRONG> (Thumb, 274 bytes, Stack size 16 bytes, can_app.o(.text.HAL_CAN_RxFifo0MsgPendingCallback))
 <BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = HAL_CAN_RxFifo0MsgPendingCallback &rArr; HAL_CAN_GetRxMessage
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_CAN_GetRxMessage
@@ -1434,7 +1434,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[69]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[e6]"></a>can_app_process</STRONG> (Thumb, 356 bytes, Stack size 96 bytes, can_app.o(.text.can_app_process))
+<P><STRONG><a name="[e6]"></a>can_app_process</STRONG> (Thumb, 364 bytes, Stack size 96 bytes, can_app.o(.text.can_app_process))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = can_app_process &rArr; LED_Setmode &rArr; LED_FlowEnter &rArr; HAL_GPIO_WritePin
 </UL>
 <BR>[Calls]<UL><LI><a href="#[e8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_CAN_AddTxMessage
