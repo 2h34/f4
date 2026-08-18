@@ -20,7 +20,7 @@ typedef struct
     int16_t rpm;
     int16_t target_rpm;
 
-    int16_t current;
+    int16_t current;  //Current是转矩
     int16_t current_cmd;
 
     double position;
@@ -39,6 +39,8 @@ typedef struct
     DJ_motor_mode_t mode;
     PID_t speed_pid;
     PID_t position_pid;
+
+    uint8_t feedback_valid;
 
 } DJI_motor_t;
 

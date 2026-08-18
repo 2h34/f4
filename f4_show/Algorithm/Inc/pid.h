@@ -12,6 +12,7 @@ typedef struct
 
     double output_limits;
     double integral_limits;
+    int isfirst_feedback; 
 } PID_t;
 
 void PID_Init(PID_t *pid,double Kp,double Ki,double Kd,double output_limits,double integral_limits);

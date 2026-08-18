@@ -9,6 +9,8 @@ void PID_Init(PID_t *pid,double Kp,double Ki,double Kd,double output_limits,doub
     pid->last_error = 0.0;
     pid->integral = 0.0;
 
+    pid->isfirst_feedback = 1;
+
     pid->output_limits = output_limits;
     pid->integral_limits = integral_limits;
 }
@@ -16,6 +18,7 @@ void PID_Init(PID_t *pid,double Kp,double Ki,double Kd,double output_limits,doub
 double PID_Caculate(PID_t *pid,double target,double current,double Ts)
 {
     double error = target - current;
+    double derivative = 0.0;
     pid->integral += error*Ts;
 
     if (pid->integral > pid->integral_limits)
@@ -27,7 +30,16 @@ double PID_Caculate(PID_t *pid,double target,double current,double Ts)
         pid->integral = -pid->integral_limits;
     }
 
-    double derivative = (error - pid->last_error) / Ts;
+    if (pid->isfirst_feedback)
+    {
+        pid->last_error = error;
+        derivative = 0.0;
+        pid->isfirst_feedback = 0;
+    }
+    else
+    {
+        derivative = (error - pid->last_error) / Ts;
+    }
     double output = pid->Kp * error + pid->Ki * pid->integral + pid->Kd * derivative;
 
     if (output > pid->output_limits)
@@ -48,6 +60,7 @@ void PID_Reset(PID_t *pid)
 {
     pid->last_error = 0.0;
     pid->integral = 0.0;
+    pid->isfirst_feedback = 1;
 }
 
 

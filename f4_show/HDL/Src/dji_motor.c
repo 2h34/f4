@@ -23,6 +23,7 @@ void DJI_motor_init(void)
         dji_motor[i].mode = DJ_Disable;
         dji_motor[i].target_rpm = 0;
         dji_motor[i].current_cmd = 0;
+        dji_motor[i].feedback_valid = 0;
 
         PID_Init(&dji_motor[i].speed_pid,
          2, 0, 0.2,1000,2000);
@@ -66,6 +67,10 @@ void DJI_motor_Receive(CAN_RxHeaderTypeDef *rx_header,uint8_t *rx_data)
     {
         return;
     }
+    if (rx_header->StdId < 0x201 || rx_header->StdId > 0x204)
+    {
+        return;
+    }
     uint8_t motor_id = (uint8_t)(rx_header->StdId - 0x200U); // Assuming the motor ID is encoded in the CAN ID
     if (motor_id < 1 || motor_id > 4)
     {
@@ -77,7 +82,7 @@ void DJI_motor_Receive(CAN_RxHeaderTypeDef *rx_header,uint8_t *rx_data)
     motor->encoder = (int16_t)((rx_data[0] << 8) | rx_data[1]);
     motor->rpm = (int16_t)((rx_data[2] << 8) | rx_data[3]);
     motor->current = (int16_t)((rx_data[4] << 8) | rx_data[5]);
-    
+    motor->feedback_valid = 1;
     DJI_motor_AngleCalculate(motor);
    
 }
@@ -87,6 +92,11 @@ void DJI_motor_Func(void)
     for (int i = 0; i < 4; i++)
     {
         DJI_motor_t *motor = &dji_motor[i];
+        //若无有效反馈，禁止输出
+        if (motor->feedback_valid == 0)
+        {
+            continue; 
+        }
         switch (motor->mode)
         {
             case DJ_RPM:
@@ -100,7 +110,11 @@ void DJI_motor_Func(void)
                 break;
             case DJ_Zero:
                 break;
+            case DJ_Disable:
+                motor->current_cmd = 0;
+                break;
             default:
+                motor->current_cmd = 0;
                 break;
         }
         
@@ -113,6 +127,9 @@ void DJI_motor_SetMode(DJI_motor_t *motor,DJ_motor_mode_t mode)
     if (motor != NULL)
     {
         motor->mode = mode;
+        motor->current_cmd = 0;
+        PID_Reset(&motor->speed_pid);
+        PID_Reset(&motor->position_pid);
     }
 }
 
@@ -128,8 +145,9 @@ void DJI_motor_CurrentTransmit(void)
     
     for (int i = 0; i < 4; i++)
     {
-        tx_data[i * 2] = (uint8_t)(dji_motor[i].current_cmd >> 8);
-        tx_data[i * 2 + 1] = (uint8_t)(dji_motor[i].current_cmd & 0xFF);
+        uint16_t current_cmd = dji_motor[i].current_cmd;
+        tx_data[i * 2] = (uint8_t)(current_cmd >> 8);
+        tx_data[i * 2 + 1] = (uint8_t)(current_cmd & 0xFF);
     }
 
 
