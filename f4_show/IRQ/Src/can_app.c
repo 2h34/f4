@@ -2,6 +2,7 @@
 #include "can.h"
 #include"beep.h"
 #include "led.h"
+#include "dji_motor.h"
 
 static CAN_RxHeaderTypeDef can_rx_header;
 static uint8_t can_rx_data[8];
@@ -21,20 +22,16 @@ void can_app_init(void)
 
     filter.FilterBank = 0;
     filter.FilterMode = CAN_FILTERMODE_IDLIST;
-    filter.FilterScale = CAN_FILTERSCALE_32BIT;
+    filter.FilterScale = CAN_FILTERSCALE_16BIT;
     filter.FilterFIFOAssignment = CAN_FILTER_FIFO0;
     filter.FilterActivation = ENABLE;
     filter.SlaveStartFilterBank = 14;
     
-    uint32_t filter_id1,filter_id2;
 
-    filter_id1 = (0x01020101U << 3) | 0x04U;
-    filter_id2 = (0x01020201U << 3) | 0x04U;
-
-    filter.FilterIdHigh = (filter_id1 >> 16) & 0xFFFFU;
-    filter.FilterIdLow  = filter_id1 & 0xFFFFU;
-    filter.FilterMaskIdHigh = (filter_id2 >> 16) & 0xFFFFU;
-    filter.FilterMaskIdLow = filter_id2 & 0xFFFFU;
+    filter.FilterIdHigh = 0x201U << 5;
+    filter.FilterIdLow  = 0x202U << 5;
+    filter.FilterMaskIdHigh = 0x203U << 5;
+    filter.FilterMaskIdLow =  0x204U << 5;
 
     if (HAL_CAN_ConfigFilter(&hcan1, &filter) != HAL_OK)
     {
@@ -61,31 +58,44 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
     {
         return;
     }
-    if ((can_rx_header.IDE == CAN_ID_EXT) &&
+    if ((can_rx_header.IDE == CAN_ID_STD) &&
     (can_rx_header.RTR == CAN_RTR_DATA) &&
-    (can_rx_header.DLC == 1U))
+    (can_rx_header.StdId >= 0x201U) &&
+    (can_rx_header.StdId <= 0x204U) &&
+    (can_rx_header.DLC >= 6U))
     {
-        if (can_rx_header.ExtId == 0x01020101U)
-        {
-            beep_count = can_rx_data[0];
-            beep_request = 1;
-        }
-        if (can_rx_header.ExtId == 0x01020201U)
-        {
-            if (can_rx_data[0] == 1)
-            {
-                /* code */
-                flow_request = 1;
-                flow_target_state = 1;
-            }
-            if (can_rx_data[0] == 0)
-            {
-                /* code */
-                flow_request = 1;
-                flow_target_state=0;
-            }
-        }
+        DJI_motor_Receive(&can_rx_header, can_rx_data);
+        return;
     }
+
+
+
+
+    // if ((can_rx_header.IDE == CAN_ID_EXT) &&
+    // (can_rx_header.RTR == CAN_RTR_DATA) &&
+    // (can_rx_header.DLC == 1U))
+    // {
+    //     if (can_rx_header.ExtId == 0x01020101U)
+    //     {
+    //         beep_count = can_rx_data[0];
+    //         beep_request = 1;
+    //     }
+    //     if (can_rx_header.ExtId == 0x01020201U)
+    //     {
+    //         if (can_rx_data[0] == 1)
+    //         {
+    //             /* code */
+    //             flow_request = 1;
+    //             flow_target_state = 1;
+    //         }
+    //         if (can_rx_data[0] == 0)
+    //         {
+    //             /* code */
+    //             flow_request = 1;
+    //             flow_target_state=0;
+    //         }
+    //     }
+    // }
 }
 
 

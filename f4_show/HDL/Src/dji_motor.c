@@ -1,0 +1,179 @@
+#include "dji_motor.h"
+
+DJI_motor_t dji_motor[4];
+
+void DJI_motor_init(void)
+{
+    for (int i = 0; i < 4; i++)
+    {
+        dji_motor[i].id = i + 1;
+        dji_motor[i].rpm = 0;
+
+        dji_motor[i].current = 0;
+
+        dji_motor[i].position = 0;
+        dji_motor[i].zero_position = 0;
+        dji_motor[i].target_position = 0;
+
+        dji_motor[i].encoder = 0;
+        dji_motor[i].encoder_total = 0;
+        dji_motor[i].encoder_initialized = 0;
+        dji_motor[i].pulse_per_round = 8192;
+        dji_motor[i].reduction_ratio = 1.0f;
+        dji_motor[i].mode = DJ_Disable;
+        dji_motor[i].target_rpm = 0;
+        dji_motor[i].current_cmd = 0;
+
+        PID_Init(&dji_motor[i].speed_pid,
+         2, 0, 0.2,1000,2000);
+        PID_Init(&dji_motor[i].position_pid,
+         2, 0, 0.2,1000,2000);
+    }
+}
+
+void DJI_motor_AngleCalculate(DJI_motor_t *motor)
+{
+    if (motor->encoder_initialized == 0)
+    {
+        motor->last_encoder = motor->encoder;
+        motor->encoder_initialized = 1;
+        return;
+    }
+
+    motor->encoder_delta = (int16_t)(motor->encoder - motor->last_encoder);
+    if (motor->encoder_delta > 4096)
+    {
+        motor->encoder_delta -= 8192;
+    }
+    else if (motor->encoder_delta < -4096)
+    {
+        motor->encoder_delta += 8192;
+    }
+
+    motor->encoder_total += motor->encoder_delta;
+    motor->position = (double)motor->encoder_total *360.0f / 
+                      ((double)motor->pulse_per_round * motor->reduction_ratio);
+
+    motor->last_encoder = motor->encoder;
+}
+    
+
+
+
+void DJI_motor_Receive(CAN_RxHeaderTypeDef *rx_header,uint8_t *rx_data)
+{
+    if (rx_header->IDE != CAN_ID_STD || rx_header->RTR != CAN_RTR_DATA)
+    {
+        return;
+    }
+    uint8_t motor_id = (uint8_t)(rx_header->StdId - 0x200U); // Assuming the motor ID is encoded in the CAN ID
+    if (motor_id < 1 || motor_id > 4)
+    {
+        return; 
+    }
+
+    DJI_motor_t *motor = &dji_motor[motor_id - 1U];
+
+    motor->encoder = (int16_t)((rx_data[0] << 8) | rx_data[1]);
+    motor->rpm = (int16_t)((rx_data[2] << 8) | rx_data[3]);
+    motor->current = (int16_t)((rx_data[4] << 8) | rx_data[5]);
+    
+    DJI_motor_AngleCalculate(motor);
+   
+}
+
+void DJI_motor_Func(void)
+{
+    for (int i = 0; i < 4; i++)
+    {
+        DJI_motor_t *motor = &dji_motor[i];
+        switch (motor->mode)
+        {
+            case DJ_RPM:
+                DJmotor_SpeedMode(motor);
+                break;
+            case DJ_Position:
+                DJmotor_PositionMode(motor);
+                break;
+            case DJ_Current:
+                DJmotor_CurrentMode(motor);
+                break;
+            case DJ_Zero:
+                break;
+            default:
+                break;
+        }
+        
+    }
+    DJI_motor_CurrentTransmit();
+}
+
+void DJI_motor_SetMode(DJI_motor_t *motor,DJ_motor_mode_t mode)
+{
+    if (motor != NULL)
+    {
+        motor->mode = mode;
+    }
+}
+
+void DJI_motor_CurrentTransmit(void)
+{
+    uint8_t tx_data[8]={0};
+    CAN_TxHeaderTypeDef tx_header = {0};
+    uint32_t tx_mailbox;
+    tx_header.StdId = 0x200U;
+    tx_header.IDE = CAN_ID_STD;
+    tx_header.RTR = CAN_RTR_DATA;
+    tx_header.DLC = 8U;
+    
+    for (int i = 0; i < 4; i++)
+    {
+        tx_data[i * 2] = (uint8_t)(dji_motor[i].current_cmd >> 8);
+        tx_data[i * 2 + 1] = (uint8_t)(dji_motor[i].current_cmd & 0xFF);
+    }
+
+
+    HAL_CAN_AddTxMessage(&hcan1, &tx_header, tx_data,&tx_mailbox);
+}   
+
+void DJmotor_SpeedMode(DJI_motor_t *motor)
+{
+    if (motor == NULL)
+    {
+        return;
+    }
+    double Ts = 0.002;
+    double output = PID_Caculate(&motor->speed_pid, motor->target_rpm, motor->rpm, Ts);
+    motor->current_cmd = (int16_t)output;
+}
+
+void DJmotor_CurrentMode(DJI_motor_t *motor)
+{
+    if (motor == NULL)
+    {
+        return;
+    } 
+}
+
+void DJI_motor_Set_Speed(DJI_motor_t *motor,int16_t target_rpm)
+{
+    if (motor == NULL)
+    {
+        return;
+    }
+    motor->target_rpm = target_rpm;
+}
+
+void DJmotor_PositionMode(DJI_motor_t *motor)
+{
+    if (motor == NULL)
+    {
+        return;
+    }
+    double Ts = 0.002;
+    double output1 = PID_Caculate(&motor->position_pid, motor->target_position, motor->position, Ts);
+    motor->target_rpm = (int16_t)output1;
+    double output2 = PID_Caculate(&motor->speed_pid, motor->target_rpm, motor->rpm, Ts);
+    motor->current_cmd = (int16_t)output2;
+
+}

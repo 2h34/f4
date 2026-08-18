@@ -44,4 +44,4 @@ f4_show/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\Core\Inc\can.h ..\Core\Inc\dma.h ..\Core\Inc\tim.h \
   ..\Core\Inc\usart.h ..\Core\Inc\gpio.h ..\HDL\Inc\beep.h \
   ..\HDL\Inc\led.h ..\IRQ\Inc\uart_app.h ..\IRQ\Inc\vofa_app.h \
-  ..\IRQ\Inc\can_app.h
+  ..\IRQ\Inc\can_app.h ..\HDL\Inc\dji_motor.h ..\Algorithm\Inc\pid.h

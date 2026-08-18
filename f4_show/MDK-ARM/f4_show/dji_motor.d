@@ -1,5 +1,4 @@
-f4_show/can_app.o: ..\IRQ\Src\can_app.c ..\IRQ\Inc\can_app.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h ..\Core\Inc\can.h \
+f4_show/dji_motor.o: ..\HDL\Src\dji_motor.c ..\HDL\Inc\dji_motor.h \
   ..\Core\Inc\main.h ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h \
   ..\Core\Inc\stm32f4xx_hal_conf.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h \
@@ -7,6 +6,7 @@ f4_show/can_app.o: ..\IRQ\Src\can_app.c ..\IRQ\Inc\can_app.h \
   ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f4xx.h \
   ..\Drivers\CMSIS\Device\ST\STM32F4xx\Include\stm32f405xx.h \
   ..\Drivers\CMSIS\Include\core_cm4.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
   ..\Drivers\CMSIS\Include\cmsis_version.h \
   ..\Drivers\CMSIS\Include\cmsis_compiler.h \
   ..\Drivers\CMSIS\Include\cmsis_armclang.h \
@@ -30,5 +30,4 @@ f4_show/can_app.o: ..\IRQ\Src\can_app.c ..\IRQ\Inc\can_app.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h \
-  ..\HDL\Inc\beep.h ..\HDL\Inc\led.h ..\Core\Inc\gpio.h \
-  ..\HDL\Inc\dji_motor.h ..\Algorithm\Inc\pid.h
+  ..\Algorithm\Inc\pid.h ..\Core\Inc\can.h

@@ -33,6 +33,7 @@
 #include "uart_app.h"
 #include "vofa_app.h"
 #include "can_app.h"
+#include "dji_motor.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -64,6 +65,7 @@ typedef enum
 /* USER CODE BEGIN PV */
 static volatile key_event_t key_event = KEY_NONE;
 static volatile uint32_t tick_2ms_count = 0;
+extern DJI_motor_t dji_motor[4];
 // volatile uint8_t tick_2ms_flag = 0;
 
 // uint32_t press_time;
@@ -96,9 +98,10 @@ static void StateMachine_Process(void);
   */
 int main(void)
 {
+  
 
   /* USER CODE BEGIN 1 */
-
+  uint32_t last_control_tick = 0;
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -127,14 +130,18 @@ int main(void)
   /* USER CODE BEGIN 2 */
   uart_app_init();
   can_app_init();
+  DJI_motor_init();
+
+  DJI_motor_Set_Speed(&dji_motor[0], 1000);
+  DJI_motor_SetMode(&dji_motor[0], DJ_RPM);
   /* USER CODE END 2 */
 
   /* Init scheduler */
-  osKernelInitialize();  /* Call init function for freertos objects (in cmsis_os2.c) */
-  MX_FREERTOS_Init();
+  // osKernelInitialize();  /* Call init function for freertos objects (in cmsis_os2.c) */
+  // MX_FREERTOS_Init();
 
   /* Start scheduler */
-  osKernelStart();
+  // osKernelStart();
 
   /* We should never get here as control is now taken by the scheduler */
 
@@ -143,14 +150,20 @@ int main(void)
   while (1)
   {
     // vofa_app_process();
+    
 
     // StateMachine_Process();
-
+    if (tick_2ms_count - last_control_tick >= 1U)
+    {
+      last_control_tick = tick_2ms_count;
+      DJI_motor_Func();
+      // StateMachine_Process();
+    }
     // uart_app_process(tick_2ms_count);
-
-    BEEP_Process(tick_2ms_count);
-    can_app_process(tick_2ms_count);
-    LED_Process(tick_2ms_count);
+    
+    // BEEP_Process(tick_2ms_count);
+    // can_app_process(tick_2ms_count);
+    // LED_Process(tick_2ms_count);
     // else if (current_state == STATE_BREATH)
     // {
     //     LED_BreathProcess(tick_2ms_count);
