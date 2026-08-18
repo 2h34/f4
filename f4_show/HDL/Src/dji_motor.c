@@ -10,6 +10,7 @@ void DJI_motor_init(void)
         dji_motor[i].rpm = 0;
 
         dji_motor[i].current = 0;
+        dji_motor[i].target_current = 0;
 
         dji_motor[i].position = 0;
         dji_motor[i].zero_position = 0;
@@ -95,6 +96,7 @@ void DJI_motor_Func(void)
         //若无有效反馈，禁止输出
         if (motor->feedback_valid == 0)
         {
+            motor->current_cmd = 0;
             continue; 
         }
         switch (motor->mode)
@@ -175,6 +177,7 @@ void DJmotor_CurrentMode(DJI_motor_t *motor)
     {
         return;
     } 
+    motor->current_cmd = motor->target_current;
 }
 
 void DJI_motor_Set_Speed(DJI_motor_t *motor,int16_t target_rpm)
@@ -184,6 +187,34 @@ void DJI_motor_Set_Speed(DJI_motor_t *motor,int16_t target_rpm)
         return;
     }
     motor->target_rpm = target_rpm;
+}
+
+void DJI_motor_Set_Position(DJI_motor_t *motor,double target_position)
+{
+    if (motor == NULL)
+    {
+        return;
+    }
+    motor->target_position = target_position;
+}
+
+void DJI_motor_Set_Current(DJI_motor_t *motor, int16_t target_current)
+{
+    if (motor == NULL)
+    {
+        return;
+    }
+
+    if (target_current > 10000)
+    {
+        target_current = 10000;
+    }
+    else if (target_current < -10000)
+    {
+        target_current = -10000;
+    }
+
+    motor->target_current = target_current;
 }
 
 void DJmotor_PositionMode(DJI_motor_t *motor)

@@ -22,6 +22,7 @@ typedef struct
 
     int16_t current;  //Current是转矩
     int16_t current_cmd;
+    int16_t target_current;
 
     double position;
     double target_position;
@@ -55,7 +56,7 @@ void DJmotor_CurrentMode(DJI_motor_t *motor);
 void DJmotor_PositionMode(DJI_motor_t *motor);
 
 void DJI_motor_Set_Speed(DJI_motor_t *motor,int16_t target_rpm);
-
-
+void DJI_motor_Set_Position(DJI_motor_t *motor,double target_position);
+void DJI_motor_Set_Current(DJI_motor_t *motor, int16_t target_current);
 
 #endif // DJI_MOTOR_H
