@@ -124,7 +124,11 @@ void DJI_motor_Func(void)
 
 void DJI_motor_SetMode(DJI_motor_t *motor,DJ_motor_mode_t mode)
 {
-    if (motor != NULL)
+    if (motor == NULL)
+    {
+        return;
+    }
+    if (motor->mode!= mode)
     {
         motor->mode = mode;
         motor->current_cmd = 0;
