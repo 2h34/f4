@@ -5,6 +5,8 @@
 #include "pid.h"
 #include "can.h"
 
+#define ABS(x) ((x) >= 0 ? (x) : -(x))
+
 typedef enum
 {
     DJ_Disable = 0,
@@ -43,6 +45,7 @@ typedef struct
     float reduction_ratio;     
 
     DJ_motor_mode_t mode;
+    DJ_motor_mode_t mode_set;
     PID_t speed_pid;
     PID_t position_pid;
 
@@ -65,8 +68,9 @@ void DJI_motor_Set_Speed(DJI_motor_t *motor,int16_t target_rpm);
 void DJI_motor_Set_Position(DJI_motor_t *motor,double target_position);
 void DJI_motor_Set_Current(DJI_motor_t *motor, int16_t target_current);
 void DJI_motor_Set_Zero(DJI_motor_t *motor);
-
+    
 int16_t ClampPeak(int16_t value, int16_t limit);
+void DJmotor_SwitchMode(DJI_motor_t *motor);
 
 
 #endif // DJI_MOTOR_H

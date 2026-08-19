@@ -25,13 +25,13 @@ void DJI_motor_init(void)
         dji_motor[i].current_cmd = 0;
         dji_motor[i].feedback_valid = 0;
 
-        dji_motor[i].zero_rpm = 100;
+        dji_motor[i].zero_rpm = -100;
         dji_motor[i].zero_cnt = 0;
         dji_motor[i].zero_current_limit = 1000;
         dji_motor[i].zero_distance = 10;
         dji_motor[i].zero_flag = 0;
     
-
+        dji_motor[i].mode_set = DJ_Disable;
         PID_Init(&dji_motor[i].speed_pid,
          2, 0, 0.2,1000,2000);
         PID_Init(&dji_motor[i].position_pid,
@@ -98,6 +98,7 @@ void DJI_motor_Func(void)
 {
     for (int i = 0; i < 4; i++)
     {
+        DJmotor_SwitchMode(&dji_motor[i]);
         DJI_motor_t *motor = &dji_motor[i];
         //若无有效反馈，禁止输出
         if (motor->feedback_valid == 0)
@@ -105,6 +106,7 @@ void DJI_motor_Func(void)
             motor->current_cmd = 0;
             continue; 
         }
+        
         switch (motor->mode)
         {
             case DJ_RPM:
@@ -137,12 +139,21 @@ void DJI_motor_SetMode(DJI_motor_t *motor,DJ_motor_mode_t mode)
     {
         return;
     }
+    motor->mode_set = mode;
     if (motor->mode!= mode)
     {
         motor->mode = mode;
         motor->current_cmd = 0;
         PID_Reset(&motor->speed_pid);
         PID_Reset(&motor->position_pid);
+    }
+}
+
+void DJmotor_SwitchMode(DJI_motor_t *motor)
+{
+    if (motor-> mode_set != motor->mode)
+    {
+        DJI_motor_SetMode(motor, motor->mode_set);
     }
 }
 
@@ -276,7 +287,7 @@ void DJmotor_ZeroMode(DJI_motor_t *motor)
     motor->current_cmd= (int16_t)PID_Caculate(&motor->speed_pid, motor->target_rpm, motor->rpm, Ts);
     motor->current_cmd = ClampPeak(motor->current_cmd, motor->zero_current_limit);
 
-    if (ABS(motor->encoder_delta < motor->zero_distance))
+    if (ABS(motor->encoder_delta) < motor->zero_distance)
     {
         motor->zero_cnt++;
         if (motor->zero_cnt > 100U )
@@ -287,6 +298,7 @@ void DJmotor_ZeroMode(DJI_motor_t *motor)
             DJI_motor_Set_Zero(motor);
             motor->current_cmd = 0;
             motor->mode = DJ_Disable;
+            motor->mode_set = DJ_Disable;
         }
     }
     else
