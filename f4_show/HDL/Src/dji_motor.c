@@ -27,7 +27,7 @@ void DJI_motor_init(void)
 
         dji_motor[i].zero_rpm = -100;
         dji_motor[i].zero_cnt = 0;
-        dji_motor[i].zero_current_limit = 1000;
+        dji_motor[i].zero_current_limit = 100;
         dji_motor[i].zero_distance = 10;
         dji_motor[i].zero_flag = 0;
     
@@ -142,6 +142,11 @@ void DJI_motor_SetMode(DJI_motor_t *motor,DJ_motor_mode_t mode)
     motor->mode_set = mode;
     if (motor->mode!= mode)
     {
+        if (mode == DJ_Zero)
+        {
+        motor->zero_cnt = 0;
+        motor->zero_flag = 0;
+        }
         motor->mode = mode;
         motor->current_cmd = 0;
         PID_Reset(&motor->speed_pid);

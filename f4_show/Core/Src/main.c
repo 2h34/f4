@@ -132,7 +132,6 @@ int main(void)
   can_app_init();
   DJI_motor_init();
 
-  DJI_motor_Set_Speed(&dji_motor[1], 0);
   DJI_motor_SetMode(&dji_motor[1], DJ_Position);
   /* USER CODE END 2 */
 
