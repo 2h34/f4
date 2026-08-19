@@ -57,20 +57,15 @@ void DJI_motor_init(void);
 void DJI_motor_Receive(CAN_RxHeaderTypeDef *rx_header,uint8_t *rx_data);
 void DJI_motor_Func(void);
 void DJI_motor_SetMode(DJI_motor_t *motor,DJ_motor_mode_t mode);
-void DJI_motor_AngleCalculate(DJI_motor_t *motor);
-void DJI_motor_CurrentTransmit(void);
-void DJmotor_SpeedMode(DJI_motor_t *motor);
-void DJmotor_CurrentMode(DJI_motor_t *motor);
-void DJmotor_PositionMode(DJI_motor_t *motor);
-void DJmotor_ZeroMode(DJI_motor_t *motor);
+
 
 void DJI_motor_Set_Speed(DJI_motor_t *motor,int16_t target_rpm);
 void DJI_motor_Set_Position(DJI_motor_t *motor,double target_position);
 void DJI_motor_Set_Current(DJI_motor_t *motor, int16_t target_current);
 void DJI_motor_Set_Zero(DJI_motor_t *motor);
     
-int16_t ClampPeak(int16_t value, int16_t limit);
-void DJmotor_SwitchMode(DJI_motor_t *motor);
+
+static void DJmotor_SwitchMode(DJI_motor_t *motor);
 
 
 #endif // DJI_MOTOR_H

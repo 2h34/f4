@@ -1054,15 +1054,15 @@ Section Cross References
     dji_motor.o(.text.DJI_motor_init) refers to dji_motor.o(.bss.dji_motor) for dji_motor
     dji_motor.o(.text.DJI_motor_init) refers to pid.o(.text.PID_Init) for PID_Init
     dji_motor.o(.ARM.exidx.text.DJI_motor_init) refers to dji_motor.o(.text.DJI_motor_init) for [Anonymous Symbol]
+    dji_motor.o(.text.DJI_motor_Receive) refers to dji_motor.o(.bss.dji_motor) for dji_motor
+    dji_motor.o(.text.DJI_motor_Receive) refers to dji_motor.o(.text.DJI_motor_AngleCalculate) for DJI_motor_AngleCalculate
+    dji_motor.o(.ARM.exidx.text.DJI_motor_Receive) refers to dji_motor.o(.text.DJI_motor_Receive) for [Anonymous Symbol]
     dji_motor.o(.text.DJI_motor_AngleCalculate) refers to dflt_clz.o(x$fpl$dflt) for __aeabi_i2d
     dji_motor.o(.text.DJI_motor_AngleCalculate) refers to dmul.o(x$fpl$dmul) for __aeabi_dmul
     dji_motor.o(.text.DJI_motor_AngleCalculate) refers to dflt_clz.o(x$fpl$dfltu) for __aeabi_ui2d
     dji_motor.o(.text.DJI_motor_AngleCalculate) refers to f2d.o(x$fpl$f2d) for __aeabi_f2d
     dji_motor.o(.text.DJI_motor_AngleCalculate) refers to ddiv.o(x$fpl$ddiv) for __aeabi_ddiv
     dji_motor.o(.ARM.exidx.text.DJI_motor_AngleCalculate) refers to dji_motor.o(.text.DJI_motor_AngleCalculate) for [Anonymous Symbol]
-    dji_motor.o(.text.DJI_motor_Receive) refers to dji_motor.o(.bss.dji_motor) for dji_motor
-    dji_motor.o(.text.DJI_motor_Receive) refers to dji_motor.o(.text.DJI_motor_AngleCalculate) for DJI_motor_AngleCalculate
-    dji_motor.o(.ARM.exidx.text.DJI_motor_Receive) refers to dji_motor.o(.text.DJI_motor_Receive) for [Anonymous Symbol]
     dji_motor.o(.text.DJI_motor_Func) refers to dji_motor.o(.bss.dji_motor) for dji_motor
     dji_motor.o(.text.DJI_motor_Func) refers to dji_motor.o(.text.DJmotor_SwitchMode) for DJmotor_SwitchMode
     dji_motor.o(.text.DJI_motor_Func) refers to dji_motor.o(.text.DJmotor_SpeedMode) for DJmotor_SpeedMode
@@ -3272,8 +3272,8 @@ Removing Unused input sections from the image.
     Removing led.o(.bss.current_state), (1 bytes).
     Removing dji_motor.o(.text), (0 bytes).
     Removing dji_motor.o(.ARM.exidx.text.DJI_motor_init), (8 bytes).
-    Removing dji_motor.o(.ARM.exidx.text.DJI_motor_AngleCalculate), (8 bytes).
     Removing dji_motor.o(.ARM.exidx.text.DJI_motor_Receive), (8 bytes).
+    Removing dji_motor.o(.ARM.exidx.text.DJI_motor_AngleCalculate), (8 bytes).
     Removing dji_motor.o(.ARM.exidx.text.DJI_motor_Func), (8 bytes).
     Removing dji_motor.o(.ARM.exidx.text.DJmotor_SwitchMode), (8 bytes).
     Removing dji_motor.o(.ARM.exidx.text.DJmotor_SpeedMode), (8 bytes).
@@ -4114,18 +4114,26 @@ Image Symbol Table
     [Anonymous Symbol]                       0x08000420   Section        0  stm32f4xx_it.o(.text.BusFault_Handler)
     [Anonymous Symbol]                       0x08000424   Section        0  stm32f4xx_it.o(.text.CAN1_RX0_IRQHandler)
     [Anonymous Symbol]                       0x08000434   Section        0  stm32f4xx_it.o(.text.CAN1_RX1_IRQHandler)
+    ClampPeak                                0x08000445   Thumb Code    82  dji_motor.o(.text.ClampPeak)
     [Anonymous Symbol]                       0x08000444   Section        0  dji_motor.o(.text.ClampPeak)
+    DJI_motor_AngleCalculate                 0x08000499   Thumb Code   272  dji_motor.o(.text.DJI_motor_AngleCalculate)
     [Anonymous Symbol]                       0x08000498   Section        0  dji_motor.o(.text.DJI_motor_AngleCalculate)
+    DJI_motor_CurrentTransmit                0x080005a9   Thumb Code   130  dji_motor.o(.text.DJI_motor_CurrentTransmit)
     [Anonymous Symbol]                       0x080005a8   Section        0  dji_motor.o(.text.DJI_motor_CurrentTransmit)
     [Anonymous Symbol]                       0x0800062c   Section        0  dji_motor.o(.text.DJI_motor_Func)
     [Anonymous Symbol]                       0x080006d4   Section        0  dji_motor.o(.text.DJI_motor_Receive)
     [Anonymous Symbol]                       0x08000780   Section        0  dji_motor.o(.text.DJI_motor_SetMode)
     [Anonymous Symbol]                       0x080007ec   Section        0  dji_motor.o(.text.DJI_motor_Set_Zero)
     [Anonymous Symbol]                       0x08000818   Section        0  dji_motor.o(.text.DJI_motor_init)
+    DJmotor_CurrentMode                      0x080009e9   Thumb Code    24  dji_motor.o(.text.DJmotor_CurrentMode)
     [Anonymous Symbol]                       0x080009e8   Section        0  dji_motor.o(.text.DJmotor_CurrentMode)
+    DJmotor_PositionMode                     0x08000a01   Thumb Code   172  dji_motor.o(.text.DJmotor_PositionMode)
     [Anonymous Symbol]                       0x08000a00   Section        0  dji_motor.o(.text.DJmotor_PositionMode)
+    DJmotor_SpeedMode                        0x08000aad   Thumb Code   130  dji_motor.o(.text.DJmotor_SpeedMode)
     [Anonymous Symbol]                       0x08000aac   Section        0  dji_motor.o(.text.DJmotor_SpeedMode)
+    DJmotor_SwitchMode                       0x08000b31   Thumb Code    38  dji_motor.o(.text.DJmotor_SwitchMode)
     [Anonymous Symbol]                       0x08000b30   Section        0  dji_motor.o(.text.DJmotor_SwitchMode)
+    DJmotor_ZeroMode                         0x08000b59   Thumb Code   270  dji_motor.o(.text.DJmotor_ZeroMode)
     [Anonymous Symbol]                       0x08000b58   Section        0  dji_motor.o(.text.DJmotor_ZeroMode)
     [Anonymous Symbol]                       0x08000c68   Section        0  stm32f4xx_it.o(.text.DMA2_Stream2_IRQHandler)
     [Anonymous Symbol]                       0x08000c78   Section        0  stm32f4xx_it.o(.text.DMA2_Stream7_IRQHandler)
@@ -4553,19 +4561,11 @@ Image Symbol Table
     BusFault_Handler                         0x08000421   Thumb Code     4  stm32f4xx_it.o(.text.BusFault_Handler)
     CAN1_RX0_IRQHandler                      0x08000425   Thumb Code    16  stm32f4xx_it.o(.text.CAN1_RX0_IRQHandler)
     CAN1_RX1_IRQHandler                      0x08000435   Thumb Code    16  stm32f4xx_it.o(.text.CAN1_RX1_IRQHandler)
-    ClampPeak                                0x08000445   Thumb Code    82  dji_motor.o(.text.ClampPeak)
-    DJI_motor_AngleCalculate                 0x08000499   Thumb Code   272  dji_motor.o(.text.DJI_motor_AngleCalculate)
-    DJI_motor_CurrentTransmit                0x080005a9   Thumb Code   130  dji_motor.o(.text.DJI_motor_CurrentTransmit)
     DJI_motor_Func                           0x0800062d   Thumb Code   166  dji_motor.o(.text.DJI_motor_Func)
     DJI_motor_Receive                        0x080006d5   Thumb Code   172  dji_motor.o(.text.DJI_motor_Receive)
     DJI_motor_SetMode                        0x08000781   Thumb Code   106  dji_motor.o(.text.DJI_motor_SetMode)
     DJI_motor_Set_Zero                       0x080007ed   Thumb Code    44  dji_motor.o(.text.DJI_motor_Set_Zero)
     DJI_motor_init                           0x08000819   Thumb Code   464  dji_motor.o(.text.DJI_motor_init)
-    DJmotor_CurrentMode                      0x080009e9   Thumb Code    24  dji_motor.o(.text.DJmotor_CurrentMode)
-    DJmotor_PositionMode                     0x08000a01   Thumb Code   172  dji_motor.o(.text.DJmotor_PositionMode)
-    DJmotor_SpeedMode                        0x08000aad   Thumb Code   130  dji_motor.o(.text.DJmotor_SpeedMode)
-    DJmotor_SwitchMode                       0x08000b31   Thumb Code    38  dji_motor.o(.text.DJmotor_SwitchMode)
-    DJmotor_ZeroMode                         0x08000b59   Thumb Code   270  dji_motor.o(.text.DJmotor_ZeroMode)
     DMA2_Stream2_IRQHandler                  0x08000c69   Thumb Code    16  stm32f4xx_it.o(.text.DMA2_Stream2_IRQHandler)
     DMA2_Stream7_IRQHandler                  0x08000c79   Thumb Code    16  stm32f4xx_it.o(.text.DMA2_Stream7_IRQHandler)
     DebugMon_Handler                         0x08000e21   Thumb Code     2  stm32f4xx_it.o(.text.DebugMon_Handler)
@@ -4821,12 +4821,12 @@ Memory Map of the image
     0x08000434   0x08000434   0x00000010   Code   RO          125    .text.CAN1_RX1_IRQHandler  stm32f4xx_it.o
     0x08000444   0x08000444   0x00000052   Code   RO         1236    .text.ClampPeak     dji_motor.o
     0x08000496   0x08000496   0x00000002   PAD
-    0x08000498   0x08000498   0x00000110   Code   RO         1208    .text.DJI_motor_AngleCalculate  dji_motor.o
+    0x08000498   0x08000498   0x00000110   Code   RO         1210    .text.DJI_motor_AngleCalculate  dji_motor.o
     0x080005a8   0x080005a8   0x00000082   Code   RO         1224    .text.DJI_motor_CurrentTransmit  dji_motor.o
     0x0800062a   0x0800062a   0x00000002   PAD
     0x0800062c   0x0800062c   0x000000a6   Code   RO         1212    .text.DJI_motor_Func  dji_motor.o
     0x080006d2   0x080006d2   0x00000002   PAD
-    0x080006d4   0x080006d4   0x000000ac   Code   RO         1210    .text.DJI_motor_Receive  dji_motor.o
+    0x080006d4   0x080006d4   0x000000ac   Code   RO         1208    .text.DJI_motor_Receive  dji_motor.o
     0x08000780   0x08000780   0x0000006a   Code   RO         1226    .text.DJI_motor_SetMode  dji_motor.o
     0x080007ea   0x080007ea   0x00000002   PAD
     0x080007ec   0x080007ec   0x0000002c   Code   RO         1234    .text.DJI_motor_Set_Zero  dji_motor.o
@@ -5117,7 +5117,7 @@ Image component sizes
        262          0          0          0         40       5894   can.o
        292          0          0          0         36       4196   can_app.o
         30          0          0          0          0      34882   cmsis_os2.o
-      2070         54          0          0        960       6155   dji_motor.o
+      2070         54          0          0        960       6176   dji_motor.o
         82          0          0          0          0       3239   dma.o
        220          0          0          0          0       3909   gpio.o
        130          0          0          0          0       2215   list.o
@@ -5144,7 +5144,7 @@ Image component sizes
        448          0          0          0        264       6874   usart.o
 
     ----------------------------------------------------------------------
-     24800        122        456         12       5836     251801   Object Totals
+     24800        122        456         12       5836     251822   Object Totals
          0          0         32          0          0          0   (incl. Generated)
        146         12          0          3          9          0   (incl. Padding)
 
@@ -5212,8 +5212,8 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     28312        334        456         12       5932     252781   Grand Totals
-     28312        334        456         12       5932     252781   ELF Image Totals
+     28312        334        456         12       5932     252802   Grand Totals
+     28312        334        456         12       5932     252802   ELF Image Totals
      28312        334        456         12          0          0   ROM Totals
 
 ==============================================================================

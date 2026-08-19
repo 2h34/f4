@@ -2,6 +2,16 @@
 
 DJI_motor_t dji_motor[4];
 
+static void DJI_motor_AngleCalculate(DJI_motor_t *motor);
+static void DJI_motor_CurrentTransmit(void);
+static void DJmotor_SpeedMode(DJI_motor_t *motor);
+static void DJmotor_CurrentMode(DJI_motor_t *motor);
+static void DJmotor_PositionMode(DJI_motor_t *motor);
+static void DJmotor_ZeroMode(DJI_motor_t *motor);
+static int16_t ClampPeak(int16_t value, int16_t limit);
+
+
+
 void DJI_motor_init(void)
 {
     for (int i = 0; i < 4; i++)
@@ -39,7 +49,7 @@ void DJI_motor_init(void)
     }
 }
 
-void DJI_motor_AngleCalculate(DJI_motor_t *motor)
+static void DJI_motor_AngleCalculate(DJI_motor_t *motor)
 {
     if (motor->encoder_initialized == 0)
     {
@@ -65,6 +75,7 @@ void DJI_motor_AngleCalculate(DJI_motor_t *motor)
     motor->last_encoder = motor->encoder;
 }
     
+
 
 
 
@@ -154,7 +165,7 @@ void DJI_motor_SetMode(DJI_motor_t *motor,DJ_motor_mode_t mode)
     }
 }
 
-void DJmotor_SwitchMode(DJI_motor_t *motor)
+static void DJmotor_SwitchMode(DJI_motor_t *motor)
 {
     if (motor-> mode_set != motor->mode)
     {
@@ -162,7 +173,7 @@ void DJmotor_SwitchMode(DJI_motor_t *motor)
     }
 }
 
-void DJI_motor_CurrentTransmit(void)
+static void DJI_motor_CurrentTransmit(void)
 {
     uint8_t tx_data[8]={0};
     CAN_TxHeaderTypeDef tx_header = {0};
@@ -183,7 +194,7 @@ void DJI_motor_CurrentTransmit(void)
     HAL_CAN_AddTxMessage(&hcan1, &tx_header, tx_data,&tx_mailbox);
 }   
 
-void DJmotor_SpeedMode(DJI_motor_t *motor)
+static void DJmotor_SpeedMode(DJI_motor_t *motor)
 {
     if (motor == NULL)
     {
@@ -194,7 +205,7 @@ void DJmotor_SpeedMode(DJI_motor_t *motor)
     motor->current_cmd = (int16_t)output;
 }
 
-void DJmotor_CurrentMode(DJI_motor_t *motor)
+static void DJmotor_CurrentMode(DJI_motor_t *motor)
 {
     if (motor == NULL)
     {
@@ -252,7 +263,7 @@ void DJI_motor_Set_Zero(DJI_motor_t *motor)
     motor->zero_flag = 1;
 }
 
-void DJmotor_PositionMode(DJI_motor_t *motor)
+static void DJmotor_PositionMode(DJI_motor_t *motor)
 {
     if (motor == NULL)
     {
@@ -266,7 +277,7 @@ void DJmotor_PositionMode(DJI_motor_t *motor)
 
 }
 
-int16_t ClampPeak(int16_t value, int16_t limit)
+ static int16_t ClampPeak(int16_t value, int16_t limit)
 {
     if (value > limit)
     {
@@ -281,7 +292,7 @@ int16_t ClampPeak(int16_t value, int16_t limit)
 }
 
 
-void DJmotor_ZeroMode(DJI_motor_t *motor)
+static void DJmotor_ZeroMode(DJI_motor_t *motor)
 {
     if (motor == NULL)
     {

@@ -84,7 +84,7 @@ extern DJI_motor_t dji_motor[4];
 void SystemClock_Config(void);
 void MX_FREERTOS_Init(void);
 /* USER CODE BEGIN PFP */
-static void StateMachine_Process(void);
+// static void StateMachine_Process(void);
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
