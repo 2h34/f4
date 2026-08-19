@@ -13,7 +13,6 @@ void DJI_motor_init(void)
         dji_motor[i].target_current = 0;
 
         dji_motor[i].position = 0;
-        dji_motor[i].zero_position = 0;
         dji_motor[i].target_position = 0;
 
         dji_motor[i].encoder = 0;
@@ -25,6 +24,13 @@ void DJI_motor_init(void)
         dji_motor[i].target_rpm = 0;
         dji_motor[i].current_cmd = 0;
         dji_motor[i].feedback_valid = 0;
+
+        dji_motor[i].zero_rpm = 100;
+        dji_motor[i].zero_cnt = 0;
+        dji_motor[i].zero_current_limit = 1000;
+        dji_motor[i].zero_distance = 10;
+        dji_motor[i].zero_flag = 0;
+    
 
         PID_Init(&dji_motor[i].speed_pid,
          2, 0, 0.2,1000,2000);
@@ -111,6 +117,7 @@ void DJI_motor_Func(void)
                 DJmotor_CurrentMode(motor);
                 break;
             case DJ_Zero:
+                DJmotor_ZeroMode(motor);
                 break;
             case DJ_Disable:
                 motor->current_cmd = 0;
@@ -217,6 +224,18 @@ void DJI_motor_Set_Current(DJI_motor_t *motor, int16_t target_current)
     motor->target_current = target_current;
 }
 
+void DJI_motor_Set_Zero(DJI_motor_t *motor)
+{
+    if (motor == NULL)
+    {
+        return;
+    }
+    motor->encoder_total = 0;
+    motor->position = 0;
+    motor-> target_position = 0;
+    motor->zero_flag = 1;
+}
+
 void DJmotor_PositionMode(DJI_motor_t *motor)
 {
     if (motor == NULL)
@@ -230,3 +249,49 @@ void DJmotor_PositionMode(DJI_motor_t *motor)
     motor->current_cmd = (int16_t)output2;
 
 }
+
+int16_t ClampPeak(int16_t value, int16_t limit)
+{
+    if (value > limit)
+    {
+        return limit;
+    }
+    else if (value < -limit)
+    {
+        return -limit;
+    }
+
+    return value;
+}
+
+
+void DJmotor_ZeroMode(DJI_motor_t *motor)
+{
+    if (motor == NULL)
+    {
+        return;
+    }
+    motor->target_rpm = motor->zero_rpm;
+    double Ts = 0.002;
+    motor->current_cmd= (int16_t)PID_Caculate(&motor->speed_pid, motor->target_rpm, motor->rpm, Ts);
+    motor->current_cmd = ClampPeak(motor->current_cmd, motor->zero_current_limit);
+
+    if (ABS(motor->encoder_delta < motor->zero_distance))
+    {
+        motor->zero_cnt++;
+        if (motor->zero_cnt > 100U )
+        {
+            motor->zero_cnt = 0;
+            PID_Reset(&motor->speed_pid);
+            PID_Reset(&motor->position_pid);
+            DJI_motor_Set_Zero(motor);
+            motor->current_cmd = 0;
+            motor->mode = DJ_Disable;
+        }
+    }
+    else
+    {
+        motor->zero_cnt = 0;
+    }
+}
+
