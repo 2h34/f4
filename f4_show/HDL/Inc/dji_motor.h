@@ -65,7 +65,7 @@ void DJI_motor_Set_Current(DJI_motor_t *motor, int16_t target_current);
 void DJI_motor_Set_Zero(DJI_motor_t *motor);
     
 
-static void DJmotor_SwitchMode(DJI_motor_t *motor);
+
 
 
 #endif // DJI_MOTOR_H

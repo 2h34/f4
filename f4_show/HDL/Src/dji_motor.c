@@ -9,7 +9,7 @@ static void DJmotor_CurrentMode(DJI_motor_t *motor);
 static void DJmotor_PositionMode(DJI_motor_t *motor);
 static void DJmotor_ZeroMode(DJI_motor_t *motor);
 static int16_t ClampPeak(int16_t value, int16_t limit);
-
+static void DJmotor_SwitchMode(DJI_motor_t *motor);
 
 
 void DJI_motor_init(void)
