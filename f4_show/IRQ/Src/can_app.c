@@ -3,6 +3,8 @@
 #include"beep.h"
 #include "led.h"
 #include "dji_motor.h"
+#include "ZDrive.h"
+
 
 static CAN_RxHeaderTypeDef can_rx_header;
 static uint8_t can_rx_data[8];
@@ -16,22 +18,23 @@ static volatile uint8_t flow_target_state = 0U;
 
 
 
+
+
 void can_app_init(void)
 {
     CAN_FilterTypeDef filter = {0};
 
     filter.FilterBank = 0;
-    filter.FilterMode = CAN_FILTERMODE_IDLIST;
+    filter.FilterMode = CAN_FILTERMODE_IDMASK;
     filter.FilterScale = CAN_FILTERSCALE_16BIT;
     filter.FilterFIFOAssignment = CAN_FILTER_FIFO0;
     filter.FilterActivation = ENABLE;
     filter.SlaveStartFilterBank = 14;
-    
 
-    filter.FilterIdHigh = 0x201U << 5;
-    filter.FilterIdLow  = 0x202U << 5;
-    filter.FilterMaskIdHigh = 0x203U << 5;
-    filter.FilterMaskIdLow =  0x204U << 5;
+    filter.FilterIdHigh = 0x0000U;
+    filter.FilterIdLow  = 0x0000U;
+    filter.FilterMaskIdHigh = 0x0000U;
+    filter.FilterMaskIdLow =  0x0000U;
 
     if (HAL_CAN_ConfigFilter(&hcan1, &filter) != HAL_OK)
     {
@@ -58,14 +61,21 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
     {
         return;
     }
-    if ((can_rx_header.IDE == CAN_ID_STD) &&
-    (can_rx_header.RTR == CAN_RTR_DATA) &&
-    (can_rx_header.StdId >= 0x201U) &&
+    if((can_rx_header.IDE != CAN_ID_STD) ||
+    (can_rx_header.RTR != CAN_RTR_DATA))
+    {
+        return;
+    }
+    if ((can_rx_header.StdId >= 0x201U) &&
     (can_rx_header.StdId <= 0x204U) &&
     (can_rx_header.DLC >= 6U))
     {
         DJI_motor_Receive(&can_rx_header, can_rx_data);
         return;
+    }
+    else
+    {
+        ZdriveReceive(&can_rx_header, can_rx_data);
     }
 
 

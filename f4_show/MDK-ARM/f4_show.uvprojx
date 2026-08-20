@@ -921,6 +921,11 @@
               <FileType>1</FileType>
               <FilePath>..\HDL\Src\dji_motor.c</FilePath>
             </File>
+            <File>
+              <FileName>ZDrive.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HDL\Src\ZDrive.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -34,6 +34,7 @@
 #include "vofa_app.h"
 #include "can_app.h"
 #include "dji_motor.h"
+#include "ZDrive.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -131,6 +132,8 @@ int main(void)
   uart_app_init();
   can_app_init();
   DJI_motor_init();
+  ZdriveInit();
+
 
   DJI_motor_SetMode(&dji_motor[1], DJ_Position);
   /* USER CODE END 2 */
@@ -152,10 +155,11 @@ int main(void)
     
 
     // StateMachine_Process();
-    if (tick_2ms_count - last_control_tick >= 1U)
+    if (tick_2ms_count - last_control_tick >= 50U)
     {
       last_control_tick = tick_2ms_count;
-      DJI_motor_Func();
+      ZdriveFunc();
+      // DJI_motor_Func();
       // StateMachine_Process();
     }
     // uart_app_process(tick_2ms_count);

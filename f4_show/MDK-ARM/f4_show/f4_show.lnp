@@ -31,6 +31,7 @@
 "f4_show\beep.o"
 "f4_show\led.o"
 "f4_show\dji_motor.o"
+"f4_show\zdrive.o"
 "f4_show\uart_app.o"
 "f4_show\vofa_app.o"
 "f4_show\can_app.o"

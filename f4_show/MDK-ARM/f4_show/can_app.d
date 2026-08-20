@@ -31,4 +31,6 @@ f4_show/can_app.o: ..\IRQ\Src\can_app.c ..\IRQ\Inc\can_app.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h \
   ..\HDL\Inc\beep.h ..\HDL\Inc\led.h ..\Core\Inc\gpio.h \
-  ..\HDL\Inc\dji_motor.h ..\Algorithm\Inc\pid.h
+  ..\HDL\Inc\dji_motor.h ..\Algorithm\Inc\pid.h ..\HDL\Inc\ZDrive.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h
