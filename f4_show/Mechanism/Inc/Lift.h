@@ -2,6 +2,7 @@
 #define LIFT_H
 
 #include <stdbool.h>
+#include <stdint.h>
 
 typedef struct
 {
@@ -10,6 +11,7 @@ typedef struct
     float tolerance_mm;       // 到位允许误差
     float zero_angle_deg;   // 归零时的电机角度
     LiftState state;
+    uint16_t reached_count;     // 到位计数器
 } Lift_t;
 
 typedef enum

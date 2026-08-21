@@ -8,9 +8,10 @@
  * 输出轴每转一圈，Lift 移动 20 mm
  */
 #define LIFT_MM_PER_REV      20.0f
-
 /* 暂时假设到位误差 ±2 mm */
 #define LIFT_TOLERANCE_MM    2.0f
+
+#define LIFT_REACHED_COUNT_THRESHOLD 20U // 连续20次到位才算真正到位
 
 
 static Lift_t lift;
@@ -30,6 +31,7 @@ static float Lift_AngleToHeight(float angle_deg)
 
 void Lift_Init(void)
 {
+    lift.reached_count = 0;
     lift.target_height_mm = 0.0f;
     lift.actual_height_mm = 0.0f;
     lift.tolerance_mm = LIFT_TOLERANCE_MM; // 设置默认的到位允许误差为2mm
@@ -40,6 +42,7 @@ void Lift_Init(void)
 
 void Lift_SetHeight(float height_mm)
 {
+    lift.reached_count = 0;
     if (lift.state != LIFT_READY && lift.state != LIFT_REACHED)
     {
         return;
@@ -59,7 +62,23 @@ void Lift_Update(void)
 bool Lift_IsReached(void)
 {
     // 检查当前高度是否在目标高度的允许误差范围内
-    return (fabsf(lift.actual_height_mm - lift.target_height_mm) <= lift.tolerance_mm);
+    if (fabsf(lift.actual_height_mm - lift.target_height_mm)
+        <= lift.tolerance_mm)
+    {
+        if (lift.reached_count < LIFT_REACHED_COUNT_THRESHOLD)
+        {
+            lift.reached_count++;
+        }
+    }
+    else
+    {
+        lift.reached_count = 0;
+    }
+    if (lift.reached_count >= LIFT_REACHED_COUNT_THRESHOLD) // 连续20次到位才算真正到位
+    {
+        return true;
+    }
+    return false;
 }
 
 void Lift_Process(void)
