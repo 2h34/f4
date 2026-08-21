@@ -35,6 +35,7 @@
 #include "can_app.h"
 #include "dji_motor.h"
 #include "ZDrive.h"
+#include "Lift.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -133,7 +134,7 @@ int main(void)
   can_app_init();
   DJI_motor_init();
   ZdriveInit();
-
+  Lift_Init();
 
   DJI_motor_SetMode(&dji_motor[1], DJ_Position);
   /* USER CODE END 2 */
@@ -159,6 +160,7 @@ int main(void)
     {
       last_control_tick = tick_2ms_count;
       ZdriveFunc();
+      Lift_Process();
       // DJI_motor_Func();
       // StateMachine_Process();
     }

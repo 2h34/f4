@@ -12,7 +12,7 @@
 #define LIFT_TOLERANCE_MM    2.0f
 
 #define LIFT_REACHED_COUNT_THRESHOLD 20U // 连续20次到位才算真正到位
-#define LIFT_HOMING_COUNT_THRESHOLD 500U // 连续500次未归零才算故障
+#define LIFT_HOMING_COUNT_THRESHOLD 100U // 连续100次未归零才算故障
 
 #define LIFT_MIN_HEIGHT_MM   0.0f
 #define LIFT_MAX_HEIGHT_MM   1000.0f
@@ -64,6 +64,10 @@ void Lift_SetHeight(float height_mm)
 
 void Lift_Update(void)
 {
+    if (lift.state == LIFT_UNZEROED || lift.state == LIFT_HOMING)
+    {
+        return;
+    }
     // 更新当前高度
     lift.actual_height_mm =Lift_AngleToHeight(Zdrive_Get_Position(LIFT_MOTOR_ID) - lift.zero_angle_deg);
 }
@@ -92,6 +96,7 @@ bool Lift_IsReached(void)
 
 void Lift_Process(void)
 {
+    
     Lift_Update();
 
     switch (lift.state)
@@ -115,8 +120,10 @@ void Lift_Process(void)
             else
             {
                 lift.homing_count++;
-                if (lift.homing_count > LIFT_HOMING_COUNT_THRESHOLD) // 超过一定次数仍未归零，进入故障状态
+                if (lift.homing_count >= LIFT_HOMING_COUNT_THRESHOLD) // 超过一定次数仍未归零，进入故障状态
                 {
+                    float current_angle = Zdrive_Get_Position(LIFT_MOTOR_ID);
+                    Zdrive_Set_target_mode(LIFT_MOTOR_ID,Zdrive_Postion,current_angle);
                     lift.state = LIFT_FAULT;
                 }
             }
