@@ -14,6 +14,7 @@
                 "c:\\Users\\glance\\Desktop\\RC工程文件\\f4\\f4_show\\Middlewares\\Third_Party\\FreeRTOS\\Source\\CMSIS_RTOS_V2",
                 "c:\\Users\\glance\\Desktop\\RC工程文件\\f4\\f4_show\\Middlewares\\Third_Party\\FreeRTOS\\Source\\portable\\RVDS\\ARM_CM4F",
                 "c:\\Users\\glance\\Desktop\\RC工程文件\\f4\\f4_show\\Algorithm\\Inc",
+                "c:\\Users\\glance\\Desktop\\RC工程文件\\f4\\f4_show\\Mechanism\\Inc",
                 "c:\\Users\\glance\\Desktop\\RC工程文件\\f4\\f4_show\\MDK-ARM",
                 "c:\\Users\\glance\\Desktop\\RC工程文件\\f4\\f4_show\\Core\\Src",
                 "c:\\Users\\glance\\Desktop\\RC工程文件\\f4\\f4_show\\Drivers\\STM32F4xx_HAL_Driver\\Src",
@@ -22,6 +23,7 @@
                 "c:\\Users\\glance\\Desktop\\RC工程文件\\f4\\f4_show\\Middlewares\\Third_Party\\FreeRTOS\\Source",
                 "c:\\Users\\glance\\Desktop\\RC工程文件\\f4\\f4_show\\Middlewares\\Third_Party\\FreeRTOS\\Source\\portable\\MemMang",
                 "c:\\Users\\glance\\Desktop\\RC工程文件\\f4\\f4_show\\Algorithm\\Src",
+                "c:\\Users\\glance\\Desktop\\RC工程文件\\f4\\f4_show\\Mechanism\\Src",
                 "${default}"
             ],
             "defines": [

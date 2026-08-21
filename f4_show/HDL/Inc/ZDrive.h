@@ -196,7 +196,7 @@ extern "C"
     void ZdriveParamConfig(uint8_t id, ZdriveParam param);
 
     void Zdrive_Set_target_mode(uint8_t id, ZdriveMode mode, float target);
-    void Zdive_Begin(uint8_t id);
+    void Zdrive_Begin(uint8_t id);
     float Zdrive_GetPosition(uint8_t id);
     float Zdrive_GetSpeed(uint8_t id);
 // #endif /* USE_ZMDR */

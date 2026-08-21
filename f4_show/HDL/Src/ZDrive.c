@@ -590,7 +590,7 @@ float Zdrive_GetSpeed(uint8_t id)
     return Zmotor[id - 1U].valReal.speed_rpm;
 }
 
-void Zdive_Begin(uint8_t id)
+void Zdrive_Begin(uint8_t id)
 {
     if ((id == 0U) || (id > USE_ZDRIVE_NUM))
     {
