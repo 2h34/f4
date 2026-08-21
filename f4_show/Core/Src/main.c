@@ -68,7 +68,8 @@ typedef enum
 /* USER CODE BEGIN PV */
 static volatile key_event_t key_event = KEY_NONE;
 static volatile uint32_t tick_2ms_count = 0;
-extern DJI_motor_t dji_motor[4];
+// extern DJI_motor_t dji_motor[4];
+// extern Zdrive_t zdrive[4];
 Motor_t lift_motor;
 // volatile uint8_t tick_2ms_flag = 0;
 
@@ -142,7 +143,7 @@ int main(void)
 
   Lift_Init(&lift_motor);  /*具体 Mechanism 初始化*/
 
-  DJI_motor_SetMode(&dji_motor[1], DJ_Position);
+  // DJI_motor_SetMode(&dji_motor[1], DJ_Position);
   /* USER CODE END 2 */
 
   /* Init scheduler */

@@ -1,5 +1,4 @@
 #include "Lift.h"
-#include "ZDrive.h"
 #include "math.h"
 
 #define LIFT_MOTOR_ID        1U
@@ -42,7 +41,7 @@ void Lift_Init(Motor_t *motor)
     lift.tolerance_mm = LIFT_TOLERANCE_MM; // 设置默认的到位允许误差为2mm
     lift.state = LIFT_UNZEROED; // 设置默认状态为未归零
     lift.zero_angle_deg = 0.0f; // 设置默认的归零角度为0度
-    Zdrive_Begin(LIFT_MOTOR_ID); // 初始化电机
+    /*Zdrive_Begin(LIFT_MOTOR_ID); // 初始化电机*/
 }
 
 void Lift_SetHeight(float height_mm)
@@ -59,7 +58,8 @@ void Lift_SetHeight(float height_mm)
     lift.reached_count = 0;
     lift.target_height_mm = height_mm;
     float angle_deg_delta = Lift_HeightToAngle(height_mm);
-    Zdrive_Set_target_mode(LIFT_MOTOR_ID, Zdrive_Postion, angle_deg_delta+lift.zero_angle_deg);
+    // Zdrive_Set_target_mode(LIFT_MOTOR_ID, Zdrive_Postion, angle_deg_delta+lift.zero_angle_deg);
+    Motor_SetPosition(lift.motor, angle_deg_delta + lift.zero_angle_deg);
     lift.state = LIFT_MOVING;
 }
 
@@ -70,7 +70,8 @@ void Lift_Update(void)
         return;
     }
     // 更新当前高度
-    lift.actual_height_mm =Lift_AngleToHeight(Zdrive_Get_Position(LIFT_MOTOR_ID) - lift.zero_angle_deg);
+    // lift.actual_height_mm =Lift_AngleToHeight(Zdrive_Get_Position(LIFT_MOTOR_ID) - lift.zero_angle_deg);
+    lift.actual_height_mm = Lift_AngleToHeight(Motor_GetPosition(lift.motor) - lift.zero_angle_deg);
 }
 
 bool Lift_IsReached(void)
@@ -110,9 +111,11 @@ void Lift_Process(void)
             /* 下一步再实现 */
             if (Lift_HaveZeroed())
             {
-                float current_angle = Zdrive_Get_Position(LIFT_MOTOR_ID);
+                // float current_angle = Zdrive_Get_Position(LIFT_MOTOR_ID);
+                float current_angle = Motor_GetPosition(lift.motor);
                 lift.zero_angle_deg = current_angle;
-                Zdrive_Set_target_mode(LIFT_MOTOR_ID, Zdrive_Postion, current_angle); // 停止电机
+                // Zdrive_Set_target_mode(LIFT_MOTOR_ID, Zdrive_Postion, current_angle); // 停止电机
+                Motor_SetPosition(lift.motor, current_angle);
                 lift.target_height_mm = 0.0f;
                 lift.actual_height_mm = 0.0f;
                 lift.homing_count = 0;
@@ -123,8 +126,10 @@ void Lift_Process(void)
                 lift.homing_count++;
                 if (lift.homing_count >= LIFT_HOMING_COUNT_THRESHOLD) // 超过一定次数仍未归零，进入故障状态
                 {
-                    float current_angle = Zdrive_Get_Position(LIFT_MOTOR_ID);
-                    Zdrive_Set_target_mode(LIFT_MOTOR_ID,Zdrive_Postion,current_angle);
+                    // float current_angle = Zdrive_Get_Position(LIFT_MOTOR_ID);
+                    float current_angle = Motor_GetPosition(lift.motor);
+                    // Zdrive_Set_target_mode(LIFT_MOTOR_ID,Zdrive_Postion,current_angle);
+                    Motor_SetPosition(lift.motor, current_angle);
                     lift.state = LIFT_FAULT;
                 }
             }
@@ -160,10 +165,12 @@ void Lift_Zero(void)
     }
     lift.state = LIFT_HOMING;
     lift.homing_count = 0;
-    Zdrive_Set_target_mode(LIFT_MOTOR_ID,Zdrive_Speed,-50.0f); // 以 -50 rpm 的速度向下移动
+    // Zdrive_Set_target_mode(LIFT_MOTOR_ID,Zdrive_Speed,-50.0f); // 以 -50 rpm 的速度向下移动
+    Motor_SetSpeed(lift.motor, -50.0f);
 }
 
 bool Lift_HaveZeroed(void)
 {
-    return Zdrive_Get_Position(LIFT_MOTOR_ID) <= 0.0f; // 假设归零位置为电机角度 0 度
+    // return Zdrive_Get_Position(LIFT_MOTOR_ID) <= 0.0f; // 假设归零位置为电机角度 0 度
+    return Motor_GetPosition(lift.motor) <= 0.0f; // 假设归零位置为电机角度 0 度
 }

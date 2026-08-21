@@ -2,8 +2,7 @@
 #define Motor_H
 
 #include <stdint.h>
-#include "ZDrive.h"
-#include "dji_motor.h"
+#include <stdbool.h>
 
 typedef enum
 {
