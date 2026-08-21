@@ -572,7 +572,7 @@ void Zdrive_Set_target_mode(uint8_t id, ZdriveMode mode, float target)
      Zmotor[id - 1U].target.isPending = true;
 }
 
-float Zdrive_GetPosition(uint8_t id)
+float Zdrive_Get_Position(uint8_t id)
 {
     if ((id == 0U) || (id > USE_ZDRIVE_NUM))
     {

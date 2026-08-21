@@ -1,5 +1,5 @@
 f4_show/lift.o: ..\Mechanism\Src\Lift.c ..\Mechanism\Inc\Lift.h \
-  ..\HDL\Inc\ZDrive.h C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h ..\HDL\Inc\ZDrive.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h ..\Core\Inc\main.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h \
   ..\Core\Inc\stm32f4xx_hal_conf.h \
@@ -32,4 +32,4 @@ f4_show/lift.o: ..\Mechanism\Src\Lift.c ..\Mechanism\Inc\Lift.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h \
-  ..\Core\Inc\can.h
+  ..\Core\Inc\can.h C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\math.h
