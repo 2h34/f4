@@ -561,12 +561,13 @@ static void Zdrive_SendDirect(uint32_t id, uint8_t dlc, const uint8_t *data)
     }
 }
 
-// void Zdrive_Set_target_mode(uint8_t id, ZdriveMode mode)
+// void Zdrive_Set_target_mode(uint8_t id, ZdriveMode mode, float target)
 // {
 //     if ((id == 0U) || (id > USE_ZDRIVE_NUM))
 //     {
 //         return;
 //     }
-//     Zmotor[id - 1U].target.pendingTarget = mode;
+//     Zmotor[id - 1U].mode = mode;
+//     Zmotor[id - 1U].target.pendingTarget = target;
 //     Zmotor[id - 1U].target.isPending = true;
 // }
