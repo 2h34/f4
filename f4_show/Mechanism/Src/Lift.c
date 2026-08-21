@@ -12,7 +12,10 @@
 #define LIFT_TOLERANCE_MM    2.0f
 
 #define LIFT_REACHED_COUNT_THRESHOLD 20U // 连续20次到位才算真正到位
+#define LIFT_HOMING_COUNT_THRESHOLD 500U // 连续500次未归零才算故障
 
+#define LIFT_MIN_HEIGHT_MM   0.0f
+#define LIFT_MAX_HEIGHT_MM   1000.0f
 
 static Lift_t lift;
 
@@ -31,7 +34,8 @@ static float Lift_AngleToHeight(float angle_deg)
 
 void Lift_Init(void)
 {
-    lift.reached_count = 0;
+    lift.reached_count = 0;// 初始化到位计数器
+    lift.homing_count = 0;// 初始化归零计数器
     lift.target_height_mm = 0.0f;
     lift.actual_height_mm = 0.0f;
     lift.tolerance_mm = LIFT_TOLERANCE_MM; // 设置默认的到位允许误差为2mm
@@ -42,11 +46,16 @@ void Lift_Init(void)
 
 void Lift_SetHeight(float height_mm)
 {
-    lift.reached_count = 0;
     if (lift.state != LIFT_READY && lift.state != LIFT_REACHED)
     {
         return;
     }
+    if (height_mm < LIFT_MIN_HEIGHT_MM ||
+        height_mm > LIFT_MAX_HEIGHT_MM)
+    {
+        return;
+    }
+    lift.reached_count = 0;
     lift.target_height_mm = height_mm;
     float angle_deg_delta = Lift_HeightToAngle(height_mm);
     Zdrive_Set_target_mode(LIFT_MOTOR_ID, Zdrive_Postion, angle_deg_delta+lift.zero_angle_deg);
@@ -100,7 +109,16 @@ void Lift_Process(void)
                 Zdrive_Set_target_mode(LIFT_MOTOR_ID, Zdrive_Postion, current_angle); // 停止电机
                 lift.target_height_mm = 0.0f;
                 lift.actual_height_mm = 0.0f;
+                lift.homing_count = 0;
                 lift.state = LIFT_READY;
+            }
+            else
+            {
+                lift.homing_count++;
+                if (lift.homing_count > LIFT_HOMING_COUNT_THRESHOLD) // 超过一定次数仍未归零，进入故障状态
+                {
+                    lift.state = LIFT_FAULT;
+                }
             }
             break;
 
@@ -118,6 +136,7 @@ void Lift_Process(void)
             break;
 
         case LIFT_FAULT:
+            /* 处理故障状态 */
             break;
 
         default:
@@ -132,6 +151,7 @@ void Lift_Zero(void)
         return;
     }
     lift.state = LIFT_HOMING;
+    lift.homing_count = 0;
     Zdrive_Set_target_mode(LIFT_MOTOR_ID,Zdrive_Speed,-50.0f); // 以 -50 rpm 的速度向下移动
 }
 
