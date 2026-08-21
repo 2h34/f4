@@ -1,8 +1,8 @@
-f4_show/lift.o: ..\Mechanism\Src\Lift.c ..\Mechanism\Inc\Lift.h \
+f4_show/motor.o: ..\Motor\Src\motor.c ..\Motor\Inc\motor.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h ..\HDL\Inc\ZDrive.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h ..\Motor\Inc\motor.h \
-  ..\HDL\Inc\ZDrive.h C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
-  ..\Core\Inc\main.h ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h ..\Core\Inc\main.h \
+  ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h \
   ..\Core\Inc\stm32f4xx_hal_conf.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_def.h \
@@ -32,5 +32,4 @@ f4_show/lift.o: ..\Mechanism\Src\Lift.c ..\Mechanism\Inc\Lift.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h \
-  ..\Core\Inc\can.h ..\HDL\Inc\dji_motor.h ..\Algorithm\Inc\pid.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\math.h
+  ..\Core\Inc\can.h ..\HDL\Inc\dji_motor.h ..\Algorithm\Inc\pid.h

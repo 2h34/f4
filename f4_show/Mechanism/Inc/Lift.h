@@ -3,7 +3,7 @@
 
 #include <stdbool.h>
 #include <stdint.h>
-
+#include "motor.h"
 
 
 typedef enum
@@ -26,10 +26,12 @@ typedef struct
     LiftState state;
     uint16_t reached_count;     // 到位计数器
     uint32_t homing_count;      // 归零计数器
+
+    Motor_t *motor;
 } Lift_t;
 
 
-void Lift_Init(void);
+void Lift_Init(Motor_t *motor);
 void Lift_SetHeight(float height_mm);
 void Lift_Update(void);
 bool Lift_IsReached(void);

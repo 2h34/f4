@@ -47,4 +47,4 @@ f4_show/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   ..\IRQ\Inc\can_app.h ..\HDL\Inc\dji_motor.h ..\Algorithm\Inc\pid.h \
   ..\HDL\Inc\ZDrive.h C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
-  ..\Mechanism\Inc\Lift.h
+  ..\Mechanism\Inc\Lift.h ..\Motor\Inc\motor.h

@@ -36,6 +36,7 @@
 #include "dji_motor.h"
 #include "ZDrive.h"
 #include "Lift.h"
+#include "motor.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -68,6 +69,7 @@ typedef enum
 static volatile key_event_t key_event = KEY_NONE;
 static volatile uint32_t tick_2ms_count = 0;
 extern DJI_motor_t dji_motor[4];
+Motor_t lift_motor;
 // volatile uint8_t tick_2ms_flag = 0;
 
 // uint32_t press_time;
@@ -132,9 +134,13 @@ int main(void)
   /* USER CODE BEGIN 2 */
   uart_app_init();
   can_app_init();
-  DJI_motor_init();
-  ZdriveInit();
-  Lift_Init();
+
+  DJI_motor_init(); 
+  ZdriveInit(); /*具体 Driver 全局初始化*/
+
+  Motor_Init(&lift_motor,MOTOR_TYPE_DJI,1); /*通用 Motor 实例初始化*/
+
+  Lift_Init(&lift_motor);  /*具体 Mechanism 初始化*/
 
   DJI_motor_SetMode(&dji_motor[1], DJ_Position);
   /* USER CODE END 2 */

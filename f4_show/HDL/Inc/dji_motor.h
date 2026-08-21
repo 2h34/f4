@@ -19,17 +19,18 @@ typedef enum
 typedef struct
 {
     uint16_t id;
-    int16_t rpm;
-    int16_t target_rpm;
+    int16_t raw_rpm;  // 电机侧原始 CAN rpm
+    float rpm;       // 输出轴转速，单位为 RPM
+    float target_rpm;//输出轴目标速度
 
     int16_t current;  //Current是转矩
     int16_t current_cmd;
     int16_t target_current;
 
-    double position;
-    double target_position;
+    double position; //输出轴位置
+    double target_position; //输出轴目标位置
 
-    int16_t zero_rpm;
+    float zero_rpm;
     uint32_t zero_cnt;
     int16_t zero_current_limit;
     int16_t zero_distance;
@@ -53,16 +54,20 @@ typedef struct
 
 } DJI_motor_t;
 
+
 void DJI_motor_init(void);
 void DJI_motor_Receive(CAN_RxHeaderTypeDef *rx_header,uint8_t *rx_data);
 void DJI_motor_Func(void);
 void DJI_motor_SetMode(DJI_motor_t *motor,DJ_motor_mode_t mode);
 
 
-void DJI_motor_Set_Speed(DJI_motor_t *motor,int16_t target_rpm);
+void DJI_motor_Set_Speed(DJI_motor_t *motor,float target_rpm);
 void DJI_motor_Set_Position(DJI_motor_t *motor,double target_position);
 void DJI_motor_Set_Current(DJI_motor_t *motor, int16_t target_current);
 void DJI_motor_Set_Zero(DJI_motor_t *motor);
+
+DJI_motor_t *DJI_motor_GetById(uint8_t id);
+
     
 
 

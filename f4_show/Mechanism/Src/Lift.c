@@ -32,8 +32,9 @@ static float Lift_AngleToHeight(float angle_deg)
     return angle_deg / 360.0f * LIFT_MM_PER_REV;
 }
 
-void Lift_Init(void)
+void Lift_Init(Motor_t *motor)
 {
+    lift.motor = motor;
     lift.reached_count = 0;// 初始化到位计数器
     lift.homing_count = 0;// 初始化归零计数器
     lift.target_height_mm = 0.0f;
