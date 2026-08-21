@@ -118,8 +118,8 @@ void ZdriveInit(void)
         Zmotor[i].Begin = false;                /* 初始化完成后由任务层置 true */
         Zmotor[i].statusFlag.ZeroPoint = 0.0f;
         Zmotor[i].statusFlag.Zeroflag = false;
-        // Zmotor[i].target.isPending = false;
-        // Zmotor[i].target.pendingTarget = 0.0f;
+        Zmotor[i].target.isPending = false;
+        Zmotor[i].target.pendingTarget = 0.0f;
     }
 }
 
@@ -514,18 +514,18 @@ void ZdriveFunc(void)
         /* 错误处理 */
         Zdrive_ErrHandle(&Zmotor[i]);
         // /* 目标模式与驱动确认的当前模式一致,且有待处理的目标值,则下发目标值 */
-        // if (Zmotor[i].modeRead == Zmotor[i].mode && Zmotor[i].target.isPending)
-        // {
-        // if (Zmotor[i].mode == Zdrive_Postion)
-        // {
-        //     Zmotor[i].valSetNow.pos_deg = Zmotor[i].target.pendingTarget;
-        // }
-        // else if (Zmotor[i].mode == Zdrive_Speed)
-        // {
-        //     Zmotor[i].valSetNow.speed_rpm = Zmotor[i].target.pendingTarget;
-        // }
-        // Zmotor[i].target.isPending = false;
-        // }
+        if (Zmotor[i].modeRead == Zmotor[i].mode && Zmotor[i].target.isPending)
+        {
+            if (Zmotor[i].mode == Zdrive_Postion)
+            {
+                Zmotor[i].valSetNow.pos_deg = Zmotor[i].target.pendingTarget;
+            }
+            else if (Zmotor[i].mode == Zdrive_Speed)
+            {
+                Zmotor[i].valSetNow.speed_rpm = Zmotor[i].target.pendingTarget;
+            }
+            Zmotor[i].target.isPending = false;
+        }
         
 
         /* Switch 状态机 */
@@ -561,13 +561,31 @@ static void Zdrive_SendDirect(uint32_t id, uint8_t dlc, const uint8_t *data)
     }
 }
 
-// void Zdrive_Set_target_mode(uint8_t id, ZdriveMode mode, float target)
-// {
-//     if ((id == 0U) || (id > USE_ZDRIVE_NUM))
-//     {
-//         return;
-//     }
-//     Zmotor[id - 1U].mode = mode;
-//     Zmotor[id - 1U].target.pendingTarget = target;
-//     Zmotor[id - 1U].target.isPending = true;
-// }
+void Zdrive_Set_target_mode(uint8_t id, ZdriveMode mode, float target)
+{
+    if ((id == 0U) || (id > USE_ZDRIVE_NUM))
+    {
+         return;
+    }
+    Zmotor[id - 1U].mode = mode;
+   Zmotor[id - 1U].target.pendingTarget = target;
+     Zmotor[id - 1U].target.isPending = true;
+}
+
+float Zdrive_GetPosition(uint8_t id)
+{
+    if ((id == 0U) || (id > USE_ZDRIVE_NUM))
+    {
+        return 0.0f;
+    }
+    return Zmotor[id - 1U].valReal.pos_deg;
+}
+
+float Zdrive_GetSpeed(uint8_t id)
+{
+    if ((id == 0U) || (id > USE_ZDRIVE_NUM))
+    {
+        return 0.0f;
+    }
+    return Zmotor[id - 1U].valReal.speed_rpm;
+}

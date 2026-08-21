@@ -155,15 +155,15 @@ extern "C"
         float Total_Time;
     } ZdrivePVTParam;
 
-    // typedef struct
-    // {
-    //     float pendingTarget;
-    //     uint8_t isPending;
-    // } ZdriveTarget;
+    typedef struct
+    {
+        float pendingTarget;
+        uint8_t isPending;
+    } ZdriveTarget;
 
     typedef struct
     {
-        // ZdriveTarget target;
+        ZdriveTarget target;
         ZdriveMode mode;     /* 目标模式,任务层写;Disable 即停止 */
         ZdriveMode modeRead; /* 驱动确认的当前模式,由 RX 更新 */
         ZdriveParam param;
@@ -194,6 +194,10 @@ extern "C"
     void ZdriveSetAccel(float ace, uint8_t id);
     /** 覆盖指定电机的 param,位置环/速度环 PID 哪一项改动就下发哪一项寄存器 */
     void ZdriveParamConfig(uint8_t id, ZdriveParam param);
+
+    void Zdrive_Set_target_mode(uint8_t id, ZdriveMode mode, float target);
+    float Zdrive_GetPosition(uint8_t id);
+    float Zdrive_GetSpeed(uint8_t id);
 // #endif /* USE_ZMDR */
 
 #ifdef __cplusplus
