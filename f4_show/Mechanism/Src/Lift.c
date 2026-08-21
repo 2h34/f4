@@ -34,14 +34,20 @@ void Lift_Init(void)
     lift.actual_height_mm = 0.0f;
     lift.tolerance_mm = LIFT_TOLERANCE_MM; // 设置默认的到位允许误差为2mm
     lift.state = LIFT_UNZEROED; // 设置默认状态为未归零
+    lift.zero_angle_deg = 0.0f; // 设置默认的归零角度为0度
     Zdrive_Begin(LIFT_MOTOR_ID); // 初始化电机
 }
 
 void Lift_SetHeight(float height_mm)
 {
+    if (lift.state != LIFT_READY && lift.state != LIFT_REACHED)
+    {
+        return;
+    }
     lift.target_height_mm = height_mm;
-     float angle_deg = Lift_HeightToAngle(height_mm);
-    Zdrive_Set_target_mode(LIFT_MOTOR_ID, Zdrive_Postion, angle_deg);
+    float angle_deg_delta = Lift_HeightToAngle(height_mm);
+    Zdrive_Set_target_mode(LIFT_MOTOR_ID, Zdrive_Postion, angle_deg_delta+lift.zero_angle_deg);
+    lift.state = LIFT_MOVING;
 }
 
 void Lift_Update(void)
@@ -70,7 +76,9 @@ void Lift_Process(void)
             /* 下一步再实现 */
             if (Lift_HaveZeroed())
             {
-                lift.zero_angle_deg = Zdrive_Get_Position(LIFT_MOTOR_ID); 
+                float current_angle = Zdrive_Get_Position(LIFT_MOTOR_ID);
+                lift.zero_angle_deg = current_angle;
+                Zdrive_Set_target_mode(LIFT_MOTOR_ID, Zdrive_Postion, current_angle); // 停止电机
                 lift.target_height_mm = 0.0f;
                 lift.actual_height_mm = 0.0f;
                 lift.state = LIFT_READY;
