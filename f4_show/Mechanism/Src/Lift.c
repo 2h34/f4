@@ -1,7 +1,8 @@
 #include "Lift.h"
 #include "math.h"
 
-#define LIFT_MOTOR_ID        1U
+//定义lift对象id
+// #define LIFT_MOTOR_ID        1U
 
 /* 暂时假设：
  * 输出轴每转一圈，Lift 移动 20 mm

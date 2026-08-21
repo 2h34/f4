@@ -14,19 +14,23 @@ bool Motor_Init(Motor_t *motor,MotorType_t type,uint8_t id)
     {
         return false;
     }
-    if (id < 1 || id > 8)
-    {
-        return false;
-    }
     motor->type = type;
     motor->id = id;
     switch (type)
     {
         case MOTOR_TYPE_ZDRIVE:
+            if (id < 1 || id > USE_ZDRIVE_NUM) /* ZDrive ID 范围检查 */
+            {
+                return false;
+            }
             Zdrive_Begin(id);
             break;
 
         case MOTOR_TYPE_DJI:
+            if (DJI_motor_GetById(id) == NULL)  /* DJI ID 范围检查，看取出来的是不是空指针 */
+            {
+                return false;
+            }
             // 当前无需额外实例启动
             break;
     }
@@ -48,14 +52,16 @@ bool Motor_SetPosition(Motor_t* motor, float position)
 
     case MOTOR_TYPE_DJI:
         // 转成 DJI 的位置控制
-        DJI_motor_t *dji = DJI_motor_GetById(motor->id);
-        if (dji == NULL)
         {
-            return false;
+            DJI_motor_t *dji = DJI_motor_GetById(motor->id);
+            if (dji == NULL)
+            {
+                return false;
+            }
+            DJI_motor_SetMode(dji,DJ_Position);
+            DJI_motor_Set_Position(dji,position);
+            break;
         }
-        DJI_motor_SetMode(dji,DJ_Position);
-        DJI_motor_Set_Position(dji,position);
-        break;
     }
     return true;
 }
