@@ -155,8 +155,15 @@ extern "C"
         float Total_Time;
     } ZdrivePVTParam;
 
+    // typedef struct
+    // {
+    //     float pendingTarget;
+    //     uint8_t isPending;
+    // } ZdriveTarget;
+
     typedef struct
     {
+        // ZdriveTarget target;
         ZdriveMode mode;     /* 目标模式,任务层写;Disable 即停止 */
         ZdriveMode modeRead; /* 驱动确认的当前模式,由 RX 更新 */
         ZdriveParam param;
