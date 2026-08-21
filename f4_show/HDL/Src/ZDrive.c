@@ -138,18 +138,18 @@ void ZdriveSet(float data, uint8_t id, uint8_t set_code)
         }
         if ((set_code == PosIn) || (set_code == Pur))
         {
-            /* 将角度转换为 ZDrive 协议需要的归一化位置值？？？ 我这里做角度->转数*/
-            data = DEG2N(data) * Zmotor[id - 1U].param.ReductionRatio;/*宏定义没有定义*/
+            /* 这里做角度->转数*/
+            data = DEG2N(data) * Zmotor[id - 1U].param.ReductionRatio;/*宏定义*/
         }
         else if (set_code == VelIn)
         {       /* 将rpm->rps */
             data /= (60.0f / Zmotor[id - 1U].param.ReductionRatio);
         }
-    }
+    } /*普通位置模式不用归一化处理，直接发送浮点数*/
 
     Zdrive_SendDirect(id | ((uint32_t)set_code << 4U), 4U, (const uint8_t *)&data);
-}    
-/*直接用can发送，发送给zdrive目标模式和数据*/
+}    /*直接用can发送，发送给zdrive目标模式和数据*/
+
    
 
 //接收zdrive反馈，记得改f4格式，：void ZdriveReceive(CAN_RxHeaderTypeDef *Rxheader,uint8_t *Rx_Data)
@@ -210,7 +210,7 @@ void ZdriveReceive(CAN_RxHeaderTypeDef *rxheader, uint8_t *rx_Data)
             Zmotor[motor_index].valReal.speed_rpm *= (60.0f / Zmotor[motor_index].param.ReductionRatio);
             break;
 
-        case Mode: //当前模式,通常用于ask后的同步moderead
+        case Mode: //当前模式,通常用于askmode后的同步(moderead = mode)
         {
             float temp_mode = 0.0f;
             memcpy(&temp_mode, rx_Data, sizeof(float));
@@ -419,9 +419,9 @@ void ZdriveParamConfig(uint8_t id, ZdriveParam param)
    各模式可在切换期间预处理设定值(如 Speed 清零、Position 对齐当前 posIn),
    确认前不执行周期指令。 */
 /* 可以放小巧思 */
-static void Zdrive_SwitchMachine(Zdrive *motor, uint8_t id)
+static void Zdrive_SwitchMachine(Zdrive *motor, uint8_t id) 
 {
-    switch (motor->mode)
+    switch (motor->mode)  /*用于切换模式，但只是发出指令，实际moderead=mode在ask后接收zdrive解析信息时进行*/
     {
     case Zdrive_Disable:
     case Zdrive_Current:
@@ -430,7 +430,7 @@ static void Zdrive_SwitchMachine(Zdrive *motor, uint8_t id)
         motor->valSetNow.speed_rpm = 0.f;
         motor->valSetPre.speed_rpm = 0.f;
         break;
-    case Zdrive_Postion:
+    case Zdrive_Position:
         motor->valSetNow.pos_deg = motor->valReal.pos_deg;
         motor->valSetPre.pos_deg = motor->valReal.pos_deg;
         break;
@@ -449,7 +449,7 @@ static void Zdrive_RunMachine(Zdrive *motor, uint8_t id)
     {
     case Zdrive_Speed:
         if (fabs(motor->valSetNow.speed_rpm - motor->valSetPre.speed_rpm) > 0.1f)
-        {
+        {                                             /*** 检查速度是否发生变化，如果变化超过0.1，则更新速度 ***/
             ZdriveSet(motor->valSetNow.speed_rpm, id, VelIn);
             motor->valSetPre.speed_rpm = motor->valSetNow.speed_rpm;
         }
@@ -460,16 +460,16 @@ static void Zdrive_RunMachine(Zdrive *motor, uint8_t id)
         // ZdriveSet(motor->valSetNow.current_A, id, CurIn);
         break;
 
-    case Zdrive_Postion:
+    case Zdrive_Position:
         if (!motor->pvtparam.PVTflag)
         {
-            if (fabs(motor->valSetNow.pos_deg - motor->valSetPre.pos_deg) > 0.01f)
-            {
+            if (fabs(motor->valSetNow.pos_deg - motor->valSetPre.pos_deg) > 0.01f) 
+            {                         /** 检查位置是否发生变化，如果变化超过0.01，则更新位置 ***/
                 motor->valSetPre.pos_deg = motor->valSetNow.pos_deg;
                 ZdriveSet(motor->valSetNow.pos_deg, id, PosIn);
             }
             else if (motor->valSetNow.pos_deg == 0.0f &&
-                     fabs(motor->valReal.posIn_deg) > 0.5f)
+                     fabs(motor->valReal.posIn_deg) > 0.5f)  /* 如果目标位置为0且当前位置偏离0超过0.5度，则更新位置 ***/
             {
                 ZdriveSet(motor->valSetNow.pos_deg, id, PosIn);
             }
@@ -515,8 +515,9 @@ void ZdriveFunc(void)
         Zdrive_ErrHandle(&Zmotor[i]);
         // /* 目标模式与驱动确认的当前模式一致,且有待处理的目标值,则下发目标值 */
         if (Zmotor[i].modeRead == Zmotor[i].mode && Zmotor[i].target.isPending)
-        {
-            if (Zmotor[i].mode == Zdrive_Postion)
+        {                                             /*这里是为了避免切换状态时刷新适当的目标值，用pendingTarget寄存参数*/
+            /* 根据当前模式设置相应的目标值 */
+            if (Zmotor[i].mode == Zdrive_Position)
             {
                 Zmotor[i].valSetNow.pos_deg = Zmotor[i].target.pendingTarget;
             }
@@ -545,6 +546,8 @@ void ZdriveFunc(void)
     ZdriveAsk(0, Vel);
 }
 // #endif /* USE_ZMDR */
+
+/* 直接发送 CAN 帧,不入队,不检查总线,不检查电机 ID,不检查模式 */
 static void Zdrive_SendDirect(uint32_t id, uint8_t dlc, const uint8_t *data)
 {
     uint8_t tx_data[8]={0};
@@ -561,6 +564,7 @@ static void Zdrive_SendDirect(uint32_t id, uint8_t dlc, const uint8_t *data)
     }
 }
 
+/* 设置电机目标模式和目标值,并标记为待处理,在 ZdriveFunc 中处理，通常用于上位机 */
 void Zdrive_Set_target_mode(uint8_t id, ZdriveMode mode, float target)
 {
     if ((id == 0U) || (id > USE_ZDRIVE_NUM))
@@ -590,6 +594,7 @@ float Zdrive_GetSpeed(uint8_t id)
     return Zmotor[id - 1U].valReal.speed_rpm;
 }
 
+/*设置电机初始化运行状态*/
 void Zdrive_Begin(uint8_t id)
 {
     if ((id == 0U) || (id > USE_ZDRIVE_NUM))

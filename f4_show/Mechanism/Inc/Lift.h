@@ -15,7 +15,7 @@ typedef enum
     LIFT_REACHED,
     LIFT_FAULT
 } LiftState;
-
+/*Lift状态划分*/
 
 typedef struct
 {
@@ -29,14 +29,25 @@ typedef struct
 
     Motor_t *motor;
 } Lift_t;
+/*Lift结构体，即mechanism需要保存的参数*/
 
 
 void Lift_Init(Motor_t *motor);
-void Lift_SetHeight(float height_mm);
+
+
+/*对外接口*/
+void Lift_SetHeight(float height_mm);  /* 设置目标高度 */
+void Lift_Zero(void); /* 执行归零操作 */
+
+
 void Lift_Update(void);
-bool Lift_IsReached(void);
+
+bool Lift_IsReached(void); /* 检查是否真正到位 */
+
 void Lift_Process(void);
-void Lift_Zero(void);
-bool Lift_HaveZeroed(void);
+
+
+
+bool Lift_HaveZeroed(void); /* 检查是否已经归零 */
 
 #endif /* LIFT_H */

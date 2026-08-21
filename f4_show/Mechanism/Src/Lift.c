@@ -59,8 +59,11 @@ void Lift_SetHeight(float height_mm)
     lift.reached_count = 0;
     lift.target_height_mm = height_mm;
     float angle_deg_delta = Lift_HeightToAngle(height_mm);
-    // Zdrive_Set_target_mode(LIFT_MOTOR_ID, Zdrive_Postion, angle_deg_delta+lift.zero_angle_deg);
-    Motor_SetPosition(lift.motor, angle_deg_delta + lift.zero_angle_deg);
+    // Zdrive_Set_target_mode(LIFT_MOTOR_ID, Zdrive_Position, angle_deg_delta+lift.zero_angle_deg);
+    if (Motor_SetPosition(lift.motor, angle_deg_delta + lift.zero_angle_deg) == false)
+    {
+        return;
+    }
     lift.state = LIFT_MOVING;
 }
 
@@ -115,7 +118,7 @@ void Lift_Process(void)
                 // float current_angle = Zdrive_Get_Position(LIFT_MOTOR_ID);
                 float current_angle = Motor_GetPosition(lift.motor);
                 lift.zero_angle_deg = current_angle;
-                // Zdrive_Set_target_mode(LIFT_MOTOR_ID, Zdrive_Postion, current_angle); // 停止电机
+                // Zdrive_Set_target_mode(LIFT_MOTOR_ID, Zdrive_Position, current_angle); // 停止电机
                 Motor_SetPosition(lift.motor, current_angle);
                 lift.target_height_mm = 0.0f;
                 lift.actual_height_mm = 0.0f;
@@ -129,7 +132,7 @@ void Lift_Process(void)
                 {
                     // float current_angle = Zdrive_Get_Position(LIFT_MOTOR_ID);
                     float current_angle = Motor_GetPosition(lift.motor);
-                    // Zdrive_Set_target_mode(LIFT_MOTOR_ID,Zdrive_Postion,current_angle);
+                    // Zdrive_Set_target_mode(LIFT_MOTOR_ID,Zdrive_Position,current_angle);
                     Motor_SetPosition(lift.motor, current_angle);
                     lift.state = LIFT_FAULT;
                 }

@@ -14,8 +14,7 @@ bool Motor_Init(Motor_t *motor,MotorType_t type,uint8_t id)
     {
         return false;
     }
-    motor->type = type;
-    motor->id = id;
+    
     switch (type)
     {
         case MOTOR_TYPE_ZDRIVE:
@@ -34,9 +33,13 @@ bool Motor_Init(Motor_t *motor,MotorType_t type,uint8_t id)
             // 当前无需额外实例启动
             break;
     }
+    motor->type = type;
+    motor->id = id;
+
     return true;
 }
 
+/*初始化电机位置*/ 
 bool Motor_SetPosition(Motor_t* motor, float position)
 {
     if (motor == NULL)
@@ -47,13 +50,13 @@ bool Motor_SetPosition(Motor_t* motor, float position)
     {
     case MOTOR_TYPE_ZDRIVE:
         // 转成 ZDrive 的位置控制
-        Zdrive_Set_target_mode(motor->id,Zdrive_Postion,position);
+        Zdrive_Set_target_mode(motor->id,Zdrive_Position,position);
         break;
 
     case MOTOR_TYPE_DJI:
         // 转成 DJI 的位置控制
         {
-            DJI_motor_t *dji = DJI_motor_GetById(motor->id);
+            DJI_motor_t *dji = DJI_motor_GetById(motor->id); //根据id获取对应的电机实例
             if (dji == NULL)
             {
                 return false;
@@ -66,6 +69,7 @@ bool Motor_SetPosition(Motor_t* motor, float position)
     return true;
 }
 
+/*设置电机速度*/
 bool Motor_SetSpeed(Motor_t* motor, float speed)
 {
     if (motor == NULL)
@@ -96,6 +100,7 @@ bool Motor_SetSpeed(Motor_t* motor, float speed)
     return true;
 }
 
+/*获取电机位置*/
 float Motor_GetPosition(Motor_t* motor)
 {
     if (motor == NULL)
@@ -120,6 +125,7 @@ float Motor_GetPosition(Motor_t* motor)
     }
 }
 
+/*获取电机速度*/
 float Motor_GetSpeed(Motor_t* motor)
 {
     if (motor == NULL)
@@ -144,6 +150,7 @@ float Motor_GetSpeed(Motor_t* motor)
     }
 }
 
+/*取消该 Motor 当前的主动控制，使其不再维持 Position / Speed 目标，并请求底层停止主动驱动输出。*/
 void Motor_Disable(Motor_t* motor)
 {
     if (motor == NULL)

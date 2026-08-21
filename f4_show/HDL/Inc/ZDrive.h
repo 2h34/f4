@@ -25,8 +25,8 @@ extern "C"
 #define Velocity_Limit 150.f
 #define Current_Limit 40.f
 
-/*角度转归一化位置*/
-#define DEG2N(deg) ((float)(deg) / 360.0f)
+/*角度<->转数*/
+#define DEG2N(deg) ((float)(deg) / 360.0f) 
 #define N2DEG(n)   ((float)(n) * 360.0f)
 
 #define PID_POS_P 0x12
@@ -39,7 +39,7 @@ extern "C"
         Zdrive_Disable = 0,
         Zdrive_Current,
         Zdrive_Speed,
-        Zdrive_Postion,
+        Zdrive_Position,
         Zdrive_Test,
         Zdrive_RVCalibration,
         Zdrive_EncoderLineCalibration,
