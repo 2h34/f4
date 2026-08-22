@@ -118,7 +118,7 @@ float Motor_GetPosition(Motor_t* motor)
     }
     if (motor->ops == NULL)
     {
-        return false;
+        return 0.0f;
     }
     return motor->ops->get_position(motor);
     // switch (motor->type)
@@ -148,7 +148,7 @@ float Motor_GetSpeed(Motor_t* motor)
     }
     if (motor->ops == NULL)
     {
-        return false;
+        return 0.0f;
     }
     return motor->ops->get_speed(motor);
     // switch (motor->type)
