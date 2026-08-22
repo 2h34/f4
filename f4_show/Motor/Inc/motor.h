@@ -4,19 +4,41 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+
+
+typedef struct Motor Motor_t;
+
 typedef enum
 {
     MOTOR_TYPE_ZDRIVE,
     MOTOR_TYPE_DJI
 } MotorType_t;
 
+/*ops表结构体，定义了各种电机操作的函数指针*/
 typedef struct
+{
+    bool  (*set_position)(Motor_t *motor, float position);
+    bool  (*set_speed)(Motor_t *motor, float speed);
+
+    float (*get_position)(Motor_t *motor);
+    float (*get_speed)(Motor_t *motor);
+
+    void  (*disable)(Motor_t *motor);
+
+    
+} MotorOps_t;
+
+struct Motor
 {
     MotorType_t type;
     uint8_t id;
-} Motor_t;
+
+    const MotorOps_t *ops;
+} ;
+
 
 /*规定：速度：单位为 RPM，为输出轴速度。位置：单位为度*/
+
 
 float Motor_GetPosition(Motor_t* motor);
 float Motor_GetSpeed(Motor_t* motor);

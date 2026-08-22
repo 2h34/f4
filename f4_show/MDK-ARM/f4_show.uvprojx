@@ -1610,6 +1610,16 @@
               <FileType>1</FileType>
               <FilePath>..\Motor\Src\motor.c</FilePath>
             </File>
+            <File>
+              <FileName>motor_dji.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Motor\Src\motor_dji.c</FilePath>
+            </File>
+            <File>
+              <FileName>motor_zdrive.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Motor\Src\motor_zdrive.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

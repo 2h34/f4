@@ -1,7 +1,8 @@
-f4_show/motor.o: ..\Motor\Src\motor.c ..\Motor\Inc\motor.h \
+f4_show/motor_zdrive.o: ..\Motor\Src\motor_zdrive.c \
+  ..\Motor\Inc\motor_zdrive.h ..\Motor\Inc\motor.h \
   C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdint.h \
-  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h \
-  ..\Motor\Inc\motor_dji.h ..\HDL\Inc\dji_motor.h ..\Core\Inc\main.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdbool.h ..\HDL\Inc\ZDrive.h \
+  C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h ..\Core\Inc\main.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal.h \
   ..\Core\Inc\stm32f4xx_hal_conf.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_rcc.h \
@@ -32,5 +33,4 @@ f4_show/motor.o: ..\Motor\Src\motor.c ..\Motor\Inc\motor.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_tim_ex.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h \
-  ..\Algorithm\Inc\pid.h ..\Core\Inc\can.h ..\Motor\Inc\motor_zdrive.h \
-  ..\HDL\Inc\ZDrive.h C:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h
+  ..\Core\Inc\can.h
