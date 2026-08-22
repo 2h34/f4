@@ -1,4 +1,13 @@
 #include "motor_dji.h"
+#include "dji_motor.h"
+
+
+static float Motor_DJI_GetPosition(Motor_t* motor);
+static float Motor_DJI_GetSpeed(Motor_t* motor);
+static bool Motor_DJI_SetPosition(Motor_t* motor, float position);
+static bool Motor_DJI_SetSpeed(Motor_t* motor, float speed);
+static void Motor_DJI_Disable(Motor_t* motor);  
+
 
 static const MotorOps_t dji_ops =
 {
@@ -21,7 +30,7 @@ bool Motor_DJI_Bind(Motor_t *motor, uint8_t id)
     return true;
 }
 
-float Motor_DJI_GetPosition(Motor_t* motor)
+static float Motor_DJI_GetPosition(Motor_t* motor)
 {
     DJI_motor_t *dji = DJI_motor_GetById(motor->id);
     if (dji == NULL)
@@ -31,7 +40,7 @@ float Motor_DJI_GetPosition(Motor_t* motor)
     return dji->position;
 }
 
-float Motor_DJI_GetSpeed(Motor_t* motor)
+static float Motor_DJI_GetSpeed(Motor_t* motor)
 {
     DJI_motor_t *dji = DJI_motor_GetById(motor->id);
     if (dji == NULL)
@@ -41,7 +50,7 @@ float Motor_DJI_GetSpeed(Motor_t* motor)
     return dji->rpm;
 }
 
-void Motor_DJI_Disable(Motor_t* motor)
+static void Motor_DJI_Disable(Motor_t* motor)
 {
     DJI_motor_t *dji = DJI_motor_GetById(motor->id);
     if (dji == NULL)
@@ -51,7 +60,7 @@ void Motor_DJI_Disable(Motor_t* motor)
     DJI_motor_SetMode(dji,DJ_Disable);
 }
 
-bool Motor_DJI_SetSpeed(Motor_t* motor, float speed)
+static bool Motor_DJI_SetSpeed(Motor_t* motor, float speed)
 {
     DJI_motor_t *dji = DJI_motor_GetById(motor->id);
     if (dji == NULL)
@@ -63,7 +72,7 @@ bool Motor_DJI_SetSpeed(Motor_t* motor, float speed)
     return true;
 }
 
-bool Motor_DJI_SetPosition(Motor_t* motor, float position)
+static bool Motor_DJI_SetPosition(Motor_t* motor, float position)
 {
     DJI_motor_t *dji = DJI_motor_GetById(motor->id); //根据id获取对应的电机实例
     if (dji == NULL)

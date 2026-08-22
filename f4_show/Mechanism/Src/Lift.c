@@ -57,13 +57,13 @@ void Lift_SetHeight(float height_mm)
         return;
     }
     lift.reached_count = 0;
-    lift.target_height_mm = height_mm;
     float angle_deg_delta = Lift_HeightToAngle(height_mm);
     // Zdrive_Set_target_mode(LIFT_MOTOR_ID, Zdrive_Position, angle_deg_delta+lift.zero_angle_deg);
     if (Motor_SetPosition(lift.motor, angle_deg_delta + lift.zero_angle_deg) == false)
     {
         return;
     }
+    lift.target_height_mm = height_mm;
     lift.state = LIFT_MOVING;
 }
 

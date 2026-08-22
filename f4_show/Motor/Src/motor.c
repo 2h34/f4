@@ -1,6 +1,7 @@
 #include "motor.h"
 #include "motor_dji.h"
 #include "motor_zdrive.h"
+#include <stddef.h>
 
 /*建立 Motor 与具体 Driver 实例的绑定，并完成该实例为了接受后续通用 Motor 命令所必须的 backend-specific readiness 操作。*/ 
 bool Motor_Init(Motor_t *motor,MotorType_t type,uint8_t id)
@@ -44,6 +45,10 @@ bool Motor_SetPosition(Motor_t* motor, float position)
     {
         return false;
     }
+    if (motor->ops == NULL)
+    {
+        return false;
+    }
     return motor->ops->set_position(motor, position);
     // switch (motor->type)
     // {
@@ -72,6 +77,10 @@ bool Motor_SetPosition(Motor_t* motor, float position)
 bool Motor_SetSpeed(Motor_t* motor, float speed)
 {
     if (motor == NULL)
+    {
+        return false;
+    }
+    if (motor->ops == NULL)
     {
         return false;
     }
@@ -107,6 +116,10 @@ float Motor_GetPosition(Motor_t* motor)
     {
         return 0.0f;
     }
+    if (motor->ops == NULL)
+    {
+        return false;
+    }
     return motor->ops->get_position(motor);
     // switch (motor->type)
     // {
@@ -133,6 +146,10 @@ float Motor_GetSpeed(Motor_t* motor)
     {
         return 0.0f;
     }
+    if (motor->ops == NULL)
+    {
+        return false;
+    }
     return motor->ops->get_speed(motor);
     // switch (motor->type)
     // {
@@ -156,6 +173,10 @@ float Motor_GetSpeed(Motor_t* motor)
 void Motor_Disable(Motor_t* motor)
 {
     if (motor == NULL)
+    {
+        return;
+    }
+    if (motor->ops == NULL)
     {
         return;
     }

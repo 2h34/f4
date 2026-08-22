@@ -3,7 +3,7 @@
 <title>Static Call Graph - [f4_show\f4_show.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image f4_show\f4_show.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6180002: Last Updated: Sat Aug 22 11:07:11 2026
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6180002: Last Updated: Sat Aug 22 11:31:00 2026
 <BR><P>
 <H3>Maximum Stack Usage =        296 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -595,11 +595,11 @@ Global Symbols
 <P><STRONG><a name="[f4]"></a>DJI_motor_GetById</STRONG> (Thumb, 64 bytes, Stack size 8 bytes, dji_motor.o(.text.DJI_motor_GetById))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = DJI_motor_GetById
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_DJI_SetPosition
-<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_DJI_SetSpeed
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_DJI_Disable
+<BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_DJI_Disable
 <LI><a href="#[61]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_DJI_GetSpeed
 <LI><a href="#[60]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_DJI_GetPosition
+<LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_DJI_SetSpeed
+<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_DJI_SetPosition
 <LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_DJI_Bind
 </UL>
 
@@ -616,9 +616,9 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[87]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID_Reset
 </UL>
-<BR>[Called By]<UL><LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_DJI_SetPosition
+<BR>[Called By]<UL><LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_DJI_Disable
 <LI><a href="#[5f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_DJI_SetSpeed
-<LI><a href="#[62]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_DJI_Disable
+<LI><a href="#[5e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_DJI_SetPosition
 </UL>
 
 <P><STRONG><a name="[f6]"></a>DJI_motor_Set_Position</STRONG> (Thumb, 32 bytes, Stack size 16 bytes, dji_motor.o(.text.DJI_motor_Set_Position))
@@ -1383,49 +1383,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_Init
 </UL>
 
-<P><STRONG><a name="[62]"></a>Motor_DJI_Disable</STRONG> (Thumb, 38 bytes, Stack size 16 bytes, motor_dji.o(.text.Motor_DJI_Disable))
-<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = Motor_DJI_Disable &rArr; DJI_motor_SetMode &rArr; PID_Reset
-</UL>
-<BR>[Calls]<UL><LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DJI_motor_GetById
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DJI_motor_SetMode
-</UL>
-<BR>[Address Reference Count : 1]<UL><LI> motor_dji.o(.rodata.dji_ops)
-</UL>
-<P><STRONG><a name="[60]"></a>Motor_DJI_GetPosition</STRONG> (Thumb, 54 bytes, Stack size 24 bytes, motor_dji.o(.text.Motor_DJI_GetPosition))
-<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = Motor_DJI_GetPosition &rArr; __aeabi_d2f
-</UL>
-<BR>[Calls]<UL><LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DJI_motor_GetById
-<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
-</UL>
-<BR>[Address Reference Count : 1]<UL><LI> motor_dji.o(.rodata.dji_ops)
-</UL>
-<P><STRONG><a name="[61]"></a>Motor_DJI_GetSpeed</STRONG> (Thumb, 44 bytes, Stack size 24 bytes, motor_dji.o(.text.Motor_DJI_GetSpeed))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = Motor_DJI_GetSpeed &rArr; DJI_motor_GetById
-</UL>
-<BR>[Calls]<UL><LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DJI_motor_GetById
-</UL>
-<BR>[Address Reference Count : 1]<UL><LI> motor_dji.o(.rodata.dji_ops)
-</UL>
-<P><STRONG><a name="[5e]"></a>Motor_DJI_SetPosition</STRONG> (Thumb, 86 bytes, Stack size 32 bytes, motor_dji.o(.text.Motor_DJI_SetPosition))
-<BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = Motor_DJI_SetPosition &rArr; DJI_motor_SetMode &rArr; PID_Reset
-</UL>
-<BR>[Calls]<UL><LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DJI_motor_GetById
-<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DJI_motor_Set_Position
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DJI_motor_SetMode
-<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
-</UL>
-<BR>[Address Reference Count : 1]<UL><LI> motor_dji.o(.rodata.dji_ops)
-</UL>
-<P><STRONG><a name="[5f]"></a>Motor_DJI_SetSpeed</STRONG> (Thumb, 70 bytes, Stack size 32 bytes, motor_dji.o(.text.Motor_DJI_SetSpeed))
-<BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = Motor_DJI_SetSpeed &rArr; DJI_motor_SetMode &rArr; PID_Reset
-</UL>
-<BR>[Calls]<UL><LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DJI_motor_GetById
-<LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DJI_motor_Set_Speed
-<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DJI_motor_SetMode
-</UL>
-<BR>[Address Reference Count : 1]<UL><LI> motor_dji.o(.rodata.dji_ops)
-</UL>
-<P><STRONG><a name="[e5]"></a>Motor_GetPosition</STRONG> (Thumb, 40 bytes, Stack size 16 bytes, motor.o(.text.Motor_GetPosition))
+<P><STRONG><a name="[e5]"></a>Motor_GetPosition</STRONG> (Thumb, 54 bytes, Stack size 16 bytes, motor.o(.text.Motor_GetPosition))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = Motor_GetPosition
 </UL>
 <BR>[Called By]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lift_Process
@@ -1442,7 +1400,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[e8]"></a>Motor_SetPosition</STRONG> (Thumb, 50 bytes, Stack size 24 bytes, motor.o(.text.Motor_SetPosition))
+<P><STRONG><a name="[e8]"></a>Motor_SetPosition</STRONG> (Thumb, 66 bytes, Stack size 24 bytes, motor.o(.text.Motor_SetPosition))
 <BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Motor_SetPosition
 </UL>
 <BR>[Called By]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lift_Process
@@ -1456,41 +1414,6 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_Init
 </UL>
 
-<P><STRONG><a name="[67]"></a>Motor_ZDrive_Disable</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, motor_zdrive.o(.text.Motor_ZDrive_Disable))
-<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Motor_ZDrive_Disable &rArr; Zdrive_Set_target_mode
-</UL>
-<BR>[Calls]<UL><LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Zdrive_Set_target_mode
-</UL>
-<BR>[Address Reference Count : 1]<UL><LI> motor_zdrive.o(.rodata.zdrive_ops)
-</UL>
-<P><STRONG><a name="[65]"></a>Motor_ZDrive_GetPosition</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, motor_zdrive.o(.text.Motor_ZDrive_GetPosition))
-<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Motor_ZDrive_GetPosition &rArr; Zdrive_Get_Position
-</UL>
-<BR>[Calls]<UL><LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Zdrive_Get_Position
-</UL>
-<BR>[Address Reference Count : 1]<UL><LI> motor_zdrive.o(.rodata.zdrive_ops)
-</UL>
-<P><STRONG><a name="[66]"></a>Motor_ZDrive_GetSpeed</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, motor_zdrive.o(.text.Motor_ZDrive_GetSpeed))
-<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Motor_ZDrive_GetSpeed &rArr; Zdrive_GetSpeed
-</UL>
-<BR>[Calls]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Zdrive_GetSpeed
-</UL>
-<BR>[Address Reference Count : 1]<UL><LI> motor_zdrive.o(.rodata.zdrive_ops)
-</UL>
-<P><STRONG><a name="[63]"></a>Motor_ZDrive_SetPosition</STRONG> (Thumb, 30 bytes, Stack size 16 bytes, motor_zdrive.o(.text.Motor_ZDrive_SetPosition))
-<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Motor_ZDrive_SetPosition &rArr; Zdrive_Set_target_mode
-</UL>
-<BR>[Calls]<UL><LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Zdrive_Set_target_mode
-</UL>
-<BR>[Address Reference Count : 1]<UL><LI> motor_zdrive.o(.rodata.zdrive_ops)
-</UL>
-<P><STRONG><a name="[64]"></a>Motor_ZDrive_SetSpeed</STRONG> (Thumb, 30 bytes, Stack size 16 bytes, motor_zdrive.o(.text.Motor_ZDrive_SetSpeed))
-<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Motor_ZDrive_SetSpeed &rArr; Zdrive_Set_target_mode
-</UL>
-<BR>[Calls]<UL><LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Zdrive_Set_target_mode
-</UL>
-<BR>[Address Reference Count : 1]<UL><LI> motor_zdrive.o(.rodata.zdrive_ops)
-</UL>
 <P><STRONG><a name="[1]"></a>NMI_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_it.o(.text.NMI_Handler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f405xx.o(RESET)
 </UL>
@@ -1666,9 +1589,9 @@ Global Symbols
 <P><STRONG><a name="[fb]"></a>Zdrive_Set_target_mode</STRONG> (Thumb, 94 bytes, Stack size 8 bytes, zdrive.o(.text.Zdrive_Set_target_mode))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Zdrive_Set_target_mode
 </UL>
-<BR>[Called By]<UL><LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_ZDrive_SetPosition
+<BR>[Called By]<UL><LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_ZDrive_Disable
 <LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_ZDrive_SetSpeed
-<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_ZDrive_Disable
+<LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_ZDrive_SetPosition
 </UL>
 
 <P><STRONG><a name="[112]"></a>can_app_init</STRONG> (Thumb, 116 bytes, Stack size 56 bytes, can_app.o(.text.can_app_init))
@@ -2146,7 +2069,84 @@ Local Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[e7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Lift_Update
 </UL>
-<P>
+
+<P><STRONG><a name="[5e]"></a>Motor_DJI_SetPosition</STRONG> (Thumb, 86 bytes, Stack size 32 bytes, motor_dji.o(.text.Motor_DJI_SetPosition))
+<BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = Motor_DJI_SetPosition &rArr; DJI_motor_SetMode &rArr; PID_Reset
+</UL>
+<BR>[Calls]<UL><LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DJI_motor_GetById
+<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DJI_motor_Set_Position
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DJI_motor_SetMode
+<LI><a href="#[83]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> motor_dji.o(.rodata.dji_ops)
+</UL>
+<P><STRONG><a name="[5f]"></a>Motor_DJI_SetSpeed</STRONG> (Thumb, 70 bytes, Stack size 32 bytes, motor_dji.o(.text.Motor_DJI_SetSpeed))
+<BR><BR>[Stack]<UL><LI>Max Depth = 52<LI>Call Chain = Motor_DJI_SetSpeed &rArr; DJI_motor_SetMode &rArr; PID_Reset
+</UL>
+<BR>[Calls]<UL><LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DJI_motor_GetById
+<LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DJI_motor_Set_Speed
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DJI_motor_SetMode
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> motor_dji.o(.rodata.dji_ops)
+</UL>
+<P><STRONG><a name="[60]"></a>Motor_DJI_GetPosition</STRONG> (Thumb, 54 bytes, Stack size 24 bytes, motor_dji.o(.text.Motor_DJI_GetPosition))
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = Motor_DJI_GetPosition &rArr; __aeabi_d2f
+</UL>
+<BR>[Calls]<UL><LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DJI_motor_GetById
+<LI><a href="#[f5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2f
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> motor_dji.o(.rodata.dji_ops)
+</UL>
+<P><STRONG><a name="[61]"></a>Motor_DJI_GetSpeed</STRONG> (Thumb, 44 bytes, Stack size 24 bytes, motor_dji.o(.text.Motor_DJI_GetSpeed))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = Motor_DJI_GetSpeed &rArr; DJI_motor_GetById
+</UL>
+<BR>[Calls]<UL><LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DJI_motor_GetById
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> motor_dji.o(.rodata.dji_ops)
+</UL>
+<P><STRONG><a name="[62]"></a>Motor_DJI_Disable</STRONG> (Thumb, 38 bytes, Stack size 16 bytes, motor_dji.o(.text.Motor_DJI_Disable))
+<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = Motor_DJI_Disable &rArr; DJI_motor_SetMode &rArr; PID_Reset
+</UL>
+<BR>[Calls]<UL><LI><a href="#[f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DJI_motor_GetById
+<LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DJI_motor_SetMode
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> motor_dji.o(.rodata.dji_ops)
+</UL>
+<P><STRONG><a name="[63]"></a>Motor_ZDrive_SetPosition</STRONG> (Thumb, 30 bytes, Stack size 16 bytes, motor_zdrive.o(.text.Motor_ZDrive_SetPosition))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Motor_ZDrive_SetPosition &rArr; Zdrive_Set_target_mode
+</UL>
+<BR>[Calls]<UL><LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Zdrive_Set_target_mode
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> motor_zdrive.o(.rodata.zdrive_ops)
+</UL>
+<P><STRONG><a name="[64]"></a>Motor_ZDrive_SetSpeed</STRONG> (Thumb, 30 bytes, Stack size 16 bytes, motor_zdrive.o(.text.Motor_ZDrive_SetSpeed))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Motor_ZDrive_SetSpeed &rArr; Zdrive_Set_target_mode
+</UL>
+<BR>[Calls]<UL><LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Zdrive_Set_target_mode
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> motor_zdrive.o(.rodata.zdrive_ops)
+</UL>
+<P><STRONG><a name="[65]"></a>Motor_ZDrive_GetPosition</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, motor_zdrive.o(.text.Motor_ZDrive_GetPosition))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Motor_ZDrive_GetPosition &rArr; Zdrive_Get_Position
+</UL>
+<BR>[Calls]<UL><LI><a href="#[fc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Zdrive_Get_Position
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> motor_zdrive.o(.rodata.zdrive_ops)
+</UL>
+<P><STRONG><a name="[66]"></a>Motor_ZDrive_GetSpeed</STRONG> (Thumb, 18 bytes, Stack size 16 bytes, motor_zdrive.o(.text.Motor_ZDrive_GetSpeed))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Motor_ZDrive_GetSpeed &rArr; Zdrive_GetSpeed
+</UL>
+<BR>[Calls]<UL><LI><a href="#[fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Zdrive_GetSpeed
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> motor_zdrive.o(.rodata.zdrive_ops)
+</UL>
+<P><STRONG><a name="[67]"></a>Motor_ZDrive_Disable</STRONG> (Thumb, 28 bytes, Stack size 16 bytes, motor_zdrive.o(.text.Motor_ZDrive_Disable))
+<BR><BR>[Stack]<UL><LI>Max Depth = 24<LI>Call Chain = Motor_ZDrive_Disable &rArr; Zdrive_Set_target_mode
+</UL>
+<BR>[Calls]<UL><LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Zdrive_Set_target_mode
+</UL>
+<BR>[Address Reference Count : 1]<UL><LI> motor_zdrive.o(.rodata.zdrive_ops)
+</UL><P>
 <H3>
 Undefined Global Symbols
 </H3><HR></body></html>

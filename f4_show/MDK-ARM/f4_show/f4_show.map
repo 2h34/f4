@@ -2310,6 +2310,15 @@ Section Cross References
     motor_dji.o(.text.Motor_DJI_Bind) refers to dji_motor.o(.text.DJI_motor_GetById) for DJI_motor_GetById
     motor_dji.o(.text.Motor_DJI_Bind) refers to motor_dji.o(.rodata.dji_ops) for dji_ops
     motor_dji.o(.ARM.exidx.text.Motor_DJI_Bind) refers to motor_dji.o(.text.Motor_DJI_Bind) for [Anonymous Symbol]
+    motor_dji.o(.text.Motor_DJI_SetPosition) refers to dji_motor.o(.text.DJI_motor_GetById) for DJI_motor_GetById
+    motor_dji.o(.text.Motor_DJI_SetPosition) refers to dji_motor.o(.text.DJI_motor_SetMode) for DJI_motor_SetMode
+    motor_dji.o(.text.Motor_DJI_SetPosition) refers to f2d.o(x$fpl$f2d) for __aeabi_f2d
+    motor_dji.o(.text.Motor_DJI_SetPosition) refers to dji_motor.o(.text.DJI_motor_Set_Position) for DJI_motor_Set_Position
+    motor_dji.o(.ARM.exidx.text.Motor_DJI_SetPosition) refers to motor_dji.o(.text.Motor_DJI_SetPosition) for [Anonymous Symbol]
+    motor_dji.o(.text.Motor_DJI_SetSpeed) refers to dji_motor.o(.text.DJI_motor_GetById) for DJI_motor_GetById
+    motor_dji.o(.text.Motor_DJI_SetSpeed) refers to dji_motor.o(.text.DJI_motor_SetMode) for DJI_motor_SetMode
+    motor_dji.o(.text.Motor_DJI_SetSpeed) refers to dji_motor.o(.text.DJI_motor_Set_Speed) for DJI_motor_Set_Speed
+    motor_dji.o(.ARM.exidx.text.Motor_DJI_SetSpeed) refers to motor_dji.o(.text.Motor_DJI_SetSpeed) for [Anonymous Symbol]
     motor_dji.o(.text.Motor_DJI_GetPosition) refers to dji_motor.o(.text.DJI_motor_GetById) for DJI_motor_GetById
     motor_dji.o(.text.Motor_DJI_GetPosition) refers to d2f.o(x$fpl$d2f) for __aeabi_d2f
     motor_dji.o(.ARM.exidx.text.Motor_DJI_GetPosition) refers to motor_dji.o(.text.Motor_DJI_GetPosition) for [Anonymous Symbol]
@@ -2318,15 +2327,6 @@ Section Cross References
     motor_dji.o(.text.Motor_DJI_Disable) refers to dji_motor.o(.text.DJI_motor_GetById) for DJI_motor_GetById
     motor_dji.o(.text.Motor_DJI_Disable) refers to dji_motor.o(.text.DJI_motor_SetMode) for DJI_motor_SetMode
     motor_dji.o(.ARM.exidx.text.Motor_DJI_Disable) refers to motor_dji.o(.text.Motor_DJI_Disable) for [Anonymous Symbol]
-    motor_dji.o(.text.Motor_DJI_SetSpeed) refers to dji_motor.o(.text.DJI_motor_GetById) for DJI_motor_GetById
-    motor_dji.o(.text.Motor_DJI_SetSpeed) refers to dji_motor.o(.text.DJI_motor_SetMode) for DJI_motor_SetMode
-    motor_dji.o(.text.Motor_DJI_SetSpeed) refers to dji_motor.o(.text.DJI_motor_Set_Speed) for DJI_motor_Set_Speed
-    motor_dji.o(.ARM.exidx.text.Motor_DJI_SetSpeed) refers to motor_dji.o(.text.Motor_DJI_SetSpeed) for [Anonymous Symbol]
-    motor_dji.o(.text.Motor_DJI_SetPosition) refers to dji_motor.o(.text.DJI_motor_GetById) for DJI_motor_GetById
-    motor_dji.o(.text.Motor_DJI_SetPosition) refers to dji_motor.o(.text.DJI_motor_SetMode) for DJI_motor_SetMode
-    motor_dji.o(.text.Motor_DJI_SetPosition) refers to f2d.o(x$fpl$f2d) for __aeabi_f2d
-    motor_dji.o(.text.Motor_DJI_SetPosition) refers to dji_motor.o(.text.DJI_motor_Set_Position) for DJI_motor_Set_Position
-    motor_dji.o(.ARM.exidx.text.Motor_DJI_SetPosition) refers to motor_dji.o(.text.Motor_DJI_SetPosition) for [Anonymous Symbol]
     motor_dji.o(.rodata.dji_ops) refers to motor_dji.o(.text.Motor_DJI_SetPosition) for Motor_DJI_SetPosition
     motor_dji.o(.rodata.dji_ops) refers to motor_dji.o(.text.Motor_DJI_SetSpeed) for Motor_DJI_SetSpeed
     motor_dji.o(.rodata.dji_ops) refers to motor_dji.o(.text.Motor_DJI_GetPosition) for Motor_DJI_GetPosition
@@ -2335,16 +2335,16 @@ Section Cross References
     motor_zdrive.o(.text.Motor_ZDrive_Bind) refers to zdrive.o(.text.Zdrive_Begin) for Zdrive_Begin
     motor_zdrive.o(.text.Motor_ZDrive_Bind) refers to motor_zdrive.o(.rodata.zdrive_ops) for zdrive_ops
     motor_zdrive.o(.ARM.exidx.text.Motor_ZDrive_Bind) refers to motor_zdrive.o(.text.Motor_ZDrive_Bind) for [Anonymous Symbol]
+    motor_zdrive.o(.text.Motor_ZDrive_SetPosition) refers to zdrive.o(.text.Zdrive_Set_target_mode) for Zdrive_Set_target_mode
+    motor_zdrive.o(.ARM.exidx.text.Motor_ZDrive_SetPosition) refers to motor_zdrive.o(.text.Motor_ZDrive_SetPosition) for [Anonymous Symbol]
+    motor_zdrive.o(.text.Motor_ZDrive_SetSpeed) refers to zdrive.o(.text.Zdrive_Set_target_mode) for Zdrive_Set_target_mode
+    motor_zdrive.o(.ARM.exidx.text.Motor_ZDrive_SetSpeed) refers to motor_zdrive.o(.text.Motor_ZDrive_SetSpeed) for [Anonymous Symbol]
     motor_zdrive.o(.text.Motor_ZDrive_GetPosition) refers to zdrive.o(.text.Zdrive_Get_Position) for Zdrive_Get_Position
     motor_zdrive.o(.ARM.exidx.text.Motor_ZDrive_GetPosition) refers to motor_zdrive.o(.text.Motor_ZDrive_GetPosition) for [Anonymous Symbol]
     motor_zdrive.o(.text.Motor_ZDrive_GetSpeed) refers to zdrive.o(.text.Zdrive_GetSpeed) for Zdrive_GetSpeed
     motor_zdrive.o(.ARM.exidx.text.Motor_ZDrive_GetSpeed) refers to motor_zdrive.o(.text.Motor_ZDrive_GetSpeed) for [Anonymous Symbol]
     motor_zdrive.o(.text.Motor_ZDrive_Disable) refers to zdrive.o(.text.Zdrive_Set_target_mode) for Zdrive_Set_target_mode
     motor_zdrive.o(.ARM.exidx.text.Motor_ZDrive_Disable) refers to motor_zdrive.o(.text.Motor_ZDrive_Disable) for [Anonymous Symbol]
-    motor_zdrive.o(.text.Motor_ZDrive_SetSpeed) refers to zdrive.o(.text.Zdrive_Set_target_mode) for Zdrive_Set_target_mode
-    motor_zdrive.o(.ARM.exidx.text.Motor_ZDrive_SetSpeed) refers to motor_zdrive.o(.text.Motor_ZDrive_SetSpeed) for [Anonymous Symbol]
-    motor_zdrive.o(.text.Motor_ZDrive_SetPosition) refers to zdrive.o(.text.Zdrive_Set_target_mode) for Zdrive_Set_target_mode
-    motor_zdrive.o(.ARM.exidx.text.Motor_ZDrive_SetPosition) refers to motor_zdrive.o(.text.Motor_ZDrive_SetPosition) for [Anonymous Symbol]
     motor_zdrive.o(.rodata.zdrive_ops) refers to motor_zdrive.o(.text.Motor_ZDrive_SetPosition) for Motor_ZDrive_SetPosition
     motor_zdrive.o(.rodata.zdrive_ops) refers to motor_zdrive.o(.text.Motor_ZDrive_SetSpeed) for Motor_ZDrive_SetSpeed
     motor_zdrive.o(.rodata.zdrive_ops) refers to motor_zdrive.o(.text.Motor_ZDrive_GetPosition) for Motor_ZDrive_GetPosition
@@ -4149,27 +4149,27 @@ Removing Unused input sections from the image.
     Removing motor.o(.text), (0 bytes).
     Removing motor.o(.ARM.exidx.text.Motor_Init), (8 bytes).
     Removing motor.o(.ARM.exidx.text.Motor_SetPosition), (8 bytes).
-    Removing motor.o(.text.Motor_SetSpeed), (50 bytes).
+    Removing motor.o(.text.Motor_SetSpeed), (66 bytes).
     Removing motor.o(.ARM.exidx.text.Motor_SetSpeed), (8 bytes).
     Removing motor.o(.ARM.exidx.text.Motor_GetPosition), (8 bytes).
-    Removing motor.o(.text.Motor_GetSpeed), (40 bytes).
+    Removing motor.o(.text.Motor_GetSpeed), (54 bytes).
     Removing motor.o(.ARM.exidx.text.Motor_GetSpeed), (8 bytes).
-    Removing motor.o(.text.Motor_Disable), (28 bytes).
+    Removing motor.o(.text.Motor_Disable), (38 bytes).
     Removing motor.o(.ARM.exidx.text.Motor_Disable), (8 bytes).
     Removing motor_dji.o(.text), (0 bytes).
     Removing motor_dji.o(.ARM.exidx.text.Motor_DJI_Bind), (8 bytes).
+    Removing motor_dji.o(.ARM.exidx.text.Motor_DJI_SetPosition), (8 bytes).
+    Removing motor_dji.o(.ARM.exidx.text.Motor_DJI_SetSpeed), (8 bytes).
     Removing motor_dji.o(.ARM.exidx.text.Motor_DJI_GetPosition), (8 bytes).
     Removing motor_dji.o(.ARM.exidx.text.Motor_DJI_GetSpeed), (8 bytes).
     Removing motor_dji.o(.ARM.exidx.text.Motor_DJI_Disable), (8 bytes).
-    Removing motor_dji.o(.ARM.exidx.text.Motor_DJI_SetSpeed), (8 bytes).
-    Removing motor_dji.o(.ARM.exidx.text.Motor_DJI_SetPosition), (8 bytes).
     Removing motor_zdrive.o(.text), (0 bytes).
     Removing motor_zdrive.o(.ARM.exidx.text.Motor_ZDrive_Bind), (8 bytes).
+    Removing motor_zdrive.o(.ARM.exidx.text.Motor_ZDrive_SetPosition), (8 bytes).
+    Removing motor_zdrive.o(.ARM.exidx.text.Motor_ZDrive_SetSpeed), (8 bytes).
     Removing motor_zdrive.o(.ARM.exidx.text.Motor_ZDrive_GetPosition), (8 bytes).
     Removing motor_zdrive.o(.ARM.exidx.text.Motor_ZDrive_GetSpeed), (8 bytes).
     Removing motor_zdrive.o(.ARM.exidx.text.Motor_ZDrive_Disable), (8 bytes).
-    Removing motor_zdrive.o(.ARM.exidx.text.Motor_ZDrive_SetSpeed), (8 bytes).
-    Removing motor_zdrive.o(.ARM.exidx.text.Motor_ZDrive_SetPosition), (8 bytes).
     Removing byte_queue.o(.text), (0 bytes).
     Removing byte_queue.o(.text.byte_queue_init), (22 bytes).
     Removing byte_queue.o(.ARM.exidx.text.byte_queue_init), (8 bytes).
@@ -4195,7 +4195,7 @@ Removing Unused input sections from the image.
     Removing state_machine.o(.rodata..L__const.state_running.led_pins), (2 bytes).
     Removing state_machine.o(.rodata..L__const.state_alarm.led_pins), (2 bytes).
 
-1630 unused section(s) (total 122883 bytes) removed from the image.
+1630 unused section(s) (total 122923 bytes) removed from the image.
 
 ==============================================================================
 
@@ -4516,152 +4516,162 @@ Image Symbol Table
     [Anonymous Symbol]                       0x080048c8   Section        0  usart.o(.text.MX_USART1_UART_Init)
     [Anonymous Symbol]                       0x08004908   Section        0  stm32f4xx_it.o(.text.MemManage_Handler)
     [Anonymous Symbol]                       0x0800490c   Section        0  motor_dji.o(.text.Motor_DJI_Bind)
+    Motor_DJI_Disable                        0x08004949   Thumb Code    38  motor_dji.o(.text.Motor_DJI_Disable)
     [Anonymous Symbol]                       0x08004948   Section        0  motor_dji.o(.text.Motor_DJI_Disable)
+    Motor_DJI_GetPosition                    0x08004971   Thumb Code    54  motor_dji.o(.text.Motor_DJI_GetPosition)
     [Anonymous Symbol]                       0x08004970   Section        0  motor_dji.o(.text.Motor_DJI_GetPosition)
+    Motor_DJI_GetSpeed                       0x080049a9   Thumb Code    44  motor_dji.o(.text.Motor_DJI_GetSpeed)
     [Anonymous Symbol]                       0x080049a8   Section        0  motor_dji.o(.text.Motor_DJI_GetSpeed)
+    Motor_DJI_SetPosition                    0x080049d5   Thumb Code    86  motor_dji.o(.text.Motor_DJI_SetPosition)
     [Anonymous Symbol]                       0x080049d4   Section        0  motor_dji.o(.text.Motor_DJI_SetPosition)
+    Motor_DJI_SetSpeed                       0x08004a2d   Thumb Code    70  motor_dji.o(.text.Motor_DJI_SetSpeed)
     [Anonymous Symbol]                       0x08004a2c   Section        0  motor_dji.o(.text.Motor_DJI_SetSpeed)
     [Anonymous Symbol]                       0x08004a74   Section        0  motor.o(.text.Motor_GetPosition)
-    [Anonymous Symbol]                       0x08004a9c   Section        0  motor.o(.text.Motor_Init)
-    [Anonymous Symbol]                       0x08004b38   Section        0  motor.o(.text.Motor_SetPosition)
-    [Anonymous Symbol]                       0x08004b6c   Section        0  motor_zdrive.o(.text.Motor_ZDrive_Bind)
-    [Anonymous Symbol]                       0x08004bb8   Section        0  motor_zdrive.o(.text.Motor_ZDrive_Disable)
-    [Anonymous Symbol]                       0x08004bd4   Section        0  motor_zdrive.o(.text.Motor_ZDrive_GetPosition)
-    [Anonymous Symbol]                       0x08004be8   Section        0  motor_zdrive.o(.text.Motor_ZDrive_GetSpeed)
-    [Anonymous Symbol]                       0x08004bfc   Section        0  motor_zdrive.o(.text.Motor_ZDrive_SetPosition)
-    [Anonymous Symbol]                       0x08004c1c   Section        0  motor_zdrive.o(.text.Motor_ZDrive_SetSpeed)
-    [Anonymous Symbol]                       0x08004c3c   Section        0  stm32f4xx_it.o(.text.NMI_Handler)
-    NVIC_EncodePriority                      0x08004c41   Thumb Code   108  stm32f4xx_hal_cortex.o(.text.NVIC_EncodePriority)
-    [Anonymous Symbol]                       0x08004c40   Section        0  stm32f4xx_hal_cortex.o(.text.NVIC_EncodePriority)
-    [Anonymous Symbol]                       0x08004cac   Section        0  pid.o(.text.PID_Init)
-    [Anonymous Symbol]                       0x08004d20   Section        0  pid.o(.text.PID_Reset)
-    [Anonymous Symbol]                       0x08004d50   Section        0  port.o(.text.PendSV_Handler)
-    pxCurrentTCBConst                        0x08004db0   Number         0  port.o(.text.PendSV_Handler)
-    [Anonymous Symbol]                       0x08004dc0   Section        0  port.o(.text.SVC_Handler)
-    pxCurrentTCBConst2                       0x08004de0   Number         0  port.o(.text.SVC_Handler)
-    [Anonymous Symbol]                       0x08004de4   Section        0  cmsis_os2.o(.text.SysTick_Handler)
-    [Anonymous Symbol]                       0x08004e04   Section        0  main.o(.text.SystemClock_Config)
-    [Anonymous Symbol]                       0x08004ec4   Section        0  system_stm32f4xx.o(.text.SystemInit)
-    [Anonymous Symbol]                       0x08004ed8   Section        0  stm32f4xx_it.o(.text.TIM1_UP_TIM10_IRQHandler)
-    [Anonymous Symbol]                       0x08004ee8   Section        0  stm32f4xx_it.o(.text.TIM2_IRQHandler)
-    [Anonymous Symbol]                       0x08004ef8   Section        0  stm32f4xx_hal_tim.o(.text.TIM_Base_SetConfig)
-    [Anonymous Symbol]                       0x0800509c   Section        0  stm32f4xx_hal_tim.o(.text.TIM_CCxChannelCmd)
-    [Anonymous Symbol]                       0x080050d4   Section        0  stm32f4xx_hal_tim.o(.text.TIM_ETR_SetConfig)
-    TIM_ITRx_SetConfig                       0x08005109   Thumb Code    42  stm32f4xx_hal_tim.o(.text.TIM_ITRx_SetConfig)
-    [Anonymous Symbol]                       0x08005108   Section        0  stm32f4xx_hal_tim.o(.text.TIM_ITRx_SetConfig)
-    TIM_OC1_SetConfig                        0x08005135   Thumb Code   234  stm32f4xx_hal_tim.o(.text.TIM_OC1_SetConfig)
-    [Anonymous Symbol]                       0x08005134   Section        0  stm32f4xx_hal_tim.o(.text.TIM_OC1_SetConfig)
-    [Anonymous Symbol]                       0x08005220   Section        0  stm32f4xx_hal_tim.o(.text.TIM_OC2_SetConfig)
-    TIM_OC3_SetConfig                        0x08005315   Thumb Code   242  stm32f4xx_hal_tim.o(.text.TIM_OC3_SetConfig)
-    [Anonymous Symbol]                       0x08005314   Section        0  stm32f4xx_hal_tim.o(.text.TIM_OC3_SetConfig)
-    TIM_OC4_SetConfig                        0x08005409   Thumb Code   164  stm32f4xx_hal_tim.o(.text.TIM_OC4_SetConfig)
-    [Anonymous Symbol]                       0x08005408   Section        0  stm32f4xx_hal_tim.o(.text.TIM_OC4_SetConfig)
-    TIM_TI1_ConfigInputStage                 0x080054ad   Thumb Code    80  stm32f4xx_hal_tim.o(.text.TIM_TI1_ConfigInputStage)
-    [Anonymous Symbol]                       0x080054ac   Section        0  stm32f4xx_hal_tim.o(.text.TIM_TI1_ConfigInputStage)
-    TIM_TI2_ConfigInputStage                 0x080054fd   Thumb Code    82  stm32f4xx_hal_tim.o(.text.TIM_TI2_ConfigInputStage)
-    [Anonymous Symbol]                       0x080054fc   Section        0  stm32f4xx_hal_tim.o(.text.TIM_TI2_ConfigInputStage)
-    UART_DMAAbortOnError                     0x08005551   Thumb Code    28  stm32f4xx_hal_uart.o(.text.UART_DMAAbortOnError)
-    [Anonymous Symbol]                       0x08005550   Section        0  stm32f4xx_hal_uart.o(.text.UART_DMAAbortOnError)
-    UART_DMAError                            0x0800556d   Thumb Code   124  stm32f4xx_hal_uart.o(.text.UART_DMAError)
-    [Anonymous Symbol]                       0x0800556c   Section        0  stm32f4xx_hal_uart.o(.text.UART_DMAError)
-    UART_DMAReceiveCplt                      0x080055e9   Thumb Code   244  stm32f4xx_hal_uart.o(.text.UART_DMAReceiveCplt)
-    [Anonymous Symbol]                       0x080055e8   Section        0  stm32f4xx_hal_uart.o(.text.UART_DMAReceiveCplt)
-    UART_DMARxHalfCplt                       0x080056dd   Thumb Code    52  stm32f4xx_hal_uart.o(.text.UART_DMARxHalfCplt)
-    [Anonymous Symbol]                       0x080056dc   Section        0  stm32f4xx_hal_uart.o(.text.UART_DMARxHalfCplt)
-    UART_EndRxTransfer                       0x08005711   Thumb Code   148  stm32f4xx_hal_uart.o(.text.UART_EndRxTransfer)
-    [Anonymous Symbol]                       0x08005710   Section        0  stm32f4xx_hal_uart.o(.text.UART_EndRxTransfer)
-    UART_EndTransmit_IT                      0x080057a5   Thumb Code    38  stm32f4xx_hal_uart.o(.text.UART_EndTransmit_IT)
-    [Anonymous Symbol]                       0x080057a4   Section        0  stm32f4xx_hal_uart.o(.text.UART_EndTransmit_IT)
-    UART_EndTxTransfer                       0x080057cd   Thumb Code    54  stm32f4xx_hal_uart.o(.text.UART_EndTxTransfer)
-    [Anonymous Symbol]                       0x080057cc   Section        0  stm32f4xx_hal_uart.o(.text.UART_EndTxTransfer)
-    UART_Receive_IT                          0x08005805   Thumb Code   360  stm32f4xx_hal_uart.o(.text.UART_Receive_IT)
-    [Anonymous Symbol]                       0x08005804   Section        0  stm32f4xx_hal_uart.o(.text.UART_Receive_IT)
-    UART_SetConfig                           0x0800596d   Thumb Code   314  stm32f4xx_hal_uart.o(.text.UART_SetConfig)
-    [Anonymous Symbol]                       0x0800596c   Section        0  stm32f4xx_hal_uart.o(.text.UART_SetConfig)
-    [Anonymous Symbol]                       0x08005aa8   Section        0  stm32f4xx_hal_uart.o(.text.UART_Start_Receive_DMA)
-    UART_Transmit_IT                         0x08005bd9   Thumb Code   148  stm32f4xx_hal_uart.o(.text.UART_Transmit_IT)
-    [Anonymous Symbol]                       0x08005bd8   Section        0  stm32f4xx_hal_uart.o(.text.UART_Transmit_IT)
-    [Anonymous Symbol]                       0x08005c6c   Section        0  stm32f4xx_it.o(.text.USART1_IRQHandler)
-    [Anonymous Symbol]                       0x08005c7c   Section        0  stm32f4xx_it.o(.text.UsageFault_Handler)
-    [Anonymous Symbol]                       0x08005c80   Section        0  zdrive.o(.text.ZdriveAsk)
-    [Anonymous Symbol]                       0x08005cbc   Section        0  zdrive.o(.text.ZdriveFunc)
-    [Anonymous Symbol]                       0x08005e14   Section        0  zdrive.o(.text.ZdriveInit)
-    [Anonymous Symbol]                       0x08005f18   Section        0  zdrive.o(.text.ZdriveReceive)
-    [Anonymous Symbol]                       0x08006208   Section        0  zdrive.o(.text.ZdriveSet)
-    [Anonymous Symbol]                       0x080062d8   Section        0  zdrive.o(.text.ZdriveSetPVT)
-    [Anonymous Symbol]                       0x08006378   Section        0  zdrive.o(.text.Zdrive_Begin)
-    Zdrive_ErrHandle                         0x080063b1   Thumb Code    20  zdrive.o(.text.Zdrive_ErrHandle)
-    [Anonymous Symbol]                       0x080063b0   Section        0  zdrive.o(.text.Zdrive_ErrHandle)
-    [Anonymous Symbol]                       0x080063c4   Section        0  zdrive.o(.text.Zdrive_GetSpeed)
-    [Anonymous Symbol]                       0x08006404   Section        0  zdrive.o(.text.Zdrive_Get_Position)
-    Zdrive_RunMachine                        0x08006449   Thumb Code   400  zdrive.o(.text.Zdrive_RunMachine)
-    [Anonymous Symbol]                       0x08006448   Section        0  zdrive.o(.text.Zdrive_RunMachine)
-    Zdrive_SendDirect                        0x080065d9   Thumb Code    90  zdrive.o(.text.Zdrive_SendDirect)
-    [Anonymous Symbol]                       0x080065d8   Section        0  zdrive.o(.text.Zdrive_SendDirect)
-    [Anonymous Symbol]                       0x08006634   Section        0  zdrive.o(.text.Zdrive_Set_target_mode)
-    Zdrive_SwitchMachine                     0x08006695   Thumb Code   112  zdrive.o(.text.Zdrive_SwitchMachine)
-    [Anonymous Symbol]                       0x08006694   Section        0  zdrive.o(.text.Zdrive_SwitchMachine)
-    __NVIC_EnableIRQ                         0x08006705   Thumb Code    48  stm32f4xx_hal_cortex.o(.text.__NVIC_EnableIRQ)
-    [Anonymous Symbol]                       0x08006704   Section        0  stm32f4xx_hal_cortex.o(.text.__NVIC_EnableIRQ)
-    __NVIC_GetPriorityGrouping               0x08006735   Thumb Code    16  stm32f4xx_hal_cortex.o(.text.__NVIC_GetPriorityGrouping)
-    [Anonymous Symbol]                       0x08006734   Section        0  stm32f4xx_hal_cortex.o(.text.__NVIC_GetPriorityGrouping)
-    __NVIC_SetPriority                       0x08006745   Thumb Code    66  stm32f4xx_hal_cortex.o(.text.__NVIC_SetPriority)
-    [Anonymous Symbol]                       0x08006744   Section        0  stm32f4xx_hal_cortex.o(.text.__NVIC_SetPriority)
-    __NVIC_SetPriorityGrouping               0x08006789   Thumb Code    60  stm32f4xx_hal_cortex.o(.text.__NVIC_SetPriorityGrouping)
-    [Anonymous Symbol]                       0x08006788   Section        0  stm32f4xx_hal_cortex.o(.text.__NVIC_SetPriorityGrouping)
-    [Anonymous Symbol]                       0x080067c4   Section        0  can_app.o(.text.can_app_init)
-    [Anonymous Symbol]                       0x08006838   Section        0  main.o(.text.main)
-    prvResetNextTaskUnblockTime              0x080068b9   Thumb Code    70  tasks.o(.text.prvResetNextTaskUnblockTime)
-    [Anonymous Symbol]                       0x080068b8   Section        0  tasks.o(.text.prvResetNextTaskUnblockTime)
-    [Anonymous Symbol]                       0x08006900   Section        0  uart_app.o(.text.uart_app_init)
-    [Anonymous Symbol]                       0x08006930   Section        0  list.o(.text.uxListRemove)
-    [Anonymous Symbol]                       0x08006978   Section        0  list.o(.text.vListInsertEnd)
-    [Anonymous Symbol]                       0x080069b4   Section        0  tasks.o(.text.vTaskSwitchContext)
-    [Anonymous Symbol]                       0x08006a7c   Section        0  port.o(.text.xPortSysTickHandler)
-    [Anonymous Symbol]                       0x08006ab8   Section        0  tasks.o(.text.xTaskGetSchedulerState)
-    [Anonymous Symbol]                       0x08006af0   Section        0  tasks.o(.text.xTaskIncrementTick)
-    $v0                                      0x08006cb4   Number         0  d2f.o(x$fpl$d2f)
-    x$fpl$d2f                                0x08006cb4   Section       98  d2f.o(x$fpl$d2f)
-    $v0                                      0x08006d16   Number         0  dcmpi.o(x$fpl$dcmpinf)
-    x$fpl$dcmpinf                            0x08006d16   Section       24  dcmpi.o(x$fpl$dcmpinf)
-    $v0                                      0x08006d30   Number         0  ddiv.o(x$fpl$ddiv)
-    x$fpl$ddiv                               0x08006d30   Section      692  ddiv.o(x$fpl$ddiv)
-    ddiv_entry                               0x08006d37   Thumb Code     0  ddiv.o(x$fpl$ddiv)
-    $v0                                      0x08006fe4   Number         0  deqf.o(x$fpl$deqf)
-    x$fpl$deqf                               0x08006fe4   Section      120  deqf.o(x$fpl$deqf)
-    $v0                                      0x0800705c   Number         0  dflt_clz.o(x$fpl$dflt)
-    x$fpl$dflt                               0x0800705c   Section       46  dflt_clz.o(x$fpl$dflt)
-    $v0                                      0x0800708a   Number         0  dflt_clz.o(x$fpl$dfltu)
-    x$fpl$dfltu                              0x0800708a   Section       38  dflt_clz.o(x$fpl$dfltu)
-    $v0                                      0x080070b0   Number         0  dgeqf.o(x$fpl$dgeqf)
-    x$fpl$dgeqf                              0x080070b0   Section      120  dgeqf.o(x$fpl$dgeqf)
-    $v0                                      0x08007128   Number         0  dleqf.o(x$fpl$dleqf)
-    x$fpl$dleqf                              0x08007128   Section      120  dleqf.o(x$fpl$dleqf)
-    $v0                                      0x080071a0   Number         0  dmul.o(x$fpl$dmul)
-    x$fpl$dmul                               0x080071a0   Section      340  dmul.o(x$fpl$dmul)
-    $v0                                      0x080072f4   Number         0  dnaninf.o(x$fpl$dnaninf)
-    x$fpl$dnaninf                            0x080072f4   Section      156  dnaninf.o(x$fpl$dnaninf)
-    $v0                                      0x08007390   Number         0  dretinf.o(x$fpl$dretinf)
-    x$fpl$dretinf                            0x08007390   Section       12  dretinf.o(x$fpl$dretinf)
-    $v0                                      0x0800739c   Number         0  f2d.o(x$fpl$f2d)
-    x$fpl$f2d                                0x0800739c   Section       86  f2d.o(x$fpl$f2d)
-    $v0                                      0x080073f2   Number         0  dcmp.o(x$fpl$fcmp)
-    x$fpl$fcmp                               0x080073f2   Section       84  dcmp.o(x$fpl$fcmp)
-    $v0                                      0x08007446   Number         0  fnaninf.o(x$fpl$fnaninf)
-    x$fpl$fnaninf                            0x08007446   Section      140  fnaninf.o(x$fpl$fnaninf)
-    $v0                                      0x080074d2   Number         0  fpinit.o(x$fpl$fpinit)
-    x$fpl$fpinit                             0x080074d2   Section       26  fpinit.o(x$fpl$fpinit)
-    $v0                                      0x080074ec   Number         0  fretinf.o(x$fpl$fretinf)
-    x$fpl$fretinf                            0x080074ec   Section       10  fretinf.o(x$fpl$fretinf)
-    x$fpl$usenofp                            0x080074f6   Section        0  usenofp.o(x$fpl$usenofp)
-    DMA_CalcBaseAndBitshift.flagBitshiftOffset 0x0800750e   Data           8  stm32f4xx_hal_dma.o(.rodata.DMA_CalcBaseAndBitshift.flagBitshiftOffset)
-    [Anonymous Symbol]                       0x0800750e   Section        0  stm32f4xx_hal_dma.o(.rodata.DMA_CalcBaseAndBitshift.flagBitshiftOffset)
-    dji_ops                                  0x08007518   Data          20  motor_dji.o(.rodata.dji_ops)
-    [Anonymous Symbol]                       0x08007518   Section        0  motor_dji.o(.rodata.dji_ops)
-    s_empty_data                             0x0800752c   Data           1  zdrive.o(.rodata.s_empty_data)
-    [Anonymous Symbol]                       0x0800752c   Section        0  zdrive.o(.rodata.s_empty_data)
-    zdrive_ops                               0x08007530   Data          20  motor_zdrive.o(.rodata.zdrive_ops)
-    [Anonymous Symbol]                       0x08007530   Section        0  motor_zdrive.o(.rodata.zdrive_ops)
+    [Anonymous Symbol]                       0x08004aac   Section        0  motor.o(.text.Motor_Init)
+    [Anonymous Symbol]                       0x08004b48   Section        0  motor.o(.text.Motor_SetPosition)
+    [Anonymous Symbol]                       0x08004b8c   Section        0  motor_zdrive.o(.text.Motor_ZDrive_Bind)
+    Motor_ZDrive_Disable                     0x08004bd9   Thumb Code    28  motor_zdrive.o(.text.Motor_ZDrive_Disable)
+    [Anonymous Symbol]                       0x08004bd8   Section        0  motor_zdrive.o(.text.Motor_ZDrive_Disable)
+    Motor_ZDrive_GetPosition                 0x08004bf5   Thumb Code    18  motor_zdrive.o(.text.Motor_ZDrive_GetPosition)
+    [Anonymous Symbol]                       0x08004bf4   Section        0  motor_zdrive.o(.text.Motor_ZDrive_GetPosition)
+    Motor_ZDrive_GetSpeed                    0x08004c09   Thumb Code    18  motor_zdrive.o(.text.Motor_ZDrive_GetSpeed)
+    [Anonymous Symbol]                       0x08004c08   Section        0  motor_zdrive.o(.text.Motor_ZDrive_GetSpeed)
+    Motor_ZDrive_SetPosition                 0x08004c1d   Thumb Code    30  motor_zdrive.o(.text.Motor_ZDrive_SetPosition)
+    [Anonymous Symbol]                       0x08004c1c   Section        0  motor_zdrive.o(.text.Motor_ZDrive_SetPosition)
+    Motor_ZDrive_SetSpeed                    0x08004c3d   Thumb Code    30  motor_zdrive.o(.text.Motor_ZDrive_SetSpeed)
+    [Anonymous Symbol]                       0x08004c3c   Section        0  motor_zdrive.o(.text.Motor_ZDrive_SetSpeed)
+    [Anonymous Symbol]                       0x08004c5c   Section        0  stm32f4xx_it.o(.text.NMI_Handler)
+    NVIC_EncodePriority                      0x08004c61   Thumb Code   108  stm32f4xx_hal_cortex.o(.text.NVIC_EncodePriority)
+    [Anonymous Symbol]                       0x08004c60   Section        0  stm32f4xx_hal_cortex.o(.text.NVIC_EncodePriority)
+    [Anonymous Symbol]                       0x08004ccc   Section        0  pid.o(.text.PID_Init)
+    [Anonymous Symbol]                       0x08004d40   Section        0  pid.o(.text.PID_Reset)
+    [Anonymous Symbol]                       0x08004d70   Section        0  port.o(.text.PendSV_Handler)
+    pxCurrentTCBConst                        0x08004dd0   Number         0  port.o(.text.PendSV_Handler)
+    [Anonymous Symbol]                       0x08004de0   Section        0  port.o(.text.SVC_Handler)
+    pxCurrentTCBConst2                       0x08004e00   Number         0  port.o(.text.SVC_Handler)
+    [Anonymous Symbol]                       0x08004e04   Section        0  cmsis_os2.o(.text.SysTick_Handler)
+    [Anonymous Symbol]                       0x08004e24   Section        0  main.o(.text.SystemClock_Config)
+    [Anonymous Symbol]                       0x08004ee4   Section        0  system_stm32f4xx.o(.text.SystemInit)
+    [Anonymous Symbol]                       0x08004ef8   Section        0  stm32f4xx_it.o(.text.TIM1_UP_TIM10_IRQHandler)
+    [Anonymous Symbol]                       0x08004f08   Section        0  stm32f4xx_it.o(.text.TIM2_IRQHandler)
+    [Anonymous Symbol]                       0x08004f18   Section        0  stm32f4xx_hal_tim.o(.text.TIM_Base_SetConfig)
+    [Anonymous Symbol]                       0x080050bc   Section        0  stm32f4xx_hal_tim.o(.text.TIM_CCxChannelCmd)
+    [Anonymous Symbol]                       0x080050f4   Section        0  stm32f4xx_hal_tim.o(.text.TIM_ETR_SetConfig)
+    TIM_ITRx_SetConfig                       0x08005129   Thumb Code    42  stm32f4xx_hal_tim.o(.text.TIM_ITRx_SetConfig)
+    [Anonymous Symbol]                       0x08005128   Section        0  stm32f4xx_hal_tim.o(.text.TIM_ITRx_SetConfig)
+    TIM_OC1_SetConfig                        0x08005155   Thumb Code   234  stm32f4xx_hal_tim.o(.text.TIM_OC1_SetConfig)
+    [Anonymous Symbol]                       0x08005154   Section        0  stm32f4xx_hal_tim.o(.text.TIM_OC1_SetConfig)
+    [Anonymous Symbol]                       0x08005240   Section        0  stm32f4xx_hal_tim.o(.text.TIM_OC2_SetConfig)
+    TIM_OC3_SetConfig                        0x08005335   Thumb Code   242  stm32f4xx_hal_tim.o(.text.TIM_OC3_SetConfig)
+    [Anonymous Symbol]                       0x08005334   Section        0  stm32f4xx_hal_tim.o(.text.TIM_OC3_SetConfig)
+    TIM_OC4_SetConfig                        0x08005429   Thumb Code   164  stm32f4xx_hal_tim.o(.text.TIM_OC4_SetConfig)
+    [Anonymous Symbol]                       0x08005428   Section        0  stm32f4xx_hal_tim.o(.text.TIM_OC4_SetConfig)
+    TIM_TI1_ConfigInputStage                 0x080054cd   Thumb Code    80  stm32f4xx_hal_tim.o(.text.TIM_TI1_ConfigInputStage)
+    [Anonymous Symbol]                       0x080054cc   Section        0  stm32f4xx_hal_tim.o(.text.TIM_TI1_ConfigInputStage)
+    TIM_TI2_ConfigInputStage                 0x0800551d   Thumb Code    82  stm32f4xx_hal_tim.o(.text.TIM_TI2_ConfigInputStage)
+    [Anonymous Symbol]                       0x0800551c   Section        0  stm32f4xx_hal_tim.o(.text.TIM_TI2_ConfigInputStage)
+    UART_DMAAbortOnError                     0x08005571   Thumb Code    28  stm32f4xx_hal_uart.o(.text.UART_DMAAbortOnError)
+    [Anonymous Symbol]                       0x08005570   Section        0  stm32f4xx_hal_uart.o(.text.UART_DMAAbortOnError)
+    UART_DMAError                            0x0800558d   Thumb Code   124  stm32f4xx_hal_uart.o(.text.UART_DMAError)
+    [Anonymous Symbol]                       0x0800558c   Section        0  stm32f4xx_hal_uart.o(.text.UART_DMAError)
+    UART_DMAReceiveCplt                      0x08005609   Thumb Code   244  stm32f4xx_hal_uart.o(.text.UART_DMAReceiveCplt)
+    [Anonymous Symbol]                       0x08005608   Section        0  stm32f4xx_hal_uart.o(.text.UART_DMAReceiveCplt)
+    UART_DMARxHalfCplt                       0x080056fd   Thumb Code    52  stm32f4xx_hal_uart.o(.text.UART_DMARxHalfCplt)
+    [Anonymous Symbol]                       0x080056fc   Section        0  stm32f4xx_hal_uart.o(.text.UART_DMARxHalfCplt)
+    UART_EndRxTransfer                       0x08005731   Thumb Code   148  stm32f4xx_hal_uart.o(.text.UART_EndRxTransfer)
+    [Anonymous Symbol]                       0x08005730   Section        0  stm32f4xx_hal_uart.o(.text.UART_EndRxTransfer)
+    UART_EndTransmit_IT                      0x080057c5   Thumb Code    38  stm32f4xx_hal_uart.o(.text.UART_EndTransmit_IT)
+    [Anonymous Symbol]                       0x080057c4   Section        0  stm32f4xx_hal_uart.o(.text.UART_EndTransmit_IT)
+    UART_EndTxTransfer                       0x080057ed   Thumb Code    54  stm32f4xx_hal_uart.o(.text.UART_EndTxTransfer)
+    [Anonymous Symbol]                       0x080057ec   Section        0  stm32f4xx_hal_uart.o(.text.UART_EndTxTransfer)
+    UART_Receive_IT                          0x08005825   Thumb Code   360  stm32f4xx_hal_uart.o(.text.UART_Receive_IT)
+    [Anonymous Symbol]                       0x08005824   Section        0  stm32f4xx_hal_uart.o(.text.UART_Receive_IT)
+    UART_SetConfig                           0x0800598d   Thumb Code   314  stm32f4xx_hal_uart.o(.text.UART_SetConfig)
+    [Anonymous Symbol]                       0x0800598c   Section        0  stm32f4xx_hal_uart.o(.text.UART_SetConfig)
+    [Anonymous Symbol]                       0x08005ac8   Section        0  stm32f4xx_hal_uart.o(.text.UART_Start_Receive_DMA)
+    UART_Transmit_IT                         0x08005bf9   Thumb Code   148  stm32f4xx_hal_uart.o(.text.UART_Transmit_IT)
+    [Anonymous Symbol]                       0x08005bf8   Section        0  stm32f4xx_hal_uart.o(.text.UART_Transmit_IT)
+    [Anonymous Symbol]                       0x08005c8c   Section        0  stm32f4xx_it.o(.text.USART1_IRQHandler)
+    [Anonymous Symbol]                       0x08005c9c   Section        0  stm32f4xx_it.o(.text.UsageFault_Handler)
+    [Anonymous Symbol]                       0x08005ca0   Section        0  zdrive.o(.text.ZdriveAsk)
+    [Anonymous Symbol]                       0x08005cdc   Section        0  zdrive.o(.text.ZdriveFunc)
+    [Anonymous Symbol]                       0x08005e34   Section        0  zdrive.o(.text.ZdriveInit)
+    [Anonymous Symbol]                       0x08005f38   Section        0  zdrive.o(.text.ZdriveReceive)
+    [Anonymous Symbol]                       0x08006228   Section        0  zdrive.o(.text.ZdriveSet)
+    [Anonymous Symbol]                       0x080062f8   Section        0  zdrive.o(.text.ZdriveSetPVT)
+    [Anonymous Symbol]                       0x08006398   Section        0  zdrive.o(.text.Zdrive_Begin)
+    Zdrive_ErrHandle                         0x080063d1   Thumb Code    20  zdrive.o(.text.Zdrive_ErrHandle)
+    [Anonymous Symbol]                       0x080063d0   Section        0  zdrive.o(.text.Zdrive_ErrHandle)
+    [Anonymous Symbol]                       0x080063e4   Section        0  zdrive.o(.text.Zdrive_GetSpeed)
+    [Anonymous Symbol]                       0x08006424   Section        0  zdrive.o(.text.Zdrive_Get_Position)
+    Zdrive_RunMachine                        0x08006469   Thumb Code   400  zdrive.o(.text.Zdrive_RunMachine)
+    [Anonymous Symbol]                       0x08006468   Section        0  zdrive.o(.text.Zdrive_RunMachine)
+    Zdrive_SendDirect                        0x080065f9   Thumb Code    90  zdrive.o(.text.Zdrive_SendDirect)
+    [Anonymous Symbol]                       0x080065f8   Section        0  zdrive.o(.text.Zdrive_SendDirect)
+    [Anonymous Symbol]                       0x08006654   Section        0  zdrive.o(.text.Zdrive_Set_target_mode)
+    Zdrive_SwitchMachine                     0x080066b5   Thumb Code   112  zdrive.o(.text.Zdrive_SwitchMachine)
+    [Anonymous Symbol]                       0x080066b4   Section        0  zdrive.o(.text.Zdrive_SwitchMachine)
+    __NVIC_EnableIRQ                         0x08006725   Thumb Code    48  stm32f4xx_hal_cortex.o(.text.__NVIC_EnableIRQ)
+    [Anonymous Symbol]                       0x08006724   Section        0  stm32f4xx_hal_cortex.o(.text.__NVIC_EnableIRQ)
+    __NVIC_GetPriorityGrouping               0x08006755   Thumb Code    16  stm32f4xx_hal_cortex.o(.text.__NVIC_GetPriorityGrouping)
+    [Anonymous Symbol]                       0x08006754   Section        0  stm32f4xx_hal_cortex.o(.text.__NVIC_GetPriorityGrouping)
+    __NVIC_SetPriority                       0x08006765   Thumb Code    66  stm32f4xx_hal_cortex.o(.text.__NVIC_SetPriority)
+    [Anonymous Symbol]                       0x08006764   Section        0  stm32f4xx_hal_cortex.o(.text.__NVIC_SetPriority)
+    __NVIC_SetPriorityGrouping               0x080067a9   Thumb Code    60  stm32f4xx_hal_cortex.o(.text.__NVIC_SetPriorityGrouping)
+    [Anonymous Symbol]                       0x080067a8   Section        0  stm32f4xx_hal_cortex.o(.text.__NVIC_SetPriorityGrouping)
+    [Anonymous Symbol]                       0x080067e4   Section        0  can_app.o(.text.can_app_init)
+    [Anonymous Symbol]                       0x08006858   Section        0  main.o(.text.main)
+    prvResetNextTaskUnblockTime              0x080068d9   Thumb Code    70  tasks.o(.text.prvResetNextTaskUnblockTime)
+    [Anonymous Symbol]                       0x080068d8   Section        0  tasks.o(.text.prvResetNextTaskUnblockTime)
+    [Anonymous Symbol]                       0x08006920   Section        0  uart_app.o(.text.uart_app_init)
+    [Anonymous Symbol]                       0x08006950   Section        0  list.o(.text.uxListRemove)
+    [Anonymous Symbol]                       0x08006998   Section        0  list.o(.text.vListInsertEnd)
+    [Anonymous Symbol]                       0x080069d4   Section        0  tasks.o(.text.vTaskSwitchContext)
+    [Anonymous Symbol]                       0x08006a9c   Section        0  port.o(.text.xPortSysTickHandler)
+    [Anonymous Symbol]                       0x08006ad8   Section        0  tasks.o(.text.xTaskGetSchedulerState)
+    [Anonymous Symbol]                       0x08006b10   Section        0  tasks.o(.text.xTaskIncrementTick)
+    $v0                                      0x08006cd4   Number         0  d2f.o(x$fpl$d2f)
+    x$fpl$d2f                                0x08006cd4   Section       98  d2f.o(x$fpl$d2f)
+    $v0                                      0x08006d36   Number         0  dcmpi.o(x$fpl$dcmpinf)
+    x$fpl$dcmpinf                            0x08006d36   Section       24  dcmpi.o(x$fpl$dcmpinf)
+    $v0                                      0x08006d50   Number         0  ddiv.o(x$fpl$ddiv)
+    x$fpl$ddiv                               0x08006d50   Section      692  ddiv.o(x$fpl$ddiv)
+    ddiv_entry                               0x08006d57   Thumb Code     0  ddiv.o(x$fpl$ddiv)
+    $v0                                      0x08007004   Number         0  deqf.o(x$fpl$deqf)
+    x$fpl$deqf                               0x08007004   Section      120  deqf.o(x$fpl$deqf)
+    $v0                                      0x0800707c   Number         0  dflt_clz.o(x$fpl$dflt)
+    x$fpl$dflt                               0x0800707c   Section       46  dflt_clz.o(x$fpl$dflt)
+    $v0                                      0x080070aa   Number         0  dflt_clz.o(x$fpl$dfltu)
+    x$fpl$dfltu                              0x080070aa   Section       38  dflt_clz.o(x$fpl$dfltu)
+    $v0                                      0x080070d0   Number         0  dgeqf.o(x$fpl$dgeqf)
+    x$fpl$dgeqf                              0x080070d0   Section      120  dgeqf.o(x$fpl$dgeqf)
+    $v0                                      0x08007148   Number         0  dleqf.o(x$fpl$dleqf)
+    x$fpl$dleqf                              0x08007148   Section      120  dleqf.o(x$fpl$dleqf)
+    $v0                                      0x080071c0   Number         0  dmul.o(x$fpl$dmul)
+    x$fpl$dmul                               0x080071c0   Section      340  dmul.o(x$fpl$dmul)
+    $v0                                      0x08007314   Number         0  dnaninf.o(x$fpl$dnaninf)
+    x$fpl$dnaninf                            0x08007314   Section      156  dnaninf.o(x$fpl$dnaninf)
+    $v0                                      0x080073b0   Number         0  dretinf.o(x$fpl$dretinf)
+    x$fpl$dretinf                            0x080073b0   Section       12  dretinf.o(x$fpl$dretinf)
+    $v0                                      0x080073bc   Number         0  f2d.o(x$fpl$f2d)
+    x$fpl$f2d                                0x080073bc   Section       86  f2d.o(x$fpl$f2d)
+    $v0                                      0x08007412   Number         0  dcmp.o(x$fpl$fcmp)
+    x$fpl$fcmp                               0x08007412   Section       84  dcmp.o(x$fpl$fcmp)
+    $v0                                      0x08007466   Number         0  fnaninf.o(x$fpl$fnaninf)
+    x$fpl$fnaninf                            0x08007466   Section      140  fnaninf.o(x$fpl$fnaninf)
+    $v0                                      0x080074f2   Number         0  fpinit.o(x$fpl$fpinit)
+    x$fpl$fpinit                             0x080074f2   Section       26  fpinit.o(x$fpl$fpinit)
+    $v0                                      0x0800750c   Number         0  fretinf.o(x$fpl$fretinf)
+    x$fpl$fretinf                            0x0800750c   Section       10  fretinf.o(x$fpl$fretinf)
+    x$fpl$usenofp                            0x08007516   Section        0  usenofp.o(x$fpl$usenofp)
+    DMA_CalcBaseAndBitshift.flagBitshiftOffset 0x0800752e   Data           8  stm32f4xx_hal_dma.o(.rodata.DMA_CalcBaseAndBitshift.flagBitshiftOffset)
+    [Anonymous Symbol]                       0x0800752e   Section        0  stm32f4xx_hal_dma.o(.rodata.DMA_CalcBaseAndBitshift.flagBitshiftOffset)
+    dji_ops                                  0x08007538   Data          20  motor_dji.o(.rodata.dji_ops)
+    [Anonymous Symbol]                       0x08007538   Section        0  motor_dji.o(.rodata.dji_ops)
+    s_empty_data                             0x0800754c   Data           1  zdrive.o(.rodata.s_empty_data)
+    [Anonymous Symbol]                       0x0800754c   Section        0  zdrive.o(.rodata.s_empty_data)
+    zdrive_ops                               0x08007550   Data          20  motor_zdrive.o(.rodata.zdrive_ops)
+    [Anonymous Symbol]                       0x08007550   Section        0  motor_zdrive.o(.rodata.zdrive_ops)
     .bss                                     0x20000010   Section       96  libspace.o(.bss)
     can_rx_data                              0x200003b0   Data           8  can_app.o(.bss.can_rx_data)
     [Anonymous Symbol]                       0x200003b0   Section        0  can_app.o(.bss.can_rx_data)
@@ -4988,99 +4998,89 @@ Image Symbol Table
     MX_USART1_UART_Init                      0x080048c9   Thumb Code    64  usart.o(.text.MX_USART1_UART_Init)
     MemManage_Handler                        0x08004909   Thumb Code     4  stm32f4xx_it.o(.text.MemManage_Handler)
     Motor_DJI_Bind                           0x0800490d   Thumb Code    58  motor_dji.o(.text.Motor_DJI_Bind)
-    Motor_DJI_Disable                        0x08004949   Thumb Code    38  motor_dji.o(.text.Motor_DJI_Disable)
-    Motor_DJI_GetPosition                    0x08004971   Thumb Code    54  motor_dji.o(.text.Motor_DJI_GetPosition)
-    Motor_DJI_GetSpeed                       0x080049a9   Thumb Code    44  motor_dji.o(.text.Motor_DJI_GetSpeed)
-    Motor_DJI_SetPosition                    0x080049d5   Thumb Code    86  motor_dji.o(.text.Motor_DJI_SetPosition)
-    Motor_DJI_SetSpeed                       0x08004a2d   Thumb Code    70  motor_dji.o(.text.Motor_DJI_SetSpeed)
-    Motor_GetPosition                        0x08004a75   Thumb Code    40  motor.o(.text.Motor_GetPosition)
-    Motor_Init                               0x08004a9d   Thumb Code   154  motor.o(.text.Motor_Init)
-    Motor_SetPosition                        0x08004b39   Thumb Code    50  motor.o(.text.Motor_SetPosition)
-    Motor_ZDrive_Bind                        0x08004b6d   Thumb Code    74  motor_zdrive.o(.text.Motor_ZDrive_Bind)
-    Motor_ZDrive_Disable                     0x08004bb9   Thumb Code    28  motor_zdrive.o(.text.Motor_ZDrive_Disable)
-    Motor_ZDrive_GetPosition                 0x08004bd5   Thumb Code    18  motor_zdrive.o(.text.Motor_ZDrive_GetPosition)
-    Motor_ZDrive_GetSpeed                    0x08004be9   Thumb Code    18  motor_zdrive.o(.text.Motor_ZDrive_GetSpeed)
-    Motor_ZDrive_SetPosition                 0x08004bfd   Thumb Code    30  motor_zdrive.o(.text.Motor_ZDrive_SetPosition)
-    Motor_ZDrive_SetSpeed                    0x08004c1d   Thumb Code    30  motor_zdrive.o(.text.Motor_ZDrive_SetSpeed)
-    NMI_Handler                              0x08004c3d   Thumb Code     4  stm32f4xx_it.o(.text.NMI_Handler)
-    PID_Init                                 0x08004cad   Thumb Code   116  pid.o(.text.PID_Init)
-    PID_Reset                                0x08004d21   Thumb Code    40  pid.o(.text.PID_Reset)
-    PendSV_Handler                           0x08004d51   Thumb Code   100  port.o(.text.PendSV_Handler)
-    SVC_Handler                              0x08004dc1   Thumb Code    36  port.o(.text.SVC_Handler)
-    SysTick_Handler                          0x08004de5   Thumb Code    30  cmsis_os2.o(.text.SysTick_Handler)
-    SystemClock_Config                       0x08004e05   Thumb Code   190  main.o(.text.SystemClock_Config)
-    SystemInit                               0x08004ec5   Thumb Code    18  system_stm32f4xx.o(.text.SystemInit)
-    TIM1_UP_TIM10_IRQHandler                 0x08004ed9   Thumb Code    16  stm32f4xx_it.o(.text.TIM1_UP_TIM10_IRQHandler)
-    TIM2_IRQHandler                          0x08004ee9   Thumb Code    16  stm32f4xx_it.o(.text.TIM2_IRQHandler)
-    TIM_Base_SetConfig                       0x08004ef9   Thumb Code   420  stm32f4xx_hal_tim.o(.text.TIM_Base_SetConfig)
-    TIM_CCxChannelCmd                        0x0800509d   Thumb Code    54  stm32f4xx_hal_tim.o(.text.TIM_CCxChannelCmd)
-    TIM_ETR_SetConfig                        0x080050d5   Thumb Code    52  stm32f4xx_hal_tim.o(.text.TIM_ETR_SetConfig)
-    TIM_OC2_SetConfig                        0x08005221   Thumb Code   244  stm32f4xx_hal_tim.o(.text.TIM_OC2_SetConfig)
-    UART_Start_Receive_DMA                   0x08005aa9   Thumb Code   304  stm32f4xx_hal_uart.o(.text.UART_Start_Receive_DMA)
-    USART1_IRQHandler                        0x08005c6d   Thumb Code    16  stm32f4xx_it.o(.text.USART1_IRQHandler)
-    UsageFault_Handler                       0x08005c7d   Thumb Code     4  stm32f4xx_it.o(.text.UsageFault_Handler)
-    ZdriveAsk                                0x08005c81   Thumb Code    58  zdrive.o(.text.ZdriveAsk)
-    ZdriveFunc                               0x08005cbd   Thumb Code   342  zdrive.o(.text.ZdriveFunc)
-    ZdriveInit                               0x08005e15   Thumb Code   258  zdrive.o(.text.ZdriveInit)
-    ZdriveReceive                            0x08005f19   Thumb Code   752  zdrive.o(.text.ZdriveReceive)
-    ZdriveSet                                0x08006209   Thumb Code   208  zdrive.o(.text.ZdriveSet)
-    ZdriveSetPVT                             0x080062d9   Thumb Code   160  zdrive.o(.text.ZdriveSetPVT)
-    Zdrive_Begin                             0x08006379   Thumb Code    56  zdrive.o(.text.Zdrive_Begin)
-    Zdrive_GetSpeed                          0x080063c5   Thumb Code    64  zdrive.o(.text.Zdrive_GetSpeed)
-    Zdrive_Get_Position                      0x08006405   Thumb Code    64  zdrive.o(.text.Zdrive_Get_Position)
-    Zdrive_Set_target_mode                   0x08006635   Thumb Code    94  zdrive.o(.text.Zdrive_Set_target_mode)
-    can_app_init                             0x080067c5   Thumb Code   116  can_app.o(.text.can_app_init)
-    main                                     0x08006839   Thumb Code   128  main.o(.text.main)
-    uart_app_init                            0x08006901   Thumb Code    48  uart_app.o(.text.uart_app_init)
-    uxListRemove                             0x08006931   Thumb Code    72  list.o(.text.uxListRemove)
-    vListInsertEnd                           0x08006979   Thumb Code    58  list.o(.text.vListInsertEnd)
-    vTaskSwitchContext                       0x080069b5   Thumb Code   198  tasks.o(.text.vTaskSwitchContext)
-    xPortSysTickHandler                      0x08006a7d   Thumb Code    60  port.o(.text.xPortSysTickHandler)
-    xTaskGetSchedulerState                   0x08006ab9   Thumb Code    56  tasks.o(.text.xTaskGetSchedulerState)
-    xTaskIncrementTick                       0x08006af1   Thumb Code   452  tasks.o(.text.xTaskIncrementTick)
-    __aeabi_d2f                              0x08006cb5   Thumb Code     0  d2f.o(x$fpl$d2f)
-    _d2f                                     0x08006cb5   Thumb Code    98  d2f.o(x$fpl$d2f)
-    __fpl_dcmp_Inf                           0x08006d17   Thumb Code    24  dcmpi.o(x$fpl$dcmpinf)
-    __aeabi_ddiv                             0x08006d31   Thumb Code     0  ddiv.o(x$fpl$ddiv)
-    _ddiv                                    0x08006d31   Thumb Code   556  ddiv.o(x$fpl$ddiv)
-    __aeabi_cdcmpeq                          0x08006fe5   Thumb Code     0  deqf.o(x$fpl$deqf)
-    _dcmpeq                                  0x08006fe5   Thumb Code   120  deqf.o(x$fpl$deqf)
-    __aeabi_i2d                              0x0800705d   Thumb Code     0  dflt_clz.o(x$fpl$dflt)
-    _dflt                                    0x0800705d   Thumb Code    46  dflt_clz.o(x$fpl$dflt)
-    __aeabi_ui2d                             0x0800708b   Thumb Code     0  dflt_clz.o(x$fpl$dfltu)
-    _dfltu                                   0x0800708b   Thumb Code    38  dflt_clz.o(x$fpl$dfltu)
-    __aeabi_cdcmpge                          0x080070b1   Thumb Code     0  dgeqf.o(x$fpl$dgeqf)
-    _dcmpge                                  0x080070b1   Thumb Code   120  dgeqf.o(x$fpl$dgeqf)
-    __aeabi_cdcmple                          0x08007129   Thumb Code     0  dleqf.o(x$fpl$dleqf)
-    _dcmple                                  0x08007129   Thumb Code   120  dleqf.o(x$fpl$dleqf)
-    __fpl_dcmple_InfNaN                      0x0800718b   Thumb Code     0  dleqf.o(x$fpl$dleqf)
-    __aeabi_dmul                             0x080071a1   Thumb Code     0  dmul.o(x$fpl$dmul)
-    _dmul                                    0x080071a1   Thumb Code   332  dmul.o(x$fpl$dmul)
-    __fpl_dnaninf                            0x080072f5   Thumb Code   156  dnaninf.o(x$fpl$dnaninf)
-    __fpl_dretinf                            0x08007391   Thumb Code    12  dretinf.o(x$fpl$dretinf)
-    __aeabi_f2d                              0x0800739d   Thumb Code     0  f2d.o(x$fpl$f2d)
-    _f2d                                     0x0800739d   Thumb Code    86  f2d.o(x$fpl$f2d)
-    __aeabi_dcmpeq                           0x080073f3   Thumb Code     0  dcmp.o(x$fpl$fcmp)
-    _deq                                     0x080073f3   Thumb Code    14  dcmp.o(x$fpl$fcmp)
-    _dneq                                    0x08007401   Thumb Code    14  dcmp.o(x$fpl$fcmp)
-    __aeabi_dcmpgt                           0x0800740f   Thumb Code     0  dcmp.o(x$fpl$fcmp)
-    _dgr                                     0x0800740f   Thumb Code    14  dcmp.o(x$fpl$fcmp)
-    __aeabi_dcmpge                           0x0800741d   Thumb Code     0  dcmp.o(x$fpl$fcmp)
-    _dgeq                                    0x0800741d   Thumb Code    14  dcmp.o(x$fpl$fcmp)
-    __aeabi_dcmple                           0x0800742b   Thumb Code     0  dcmp.o(x$fpl$fcmp)
-    _dleq                                    0x0800742b   Thumb Code    14  dcmp.o(x$fpl$fcmp)
-    __aeabi_dcmplt                           0x08007439   Thumb Code     0  dcmp.o(x$fpl$fcmp)
-    _dls                                     0x08007439   Thumb Code    14  dcmp.o(x$fpl$fcmp)
-    __fpl_fnaninf                            0x08007447   Thumb Code   140  fnaninf.o(x$fpl$fnaninf)
-    _fp_init                                 0x080074d3   Thumb Code    26  fpinit.o(x$fpl$fpinit)
-    __fplib_config_fpu_vfp                   0x080074eb   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    __fplib_config_pureend_doubles           0x080074eb   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    __fpl_fretinf                            0x080074ed   Thumb Code    10  fretinf.o(x$fpl$fretinf)
-    AHBPrescTable                            0x080074f6   Data          16  system_stm32f4xx.o(.rodata.AHBPrescTable)
-    __I$use$fp                               0x080074f6   Number         0  usenofp.o(x$fpl$usenofp)
-    APBPrescTable                            0x08007506   Data           8  system_stm32f4xx.o(.rodata.APBPrescTable)
-    Region$$Table$$Base                      0x08007544   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08007564   Number         0  anon$$obj.o(Region$$Table)
+    Motor_GetPosition                        0x08004a75   Thumb Code    54  motor.o(.text.Motor_GetPosition)
+    Motor_Init                               0x08004aad   Thumb Code   154  motor.o(.text.Motor_Init)
+    Motor_SetPosition                        0x08004b49   Thumb Code    66  motor.o(.text.Motor_SetPosition)
+    Motor_ZDrive_Bind                        0x08004b8d   Thumb Code    74  motor_zdrive.o(.text.Motor_ZDrive_Bind)
+    NMI_Handler                              0x08004c5d   Thumb Code     4  stm32f4xx_it.o(.text.NMI_Handler)
+    PID_Init                                 0x08004ccd   Thumb Code   116  pid.o(.text.PID_Init)
+    PID_Reset                                0x08004d41   Thumb Code    40  pid.o(.text.PID_Reset)
+    PendSV_Handler                           0x08004d71   Thumb Code   100  port.o(.text.PendSV_Handler)
+    SVC_Handler                              0x08004de1   Thumb Code    36  port.o(.text.SVC_Handler)
+    SysTick_Handler                          0x08004e05   Thumb Code    30  cmsis_os2.o(.text.SysTick_Handler)
+    SystemClock_Config                       0x08004e25   Thumb Code   190  main.o(.text.SystemClock_Config)
+    SystemInit                               0x08004ee5   Thumb Code    18  system_stm32f4xx.o(.text.SystemInit)
+    TIM1_UP_TIM10_IRQHandler                 0x08004ef9   Thumb Code    16  stm32f4xx_it.o(.text.TIM1_UP_TIM10_IRQHandler)
+    TIM2_IRQHandler                          0x08004f09   Thumb Code    16  stm32f4xx_it.o(.text.TIM2_IRQHandler)
+    TIM_Base_SetConfig                       0x08004f19   Thumb Code   420  stm32f4xx_hal_tim.o(.text.TIM_Base_SetConfig)
+    TIM_CCxChannelCmd                        0x080050bd   Thumb Code    54  stm32f4xx_hal_tim.o(.text.TIM_CCxChannelCmd)
+    TIM_ETR_SetConfig                        0x080050f5   Thumb Code    52  stm32f4xx_hal_tim.o(.text.TIM_ETR_SetConfig)
+    TIM_OC2_SetConfig                        0x08005241   Thumb Code   244  stm32f4xx_hal_tim.o(.text.TIM_OC2_SetConfig)
+    UART_Start_Receive_DMA                   0x08005ac9   Thumb Code   304  stm32f4xx_hal_uart.o(.text.UART_Start_Receive_DMA)
+    USART1_IRQHandler                        0x08005c8d   Thumb Code    16  stm32f4xx_it.o(.text.USART1_IRQHandler)
+    UsageFault_Handler                       0x08005c9d   Thumb Code     4  stm32f4xx_it.o(.text.UsageFault_Handler)
+    ZdriveAsk                                0x08005ca1   Thumb Code    58  zdrive.o(.text.ZdriveAsk)
+    ZdriveFunc                               0x08005cdd   Thumb Code   342  zdrive.o(.text.ZdriveFunc)
+    ZdriveInit                               0x08005e35   Thumb Code   258  zdrive.o(.text.ZdriveInit)
+    ZdriveReceive                            0x08005f39   Thumb Code   752  zdrive.o(.text.ZdriveReceive)
+    ZdriveSet                                0x08006229   Thumb Code   208  zdrive.o(.text.ZdriveSet)
+    ZdriveSetPVT                             0x080062f9   Thumb Code   160  zdrive.o(.text.ZdriveSetPVT)
+    Zdrive_Begin                             0x08006399   Thumb Code    56  zdrive.o(.text.Zdrive_Begin)
+    Zdrive_GetSpeed                          0x080063e5   Thumb Code    64  zdrive.o(.text.Zdrive_GetSpeed)
+    Zdrive_Get_Position                      0x08006425   Thumb Code    64  zdrive.o(.text.Zdrive_Get_Position)
+    Zdrive_Set_target_mode                   0x08006655   Thumb Code    94  zdrive.o(.text.Zdrive_Set_target_mode)
+    can_app_init                             0x080067e5   Thumb Code   116  can_app.o(.text.can_app_init)
+    main                                     0x08006859   Thumb Code   128  main.o(.text.main)
+    uart_app_init                            0x08006921   Thumb Code    48  uart_app.o(.text.uart_app_init)
+    uxListRemove                             0x08006951   Thumb Code    72  list.o(.text.uxListRemove)
+    vListInsertEnd                           0x08006999   Thumb Code    58  list.o(.text.vListInsertEnd)
+    vTaskSwitchContext                       0x080069d5   Thumb Code   198  tasks.o(.text.vTaskSwitchContext)
+    xPortSysTickHandler                      0x08006a9d   Thumb Code    60  port.o(.text.xPortSysTickHandler)
+    xTaskGetSchedulerState                   0x08006ad9   Thumb Code    56  tasks.o(.text.xTaskGetSchedulerState)
+    xTaskIncrementTick                       0x08006b11   Thumb Code   452  tasks.o(.text.xTaskIncrementTick)
+    __aeabi_d2f                              0x08006cd5   Thumb Code     0  d2f.o(x$fpl$d2f)
+    _d2f                                     0x08006cd5   Thumb Code    98  d2f.o(x$fpl$d2f)
+    __fpl_dcmp_Inf                           0x08006d37   Thumb Code    24  dcmpi.o(x$fpl$dcmpinf)
+    __aeabi_ddiv                             0x08006d51   Thumb Code     0  ddiv.o(x$fpl$ddiv)
+    _ddiv                                    0x08006d51   Thumb Code   556  ddiv.o(x$fpl$ddiv)
+    __aeabi_cdcmpeq                          0x08007005   Thumb Code     0  deqf.o(x$fpl$deqf)
+    _dcmpeq                                  0x08007005   Thumb Code   120  deqf.o(x$fpl$deqf)
+    __aeabi_i2d                              0x0800707d   Thumb Code     0  dflt_clz.o(x$fpl$dflt)
+    _dflt                                    0x0800707d   Thumb Code    46  dflt_clz.o(x$fpl$dflt)
+    __aeabi_ui2d                             0x080070ab   Thumb Code     0  dflt_clz.o(x$fpl$dfltu)
+    _dfltu                                   0x080070ab   Thumb Code    38  dflt_clz.o(x$fpl$dfltu)
+    __aeabi_cdcmpge                          0x080070d1   Thumb Code     0  dgeqf.o(x$fpl$dgeqf)
+    _dcmpge                                  0x080070d1   Thumb Code   120  dgeqf.o(x$fpl$dgeqf)
+    __aeabi_cdcmple                          0x08007149   Thumb Code     0  dleqf.o(x$fpl$dleqf)
+    _dcmple                                  0x08007149   Thumb Code   120  dleqf.o(x$fpl$dleqf)
+    __fpl_dcmple_InfNaN                      0x080071ab   Thumb Code     0  dleqf.o(x$fpl$dleqf)
+    __aeabi_dmul                             0x080071c1   Thumb Code     0  dmul.o(x$fpl$dmul)
+    _dmul                                    0x080071c1   Thumb Code   332  dmul.o(x$fpl$dmul)
+    __fpl_dnaninf                            0x08007315   Thumb Code   156  dnaninf.o(x$fpl$dnaninf)
+    __fpl_dretinf                            0x080073b1   Thumb Code    12  dretinf.o(x$fpl$dretinf)
+    __aeabi_f2d                              0x080073bd   Thumb Code     0  f2d.o(x$fpl$f2d)
+    _f2d                                     0x080073bd   Thumb Code    86  f2d.o(x$fpl$f2d)
+    __aeabi_dcmpeq                           0x08007413   Thumb Code     0  dcmp.o(x$fpl$fcmp)
+    _deq                                     0x08007413   Thumb Code    14  dcmp.o(x$fpl$fcmp)
+    _dneq                                    0x08007421   Thumb Code    14  dcmp.o(x$fpl$fcmp)
+    __aeabi_dcmpgt                           0x0800742f   Thumb Code     0  dcmp.o(x$fpl$fcmp)
+    _dgr                                     0x0800742f   Thumb Code    14  dcmp.o(x$fpl$fcmp)
+    __aeabi_dcmpge                           0x0800743d   Thumb Code     0  dcmp.o(x$fpl$fcmp)
+    _dgeq                                    0x0800743d   Thumb Code    14  dcmp.o(x$fpl$fcmp)
+    __aeabi_dcmple                           0x0800744b   Thumb Code     0  dcmp.o(x$fpl$fcmp)
+    _dleq                                    0x0800744b   Thumb Code    14  dcmp.o(x$fpl$fcmp)
+    __aeabi_dcmplt                           0x08007459   Thumb Code     0  dcmp.o(x$fpl$fcmp)
+    _dls                                     0x08007459   Thumb Code    14  dcmp.o(x$fpl$fcmp)
+    __fpl_fnaninf                            0x08007467   Thumb Code   140  fnaninf.o(x$fpl$fnaninf)
+    _fp_init                                 0x080074f3   Thumb Code    26  fpinit.o(x$fpl$fpinit)
+    __fplib_config_fpu_vfp                   0x0800750b   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    __fplib_config_pureend_doubles           0x0800750b   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    __fpl_fretinf                            0x0800750d   Thumb Code    10  fretinf.o(x$fpl$fretinf)
+    AHBPrescTable                            0x08007516   Data          16  system_stm32f4xx.o(.rodata.AHBPrescTable)
+    __I$use$fp                               0x08007516   Number         0  usenofp.o(x$fpl$usenofp)
+    APBPrescTable                            0x08007526   Data           8  system_stm32f4xx.o(.rodata.APBPrescTable)
+    Region$$Table$$Base                      0x08007564   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08007584   Number         0  anon$$obj.o(Region$$Table)
     SystemCoreClock                          0x20000000   Data           4  system_stm32f4xx.o(.data.SystemCoreClock)
     uwTickFreq                               0x20000004   Data           1  stm32f4xx_hal.o(.data.uwTickFreq)
     uwTickPrio                               0x20000008   Data           4  stm32f4xx_hal.o(.data.uwTickPrio)
@@ -5107,9 +5107,9 @@ Memory Map of the image
 
   Image Entry point : 0x08000189
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00007578, Max: 0x00100000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00007598, Max: 0x00100000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00007564, Max: 0x00100000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00007584, Max: 0x00100000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -5325,159 +5325,160 @@ Memory Map of the image
     0x08004908   0x08004908   0x00000004   Code   RO          116    .text.MemManage_Handler  stm32f4xx_it.o
     0x0800490c   0x0800490c   0x0000003a   Code   RO         2081    .text.Motor_DJI_Bind  motor_dji.o
     0x08004946   0x08004946   0x00000002   PAD
-    0x08004948   0x08004948   0x00000026   Code   RO         2087    .text.Motor_DJI_Disable  motor_dji.o
+    0x08004948   0x08004948   0x00000026   Code   RO         2091    .text.Motor_DJI_Disable  motor_dji.o
     0x0800496e   0x0800496e   0x00000002   PAD
-    0x08004970   0x08004970   0x00000036   Code   RO         2083    .text.Motor_DJI_GetPosition  motor_dji.o
+    0x08004970   0x08004970   0x00000036   Code   RO         2087    .text.Motor_DJI_GetPosition  motor_dji.o
     0x080049a6   0x080049a6   0x00000002   PAD
-    0x080049a8   0x080049a8   0x0000002c   Code   RO         2085    .text.Motor_DJI_GetSpeed  motor_dji.o
-    0x080049d4   0x080049d4   0x00000056   Code   RO         2091    .text.Motor_DJI_SetPosition  motor_dji.o
+    0x080049a8   0x080049a8   0x0000002c   Code   RO         2089    .text.Motor_DJI_GetSpeed  motor_dji.o
+    0x080049d4   0x080049d4   0x00000056   Code   RO         2083    .text.Motor_DJI_SetPosition  motor_dji.o
     0x08004a2a   0x08004a2a   0x00000002   PAD
-    0x08004a2c   0x08004a2c   0x00000046   Code   RO         2089    .text.Motor_DJI_SetSpeed  motor_dji.o
+    0x08004a2c   0x08004a2c   0x00000046   Code   RO         2085    .text.Motor_DJI_SetSpeed  motor_dji.o
     0x08004a72   0x08004a72   0x00000002   PAD
-    0x08004a74   0x08004a74   0x00000028   Code   RO         2068    .text.Motor_GetPosition  motor.o
-    0x08004a9c   0x08004a9c   0x0000009a   Code   RO         2062    .text.Motor_Init    motor.o
-    0x08004b36   0x08004b36   0x00000002   PAD
-    0x08004b38   0x08004b38   0x00000032   Code   RO         2064    .text.Motor_SetPosition  motor.o
-    0x08004b6a   0x08004b6a   0x00000002   PAD
-    0x08004b6c   0x08004b6c   0x0000004a   Code   RO         2101    .text.Motor_ZDrive_Bind  motor_zdrive.o
-    0x08004bb6   0x08004bb6   0x00000002   PAD
-    0x08004bb8   0x08004bb8   0x0000001c   Code   RO         2107    .text.Motor_ZDrive_Disable  motor_zdrive.o
-    0x08004bd4   0x08004bd4   0x00000012   Code   RO         2103    .text.Motor_ZDrive_GetPosition  motor_zdrive.o
-    0x08004be6   0x08004be6   0x00000002   PAD
-    0x08004be8   0x08004be8   0x00000012   Code   RO         2105    .text.Motor_ZDrive_GetSpeed  motor_zdrive.o
-    0x08004bfa   0x08004bfa   0x00000002   PAD
-    0x08004bfc   0x08004bfc   0x0000001e   Code   RO         2111    .text.Motor_ZDrive_SetPosition  motor_zdrive.o
+    0x08004a74   0x08004a74   0x00000036   Code   RO         2068    .text.Motor_GetPosition  motor.o
+    0x08004aaa   0x08004aaa   0x00000002   PAD
+    0x08004aac   0x08004aac   0x0000009a   Code   RO         2062    .text.Motor_Init    motor.o
+    0x08004b46   0x08004b46   0x00000002   PAD
+    0x08004b48   0x08004b48   0x00000042   Code   RO         2064    .text.Motor_SetPosition  motor.o
+    0x08004b8a   0x08004b8a   0x00000002   PAD
+    0x08004b8c   0x08004b8c   0x0000004a   Code   RO         2101    .text.Motor_ZDrive_Bind  motor_zdrive.o
+    0x08004bd6   0x08004bd6   0x00000002   PAD
+    0x08004bd8   0x08004bd8   0x0000001c   Code   RO         2111    .text.Motor_ZDrive_Disable  motor_zdrive.o
+    0x08004bf4   0x08004bf4   0x00000012   Code   RO         2107    .text.Motor_ZDrive_GetPosition  motor_zdrive.o
+    0x08004c06   0x08004c06   0x00000002   PAD
+    0x08004c08   0x08004c08   0x00000012   Code   RO         2109    .text.Motor_ZDrive_GetSpeed  motor_zdrive.o
     0x08004c1a   0x08004c1a   0x00000002   PAD
-    0x08004c1c   0x08004c1c   0x0000001e   Code   RO         2109    .text.Motor_ZDrive_SetSpeed  motor_zdrive.o
+    0x08004c1c   0x08004c1c   0x0000001e   Code   RO         2103    .text.Motor_ZDrive_SetPosition  motor_zdrive.o
     0x08004c3a   0x08004c3a   0x00000002   PAD
-    0x08004c3c   0x08004c3c   0x00000004   Code   RO          112    .text.NMI_Handler   stm32f4xx_it.o
-    0x08004c40   0x08004c40   0x0000006c   Code   RO          866    .text.NVIC_EncodePriority  stm32f4xx_hal_cortex.o
-    0x08004cac   0x08004cac   0x00000074   Code   RO         2019    .text.PID_Init      pid.o
-    0x08004d20   0x08004d20   0x00000028   Code   RO         2027    .text.PID_Reset     pid.o
-    0x08004d48   0x08004d48   0x00000008   PAD
-    0x08004d50   0x08004d50   0x00000064   Code   RO         2003    .text.PendSV_Handler  port.o
-    0x08004db4   0x08004db4   0x0000000c   PAD
-    0x08004dc0   0x08004dc0   0x00000024   Code   RO         1987    .text.SVC_Handler   port.o
-    0x08004de4   0x08004de4   0x0000001e   Code   RO         1773    .text.SysTick_Handler  cmsis_os2.o
-    0x08004e02   0x08004e02   0x00000002   PAD
-    0x08004e04   0x08004e04   0x000000be   Code   RO           13    .text.SystemClock_Config  main.o
-    0x08004ec2   0x08004ec2   0x00000002   PAD
-    0x08004ec4   0x08004ec4   0x00000012   Code   RO         1153    .text.SystemInit    system_stm32f4xx.o
-    0x08004ed6   0x08004ed6   0x00000002   PAD
-    0x08004ed8   0x08004ed8   0x00000010   Code   RO          128    .text.TIM1_UP_TIM10_IRQHandler  stm32f4xx_it.o
-    0x08004ee8   0x08004ee8   0x00000010   Code   RO          130    .text.TIM2_IRQHandler  stm32f4xx_it.o
-    0x08004ef8   0x08004ef8   0x000001a4   Code   RO          173    .text.TIM_Base_SetConfig  stm32f4xx_hal_tim.o
-    0x0800509c   0x0800509c   0x00000036   Code   RO          207    .text.TIM_CCxChannelCmd  stm32f4xx_hal_tim.o
-    0x080050d2   0x080050d2   0x00000002   PAD
-    0x080050d4   0x080050d4   0x00000034   Code   RO          359    .text.TIM_ETR_SetConfig  stm32f4xx_hal_tim.o
-    0x08005108   0x08005108   0x0000002a   Code   RO          365    .text.TIM_ITRx_SetConfig  stm32f4xx_hal_tim.o
-    0x08005132   0x08005132   0x00000002   PAD
-    0x08005134   0x08005134   0x000000ea   Code   RO          317    .text.TIM_OC1_SetConfig  stm32f4xx_hal_tim.o
-    0x0800521e   0x0800521e   0x00000002   PAD
-    0x08005220   0x08005220   0x000000f4   Code   RO          319    .text.TIM_OC2_SetConfig  stm32f4xx_hal_tim.o
-    0x08005314   0x08005314   0x000000f2   Code   RO          321    .text.TIM_OC3_SetConfig  stm32f4xx_hal_tim.o
-    0x08005406   0x08005406   0x00000002   PAD
-    0x08005408   0x08005408   0x000000a4   Code   RO          323    .text.TIM_OC4_SetConfig  stm32f4xx_hal_tim.o
-    0x080054ac   0x080054ac   0x00000050   Code   RO          363    .text.TIM_TI1_ConfigInputStage  stm32f4xx_hal_tim.o
-    0x080054fc   0x080054fc   0x00000052   Code   RO          367    .text.TIM_TI2_ConfigInputStage  stm32f4xx_hal_tim.o
-    0x0800554e   0x0800554e   0x00000002   PAD
-    0x08005550   0x08005550   0x0000001c   Code   RO         1110    .text.UART_DMAAbortOnError  stm32f4xx_hal_uart.o
-    0x0800556c   0x0800556c   0x0000007c   Code   RO         1056    .text.UART_DMAError  stm32f4xx_hal_uart.o
-    0x080055e8   0x080055e8   0x000000f4   Code   RO         1142    .text.UART_DMAReceiveCplt  stm32f4xx_hal_uart.o
-    0x080056dc   0x080056dc   0x00000034   Code   RO         1144    .text.UART_DMARxHalfCplt  stm32f4xx_hal_uart.o
-    0x08005710   0x08005710   0x00000094   Code   RO         1070    .text.UART_EndRxTransfer  stm32f4xx_hal_uart.o
-    0x080057a4   0x080057a4   0x00000026   Code   RO         1118    .text.UART_EndTransmit_IT  stm32f4xx_hal_uart.o
-    0x080057ca   0x080057ca   0x00000002   PAD
-    0x080057cc   0x080057cc   0x00000036   Code   RO         1068    .text.UART_EndTxTransfer  stm32f4xx_hal_uart.o
-    0x08005802   0x08005802   0x00000002   PAD
-    0x08005804   0x08005804   0x00000168   Code   RO         1108    .text.UART_Receive_IT  stm32f4xx_hal_uart.o
-    0x0800596c   0x0800596c   0x0000013a   Code   RO         1026    .text.UART_SetConfig  stm32f4xx_hal_uart.o
-    0x08005aa6   0x08005aa6   0x00000002   PAD
-    0x08005aa8   0x08005aa8   0x00000130   Code   RO         1060    .text.UART_Start_Receive_DMA  stm32f4xx_hal_uart.o
-    0x08005bd8   0x08005bd8   0x00000094   Code   RO         1116    .text.UART_Transmit_IT  stm32f4xx_hal_uart.o
-    0x08005c6c   0x08005c6c   0x00000010   Code   RO          132    .text.USART1_IRQHandler  stm32f4xx_it.o
-    0x08005c7c   0x08005c7c   0x00000004   Code   RO          120    .text.UsageFault_Handler  stm32f4xx_it.o
-    0x08005c80   0x08005c80   0x0000003a   Code   RO         1264    .text.ZdriveAsk     zdrive.o
-    0x08005cba   0x08005cba   0x00000002   PAD
-    0x08005cbc   0x08005cbc   0x00000156   Code   RO         1278    .text.ZdriveFunc    zdrive.o
-    0x08005e12   0x08005e12   0x00000002   PAD
-    0x08005e14   0x08005e14   0x00000102   Code   RO         1256    .text.ZdriveInit    zdrive.o
-    0x08005f16   0x08005f16   0x00000002   PAD
-    0x08005f18   0x08005f18   0x000002f0   Code   RO         1262    .text.ZdriveReceive  zdrive.o
-    0x08006208   0x08006208   0x000000d0   Code   RO         1258    .text.ZdriveSet     zdrive.o
-    0x080062d8   0x080062d8   0x000000a0   Code   RO         1266    .text.ZdriveSetPVT  zdrive.o
-    0x08006378   0x08006378   0x00000038   Code   RO         1292    .text.Zdrive_Begin  zdrive.o
-    0x080063b0   0x080063b0   0x00000014   Code   RO         1280    .text.Zdrive_ErrHandle  zdrive.o
-    0x080063c4   0x080063c4   0x00000040   Code   RO         1290    .text.Zdrive_GetSpeed  zdrive.o
-    0x08006404   0x08006404   0x00000040   Code   RO         1288    .text.Zdrive_Get_Position  zdrive.o
-    0x08006444   0x08006444   0x00000004   PAD
-    0x08006448   0x08006448   0x00000190   Code   RO         1284    .text.Zdrive_RunMachine  zdrive.o
-    0x080065d8   0x080065d8   0x0000005a   Code   RO         1260    .text.Zdrive_SendDirect  zdrive.o
-    0x08006632   0x08006632   0x00000002   PAD
-    0x08006634   0x08006634   0x0000005e   Code   RO         1286    .text.Zdrive_Set_target_mode  zdrive.o
-    0x08006692   0x08006692   0x00000002   PAD
-    0x08006694   0x08006694   0x00000070   Code   RO         1282    .text.Zdrive_SwitchMachine  zdrive.o
-    0x08006704   0x08006704   0x00000030   Code   RO          870    .text.__NVIC_EnableIRQ  stm32f4xx_hal_cortex.o
-    0x08006734   0x08006734   0x00000010   Code   RO          862    .text.__NVIC_GetPriorityGrouping  stm32f4xx_hal_cortex.o
-    0x08006744   0x08006744   0x00000042   Code   RO          864    .text.__NVIC_SetPriority  stm32f4xx_hal_cortex.o
-    0x08006786   0x08006786   0x00000002   PAD
-    0x08006788   0x08006788   0x0000003c   Code   RO          858    .text.__NVIC_SetPriorityGrouping  stm32f4xx_hal_cortex.o
-    0x080067c4   0x080067c4   0x00000074   Code   RO         1329    .text.can_app_init  can_app.o
-    0x08006838   0x08006838   0x00000080   Code   RO           11    .text.main          main.o
-    0x080068b8   0x080068b8   0x00000046   Code   RO         1561    .text.prvResetNextTaskUnblockTime  tasks.o
-    0x080068fe   0x080068fe   0x00000002   PAD
-    0x08006900   0x08006900   0x00000030   Code   RO         1307    .text.uart_app_init  uart_app.o
-    0x08006930   0x08006930   0x00000048   Code   RO         1395    .text.uxListRemove  list.o
-    0x08006978   0x08006978   0x0000003a   Code   RO         1391    .text.vListInsertEnd  list.o
-    0x080069b2   0x080069b2   0x00000002   PAD
-    0x080069b4   0x080069b4   0x000000c6   Code   RO         1583    .text.vTaskSwitchContext  tasks.o
-    0x08006a7a   0x08006a7a   0x00000002   PAD
-    0x08006a7c   0x08006a7c   0x0000003c   Code   RO         2005    .text.xPortSysTickHandler  port.o
-    0x08006ab8   0x08006ab8   0x00000038   Code   RO         1643    .text.xTaskGetSchedulerState  tasks.o
-    0x08006af0   0x08006af0   0x000001c4   Code   RO         1597    .text.xTaskIncrementTick  tasks.o
-    0x08006cb4   0x08006cb4   0x00000062   Code   RO         2174    x$fpl$d2f           fz_wm.l(d2f.o)
-    0x08006d16   0x08006d16   0x00000018   Code   RO         2273    x$fpl$dcmpinf       fz_wm.l(dcmpi.o)
-    0x08006d2e   0x08006d2e   0x00000002   PAD
-    0x08006d30   0x08006d30   0x000002b4   Code   RO         2185    x$fpl$ddiv          fz_wm.l(ddiv.o)
-    0x08006fe4   0x08006fe4   0x00000078   Code   RO         2217    x$fpl$deqf          fz_wm.l(deqf.o)
-    0x0800705c   0x0800705c   0x0000002e   Code   RO         2193    x$fpl$dflt          fz_wm.l(dflt_clz.o)
-    0x0800708a   0x0800708a   0x00000026   Code   RO         2192    x$fpl$dfltu         fz_wm.l(dflt_clz.o)
-    0x080070b0   0x080070b0   0x00000078   Code   RO         2219    x$fpl$dgeqf         fz_wm.l(dgeqf.o)
-    0x08007128   0x08007128   0x00000078   Code   RO         2221    x$fpl$dleqf         fz_wm.l(dleqf.o)
-    0x080071a0   0x080071a0   0x00000154   Code   RO         2198    x$fpl$dmul          fz_wm.l(dmul.o)
-    0x080072f4   0x080072f4   0x0000009c   Code   RO         2223    x$fpl$dnaninf       fz_wm.l(dnaninf.o)
-    0x08007390   0x08007390   0x0000000c   Code   RO         2225    x$fpl$dretinf       fz_wm.l(dretinf.o)
-    0x0800739c   0x0800739c   0x00000056   Code   RO         2200    x$fpl$f2d           fz_wm.l(f2d.o)
-    0x080073f2   0x080073f2   0x00000054   Code   RO         2182    x$fpl$fcmp          fz_wm.l(dcmp.o)
-    0x08007446   0x08007446   0x0000008c   Code   RO         2227    x$fpl$fnaninf       fz_wm.l(fnaninf.o)
-    0x080074d2   0x080074d2   0x0000001a   Code   RO         2364    x$fpl$fpinit        fz_wm.l(fpinit.o)
-    0x080074ec   0x080074ec   0x0000000a   Code   RO         2229    x$fpl$fretinf       fz_wm.l(fretinf.o)
-    0x080074f6   0x080074f6   0x00000000   Code   RO         2231    x$fpl$usenofp       fz_wm.l(usenofp.o)
-    0x080074f6   0x080074f6   0x00000010   Data   RO         1158    .rodata.AHBPrescTable  system_stm32f4xx.o
-    0x08007506   0x08007506   0x00000008   Data   RO         1159    .rodata.APBPrescTable  system_stm32f4xx.o
-    0x0800750e   0x0800750e   0x00000008   Data   RO          788    .rodata.DMA_CalcBaseAndBitshift.flagBitshiftOffset  stm32f4xx_hal_dma.o
-    0x08007516   0x08007516   0x00000002   PAD
-    0x08007518   0x08007518   0x00000014   Data   RO         2093    .rodata.dji_ops     motor_dji.o
-    0x0800752c   0x0800752c   0x00000001   Data   RO         1295    .rodata.s_empty_data  zdrive.o
-    0x0800752d   0x0800752d   0x00000003   PAD
-    0x08007530   0x08007530   0x00000014   Data   RO         2113    .rodata.zdrive_ops  motor_zdrive.o
-    0x08007544   0x08007544   0x00000020   Data   RO         2425    Region$$Table       anon$$obj.o
+    0x08004c3c   0x08004c3c   0x0000001e   Code   RO         2105    .text.Motor_ZDrive_SetSpeed  motor_zdrive.o
+    0x08004c5a   0x08004c5a   0x00000002   PAD
+    0x08004c5c   0x08004c5c   0x00000004   Code   RO          112    .text.NMI_Handler   stm32f4xx_it.o
+    0x08004c60   0x08004c60   0x0000006c   Code   RO          866    .text.NVIC_EncodePriority  stm32f4xx_hal_cortex.o
+    0x08004ccc   0x08004ccc   0x00000074   Code   RO         2019    .text.PID_Init      pid.o
+    0x08004d40   0x08004d40   0x00000028   Code   RO         2027    .text.PID_Reset     pid.o
+    0x08004d68   0x08004d68   0x00000008   PAD
+    0x08004d70   0x08004d70   0x00000064   Code   RO         2003    .text.PendSV_Handler  port.o
+    0x08004dd4   0x08004dd4   0x0000000c   PAD
+    0x08004de0   0x08004de0   0x00000024   Code   RO         1987    .text.SVC_Handler   port.o
+    0x08004e04   0x08004e04   0x0000001e   Code   RO         1773    .text.SysTick_Handler  cmsis_os2.o
+    0x08004e22   0x08004e22   0x00000002   PAD
+    0x08004e24   0x08004e24   0x000000be   Code   RO           13    .text.SystemClock_Config  main.o
+    0x08004ee2   0x08004ee2   0x00000002   PAD
+    0x08004ee4   0x08004ee4   0x00000012   Code   RO         1153    .text.SystemInit    system_stm32f4xx.o
+    0x08004ef6   0x08004ef6   0x00000002   PAD
+    0x08004ef8   0x08004ef8   0x00000010   Code   RO          128    .text.TIM1_UP_TIM10_IRQHandler  stm32f4xx_it.o
+    0x08004f08   0x08004f08   0x00000010   Code   RO          130    .text.TIM2_IRQHandler  stm32f4xx_it.o
+    0x08004f18   0x08004f18   0x000001a4   Code   RO          173    .text.TIM_Base_SetConfig  stm32f4xx_hal_tim.o
+    0x080050bc   0x080050bc   0x00000036   Code   RO          207    .text.TIM_CCxChannelCmd  stm32f4xx_hal_tim.o
+    0x080050f2   0x080050f2   0x00000002   PAD
+    0x080050f4   0x080050f4   0x00000034   Code   RO          359    .text.TIM_ETR_SetConfig  stm32f4xx_hal_tim.o
+    0x08005128   0x08005128   0x0000002a   Code   RO          365    .text.TIM_ITRx_SetConfig  stm32f4xx_hal_tim.o
+    0x08005152   0x08005152   0x00000002   PAD
+    0x08005154   0x08005154   0x000000ea   Code   RO          317    .text.TIM_OC1_SetConfig  stm32f4xx_hal_tim.o
+    0x0800523e   0x0800523e   0x00000002   PAD
+    0x08005240   0x08005240   0x000000f4   Code   RO          319    .text.TIM_OC2_SetConfig  stm32f4xx_hal_tim.o
+    0x08005334   0x08005334   0x000000f2   Code   RO          321    .text.TIM_OC3_SetConfig  stm32f4xx_hal_tim.o
+    0x08005426   0x08005426   0x00000002   PAD
+    0x08005428   0x08005428   0x000000a4   Code   RO          323    .text.TIM_OC4_SetConfig  stm32f4xx_hal_tim.o
+    0x080054cc   0x080054cc   0x00000050   Code   RO          363    .text.TIM_TI1_ConfigInputStage  stm32f4xx_hal_tim.o
+    0x0800551c   0x0800551c   0x00000052   Code   RO          367    .text.TIM_TI2_ConfigInputStage  stm32f4xx_hal_tim.o
+    0x0800556e   0x0800556e   0x00000002   PAD
+    0x08005570   0x08005570   0x0000001c   Code   RO         1110    .text.UART_DMAAbortOnError  stm32f4xx_hal_uart.o
+    0x0800558c   0x0800558c   0x0000007c   Code   RO         1056    .text.UART_DMAError  stm32f4xx_hal_uart.o
+    0x08005608   0x08005608   0x000000f4   Code   RO         1142    .text.UART_DMAReceiveCplt  stm32f4xx_hal_uart.o
+    0x080056fc   0x080056fc   0x00000034   Code   RO         1144    .text.UART_DMARxHalfCplt  stm32f4xx_hal_uart.o
+    0x08005730   0x08005730   0x00000094   Code   RO         1070    .text.UART_EndRxTransfer  stm32f4xx_hal_uart.o
+    0x080057c4   0x080057c4   0x00000026   Code   RO         1118    .text.UART_EndTransmit_IT  stm32f4xx_hal_uart.o
+    0x080057ea   0x080057ea   0x00000002   PAD
+    0x080057ec   0x080057ec   0x00000036   Code   RO         1068    .text.UART_EndTxTransfer  stm32f4xx_hal_uart.o
+    0x08005822   0x08005822   0x00000002   PAD
+    0x08005824   0x08005824   0x00000168   Code   RO         1108    .text.UART_Receive_IT  stm32f4xx_hal_uart.o
+    0x0800598c   0x0800598c   0x0000013a   Code   RO         1026    .text.UART_SetConfig  stm32f4xx_hal_uart.o
+    0x08005ac6   0x08005ac6   0x00000002   PAD
+    0x08005ac8   0x08005ac8   0x00000130   Code   RO         1060    .text.UART_Start_Receive_DMA  stm32f4xx_hal_uart.o
+    0x08005bf8   0x08005bf8   0x00000094   Code   RO         1116    .text.UART_Transmit_IT  stm32f4xx_hal_uart.o
+    0x08005c8c   0x08005c8c   0x00000010   Code   RO          132    .text.USART1_IRQHandler  stm32f4xx_it.o
+    0x08005c9c   0x08005c9c   0x00000004   Code   RO          120    .text.UsageFault_Handler  stm32f4xx_it.o
+    0x08005ca0   0x08005ca0   0x0000003a   Code   RO         1264    .text.ZdriveAsk     zdrive.o
+    0x08005cda   0x08005cda   0x00000002   PAD
+    0x08005cdc   0x08005cdc   0x00000156   Code   RO         1278    .text.ZdriveFunc    zdrive.o
+    0x08005e32   0x08005e32   0x00000002   PAD
+    0x08005e34   0x08005e34   0x00000102   Code   RO         1256    .text.ZdriveInit    zdrive.o
+    0x08005f36   0x08005f36   0x00000002   PAD
+    0x08005f38   0x08005f38   0x000002f0   Code   RO         1262    .text.ZdriveReceive  zdrive.o
+    0x08006228   0x08006228   0x000000d0   Code   RO         1258    .text.ZdriveSet     zdrive.o
+    0x080062f8   0x080062f8   0x000000a0   Code   RO         1266    .text.ZdriveSetPVT  zdrive.o
+    0x08006398   0x08006398   0x00000038   Code   RO         1292    .text.Zdrive_Begin  zdrive.o
+    0x080063d0   0x080063d0   0x00000014   Code   RO         1280    .text.Zdrive_ErrHandle  zdrive.o
+    0x080063e4   0x080063e4   0x00000040   Code   RO         1290    .text.Zdrive_GetSpeed  zdrive.o
+    0x08006424   0x08006424   0x00000040   Code   RO         1288    .text.Zdrive_Get_Position  zdrive.o
+    0x08006464   0x08006464   0x00000004   PAD
+    0x08006468   0x08006468   0x00000190   Code   RO         1284    .text.Zdrive_RunMachine  zdrive.o
+    0x080065f8   0x080065f8   0x0000005a   Code   RO         1260    .text.Zdrive_SendDirect  zdrive.o
+    0x08006652   0x08006652   0x00000002   PAD
+    0x08006654   0x08006654   0x0000005e   Code   RO         1286    .text.Zdrive_Set_target_mode  zdrive.o
+    0x080066b2   0x080066b2   0x00000002   PAD
+    0x080066b4   0x080066b4   0x00000070   Code   RO         1282    .text.Zdrive_SwitchMachine  zdrive.o
+    0x08006724   0x08006724   0x00000030   Code   RO          870    .text.__NVIC_EnableIRQ  stm32f4xx_hal_cortex.o
+    0x08006754   0x08006754   0x00000010   Code   RO          862    .text.__NVIC_GetPriorityGrouping  stm32f4xx_hal_cortex.o
+    0x08006764   0x08006764   0x00000042   Code   RO          864    .text.__NVIC_SetPriority  stm32f4xx_hal_cortex.o
+    0x080067a6   0x080067a6   0x00000002   PAD
+    0x080067a8   0x080067a8   0x0000003c   Code   RO          858    .text.__NVIC_SetPriorityGrouping  stm32f4xx_hal_cortex.o
+    0x080067e4   0x080067e4   0x00000074   Code   RO         1329    .text.can_app_init  can_app.o
+    0x08006858   0x08006858   0x00000080   Code   RO           11    .text.main          main.o
+    0x080068d8   0x080068d8   0x00000046   Code   RO         1561    .text.prvResetNextTaskUnblockTime  tasks.o
+    0x0800691e   0x0800691e   0x00000002   PAD
+    0x08006920   0x08006920   0x00000030   Code   RO         1307    .text.uart_app_init  uart_app.o
+    0x08006950   0x08006950   0x00000048   Code   RO         1395    .text.uxListRemove  list.o
+    0x08006998   0x08006998   0x0000003a   Code   RO         1391    .text.vListInsertEnd  list.o
+    0x080069d2   0x080069d2   0x00000002   PAD
+    0x080069d4   0x080069d4   0x000000c6   Code   RO         1583    .text.vTaskSwitchContext  tasks.o
+    0x08006a9a   0x08006a9a   0x00000002   PAD
+    0x08006a9c   0x08006a9c   0x0000003c   Code   RO         2005    .text.xPortSysTickHandler  port.o
+    0x08006ad8   0x08006ad8   0x00000038   Code   RO         1643    .text.xTaskGetSchedulerState  tasks.o
+    0x08006b10   0x08006b10   0x000001c4   Code   RO         1597    .text.xTaskIncrementTick  tasks.o
+    0x08006cd4   0x08006cd4   0x00000062   Code   RO         2174    x$fpl$d2f           fz_wm.l(d2f.o)
+    0x08006d36   0x08006d36   0x00000018   Code   RO         2273    x$fpl$dcmpinf       fz_wm.l(dcmpi.o)
+    0x08006d4e   0x08006d4e   0x00000002   PAD
+    0x08006d50   0x08006d50   0x000002b4   Code   RO         2185    x$fpl$ddiv          fz_wm.l(ddiv.o)
+    0x08007004   0x08007004   0x00000078   Code   RO         2217    x$fpl$deqf          fz_wm.l(deqf.o)
+    0x0800707c   0x0800707c   0x0000002e   Code   RO         2193    x$fpl$dflt          fz_wm.l(dflt_clz.o)
+    0x080070aa   0x080070aa   0x00000026   Code   RO         2192    x$fpl$dfltu         fz_wm.l(dflt_clz.o)
+    0x080070d0   0x080070d0   0x00000078   Code   RO         2219    x$fpl$dgeqf         fz_wm.l(dgeqf.o)
+    0x08007148   0x08007148   0x00000078   Code   RO         2221    x$fpl$dleqf         fz_wm.l(dleqf.o)
+    0x080071c0   0x080071c0   0x00000154   Code   RO         2198    x$fpl$dmul          fz_wm.l(dmul.o)
+    0x08007314   0x08007314   0x0000009c   Code   RO         2223    x$fpl$dnaninf       fz_wm.l(dnaninf.o)
+    0x080073b0   0x080073b0   0x0000000c   Code   RO         2225    x$fpl$dretinf       fz_wm.l(dretinf.o)
+    0x080073bc   0x080073bc   0x00000056   Code   RO         2200    x$fpl$f2d           fz_wm.l(f2d.o)
+    0x08007412   0x08007412   0x00000054   Code   RO         2182    x$fpl$fcmp          fz_wm.l(dcmp.o)
+    0x08007466   0x08007466   0x0000008c   Code   RO         2227    x$fpl$fnaninf       fz_wm.l(fnaninf.o)
+    0x080074f2   0x080074f2   0x0000001a   Code   RO         2364    x$fpl$fpinit        fz_wm.l(fpinit.o)
+    0x0800750c   0x0800750c   0x0000000a   Code   RO         2229    x$fpl$fretinf       fz_wm.l(fretinf.o)
+    0x08007516   0x08007516   0x00000000   Code   RO         2231    x$fpl$usenofp       fz_wm.l(usenofp.o)
+    0x08007516   0x08007516   0x00000010   Data   RO         1158    .rodata.AHBPrescTable  system_stm32f4xx.o
+    0x08007526   0x08007526   0x00000008   Data   RO         1159    .rodata.APBPrescTable  system_stm32f4xx.o
+    0x0800752e   0x0800752e   0x00000008   Data   RO          788    .rodata.DMA_CalcBaseAndBitshift.flagBitshiftOffset  stm32f4xx_hal_dma.o
+    0x08007536   0x08007536   0x00000002   PAD
+    0x08007538   0x08007538   0x00000014   Data   RO         2093    .rodata.dji_ops     motor_dji.o
+    0x0800754c   0x0800754c   0x00000001   Data   RO         1295    .rodata.s_empty_data  zdrive.o
+    0x0800754d   0x0800754d   0x00000003   PAD
+    0x08007550   0x08007550   0x00000014   Data   RO         2113    .rodata.zdrive_ops  motor_zdrive.o
+    0x08007564   0x08007564   0x00000020   Data   RO         2425    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08007568, Size: 0x00001ac0, Max: 0x0001c000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08007588, Size: 0x00001ac0, Max: 0x0001c000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x08007568   0x00000004   Data   RW         1157    .data.SystemCoreClock  system_stm32f4xx.o
-    0x20000004   0x0800756c   0x00000001   Data   RW          988    .data.uwTickFreq    stm32f4xx_hal.o
-    0x20000005   0x0800756d   0x00000003   PAD
-    0x20000008   0x08007570   0x00000004   Data   RW          987    .data.uwTickPrio    stm32f4xx_hal.o
-    0x2000000c   0x08007574   0x00000004   PAD
+    0x20000000   0x08007588   0x00000004   Data   RW         1157    .data.SystemCoreClock  system_stm32f4xx.o
+    0x20000004   0x0800758c   0x00000001   Data   RW          988    .data.uwTickFreq    stm32f4xx_hal.o
+    0x20000005   0x0800758d   0x00000003   PAD
+    0x20000008   0x08007590   0x00000004   Data   RW          987    .data.uwTickPrio    stm32f4xx_hal.o
+    0x2000000c   0x08007594   0x00000004   PAD
     0x20000010        -       0x00000060   Zero   RW         2276    .bss                c_w.l(libspace.o)
     0x20000070        -       0x00000340   Zero   RW         1294    .bss.Zmotor         zdrive.o
     0x200003b0        -       0x00000008   Zero   RW         1336    .bss.can_rx_data    can_app.o
     0x200003b8        -       0x0000001c   Zero   RW         1335    .bss.can_rx_header  can_app.o
-    0x200003d4   0x08007574   0x00000004   PAD
+    0x200003d4   0x08007594   0x00000004   PAD
     0x200003d8        -       0x000003e0   Zero   RW         1248    .bss.dji_motor      dji_motor.o
     0x200007b8        -       0x00000028   Zero   RW           61    .bss.hcan1          can.o
     0x200007e0        -       0x00000060   Zero   RW          103    .bss.hdma_usart1_rx  usart.o
@@ -5494,7 +5495,7 @@ Memory Map of the image
     0x200009f0        -       0x00000460   Zero   RW         1684    .bss.pxReadyTasksLists  tasks.o
     0x20000e50        -       0x00000040   Zero   RW         1311    .bss.rx_buffer      uart_app.o
     0x20000e90        -       0x00000001   Zero   RW         1310    .bss.rx_ready       uart_app.o
-    0x20000e91   0x08007574   0x00000001   PAD
+    0x20000e91   0x08007594   0x00000001   PAD
     0x20000e92        -       0x00000002   Zero   RW         1309    .bss.rx_size        uart_app.o
     0x20000e94        -       0x00000004   Zero   RW           20    .bss.tick_2ms_count  main.o
     0x20000e98        -       0x00000004   Zero   RW          989    .bss.uwTick         stm32f4xx_hal.o
@@ -5506,12 +5507,12 @@ Memory Map of the image
     0x20000eb0        -       0x00000004   Zero   RW         1678    .bss.xSchedulerRunning  tasks.o
     0x20000eb4        -       0x00000004   Zero   RW         1680    .bss.xTickCount     tasks.o
     0x20000eb8        -       0x00000004   Zero   RW         1690    .bss.xYieldPending  tasks.o
-    0x20000ebc   0x08007574   0x00000004   PAD
+    0x20000ebc   0x08007594   0x00000004   PAD
     0x20000ec0        -       0x00000800   Zero   RW            2    HEAP                startup_stm32f405xx.o
     0x200016c0        -       0x00000400   Zero   RW            1    STACK               startup_stm32f405xx.o
 
 
-    Execution Region RW_IRAM2 (Exec base: 0x2001c000, Load base: 0x08007578, Size: 0x00000000, Max: 0x00004000, ABSOLUTE)
+    Execution Region RW_IRAM2 (Exec base: 0x2001c000, Load base: 0x08007598, Size: 0x00000000, Max: 0x00004000, ABSOLUTE)
 
     **** No section assigned to this execution region ****
 
@@ -5532,9 +5533,9 @@ Image component sizes
        518         10          0          0         28       2911   lift.o
        130          0          0          0          0       2215   list.o
        384          0          0          0         12       6345   main.o
-       244          0          0          0          0       1961   motor.o
-       350          0         20          0          0       3363   motor_dji.o
-       198          4         20          0          0       2233   motor_zdrive.o
+       274          0          0          0          0       2037   motor.o
+       350          0         20          0          0       3384   motor_dji.o
+       198          4         20          0          0       2252   motor_zdrive.o
        156          0          0          0          0       2481   pid.o
        196          8          0          0          0       3827   port.o
         64         26        392          0       3072        836   startup_stm32f405xx.o
@@ -5558,9 +5559,9 @@ Image component sizes
       2678        142          1          0        832       8860   zdrive.o
 
     ----------------------------------------------------------------------
-     26596        272        502         12       6740     271755   Object Totals
+     26628        272        502         12       6740     271871   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-       176         12          5          3         13          0   (incl. Padding)
+       178         12          5          3         13          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -5628,15 +5629,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     29550        468        502         12       6836     272503   Grand Totals
-     29550        468        502         12       6836     272503   ELF Image Totals
-     29550        468        502         12          0          0   ROM Totals
+     29582        468        502         12       6836     272619   Grand Totals
+     29582        468        502         12       6836     272619   ELF Image Totals
+     29582        468        502         12          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                30052 (  29.35kB)
+    Total RO  Size (Code + RO Data)                30084 (  29.38kB)
     Total RW  Size (RW Data + ZI Data)              6848 (   6.69kB)
-    Total ROM Size (Code + RO Data + RW Data)      30064 (  29.36kB)
+    Total ROM Size (Code + RO Data + RW Data)      30096 (  29.39kB)
 
 ==============================================================================
 
