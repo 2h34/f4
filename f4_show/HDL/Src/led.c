@@ -2,28 +2,28 @@
 #include "tim.h"
 
 
-// typedef enum
-// {
-//   BREATH_UP = 0,
-//   BREATH_DOWN
-// } breath_state_t;
+typedef enum
+{
+  BREATH_UP = 0,
+  BREATH_DOWN
+} breath_state_t;
 
 
 
 
 static uint8_t flow_led_index = 0;
 static uint32_t flow_last_switch_tick = 0;
-// static uint32_t breath_last_tick = 0;
-// static uint16_t breath_value = 0;
-// static breath_state_t breath_state = BREATH_UP;
+static uint32_t breath_last_tick = 0;
+static uint16_t breath_value = 0;
+static breath_state_t breath_state = BREATH_UP;
 static led_state_t current_state = STATE_OFF;
 
 
 void LED_FlowEnter(uint32_t current_tick)
 {
     // 停止呼吸灯
-    // __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, 0);
-    // __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, 0);
+    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, 0);
+    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, 0);
     // LED1亮
     LED_ON(1);
     // LED2灭
@@ -95,45 +95,45 @@ void LED_Process(uint32_t current_tick)
 
 
 
-// void LED_BreathEnter(uint32_t current_tick)
-// {
-//     LED_OFF(1);
-//     LED_OFF(2);
-//     breath_value = 0;
-//     breath_state = BREATH_UP;
-//     __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, breath_value);
-//     __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, 999U - breath_value);
-//     breath_last_tick = current_tick;
-// }
+void LED_BreathEnter(uint32_t current_tick)
+{
+    LED_OFF(1);
+    LED_OFF(2);
+    breath_value = 0;
+    breath_state = BREATH_UP;
+    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, breath_value);
+    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, 999U - breath_value);
+    breath_last_tick = current_tick;
+}
 
-// void LED_BreathProcess(uint32_t current_tick)
-// {
-//     if (current_tick == breath_last_tick )
-//     {
-//         return;
-//     }
+void LED_BreathProcess(uint32_t current_tick)
+{
+    if (current_tick == breath_last_tick )
+    {
+        return;
+    }
 
-//     breath_last_tick = current_tick;
+    breath_last_tick = current_tick;
 
-//     if (breath_state == BREATH_UP)
-//     {
-//         breath_value++;
-//         if (breath_value >= 999U)
-//         {
-//             breath_value = 999U;
-//             breath_state = BREATH_DOWN;
-//         }
-//     }
-//     else
-//     {
-//         breath_value--;
-//         if (breath_value == 0U)
-//         {
-//             breath_value = 0U;
-//             breath_state = BREATH_UP;
-//         }
-//     }
-//     __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, breath_value);
-//     __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, 999U - breath_value);
-// }
+    if (breath_state == BREATH_UP)
+    {
+        breath_value++;
+        if (breath_value >= 999U)
+        {
+            breath_value = 999U;
+            breath_state = BREATH_DOWN;
+        }
+    }
+    else
+    {
+        breath_value--;
+        if (breath_value == 0U)
+        {
+            breath_value = 0U;
+            breath_state = BREATH_UP;
+        }
+    }
+    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, breath_value);
+    __HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_2, 999U - breath_value);
+}
 

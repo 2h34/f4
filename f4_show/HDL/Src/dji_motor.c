@@ -51,6 +51,7 @@ void DJI_motor_init(void)
     }
 }
 
+/*计算返回总的旋转角度，脉冲->角度*/
 static void DJI_motor_AngleCalculate(DJI_motor_t *motor)
 {
     if (motor->encoder_initialized == 0)
@@ -80,7 +81,7 @@ static void DJI_motor_AngleCalculate(DJI_motor_t *motor)
 
 
 
-
+/* 接收电机反馈信息，解析并更新电机状态 */
 void DJI_motor_Receive(CAN_RxHeaderTypeDef *rx_header,uint8_t *rx_data)
 {
     if (rx_header->IDE != CAN_ID_STD || rx_header->RTR != CAN_RTR_DATA)
@@ -107,6 +108,8 @@ void DJI_motor_Receive(CAN_RxHeaderTypeDef *rx_header,uint8_t *rx_data)
    
 }
 
+
+/* 处理电机控制逻辑，根据当前模式和目标值计算输出电流并发送 */
 void DJI_motor_Func(void)
 {
     for (int i = 0; i < 4; i++)
@@ -146,6 +149,7 @@ void DJI_motor_Func(void)
     DJI_motor_CurrentTransmit();
 }
 
+/* 设置电机模式，若模式改变则重置PID控制器 */
 void DJI_motor_SetMode(DJI_motor_t *motor,DJ_motor_mode_t mode)
 {
     if (motor == NULL)
@@ -167,6 +171,7 @@ void DJI_motor_SetMode(DJI_motor_t *motor,DJ_motor_mode_t mode)
     }
 }
 
+/* 切换模式时调用，若设置的模式与当前模式不同，则更新当前模式 */
 static void DJmotor_SwitchMode(DJI_motor_t *motor)
 {
     if (motor-> mode_set != motor->mode)
@@ -175,6 +180,7 @@ static void DJmotor_SwitchMode(DJI_motor_t *motor)
     }
 }
 
+/* 发送电机输出电流命令，通过CAN总线发送 */
 static void DJI_motor_CurrentTransmit(void)
 {
     uint8_t tx_data[8]={0};
@@ -216,7 +222,7 @@ static void DJmotor_CurrentMode(DJI_motor_t *motor)
     motor->current_cmd = motor->target_current;
 }
 
-//接收输出轴目标速度
+//设置输出轴目标速度
 void DJI_motor_Set_Speed(DJI_motor_t *motor,float target_rpm)
 {
     if (motor == NULL)
@@ -226,6 +232,7 @@ void DJI_motor_Set_Speed(DJI_motor_t *motor,float target_rpm)
     motor->target_rpm = target_rpm;
 }
 
+/* 设置输出轴目标位置-角度 */
 void DJI_motor_Set_Position(DJI_motor_t *motor,double target_position)
 {
     if (motor == NULL)
@@ -254,6 +261,7 @@ void DJI_motor_Set_Current(DJI_motor_t *motor, int16_t target_current)
     motor->target_current = target_current;
 }
 
+/* 设置电机零点 */
 void DJI_motor_Set_Zero(DJI_motor_t *motor)
 {
     if (motor == NULL)
@@ -265,6 +273,7 @@ void DJI_motor_Set_Zero(DJI_motor_t *motor)
     motor-> target_position = 0.0;
     motor->zero_flag = 1;
 }
+
 
 static void DJmotor_PositionMode(DJI_motor_t *motor)
 {
@@ -280,7 +289,8 @@ static void DJmotor_PositionMode(DJI_motor_t *motor)
 
 }
 
- static int16_t ClampPeak(int16_t value, int16_t limit)
+/* 限幅函数，将值限制在[-limit, limit]范围内 */
+static int16_t ClampPeak(int16_t value, int16_t limit)
 {
     if (value > limit)
     {
@@ -295,6 +305,8 @@ static void DJmotor_PositionMode(DJI_motor_t *motor)
 }
 
 
+
+/* 寻零模式，电机以设定的零点速度运行，直到编码器位置接近零点位置（机械限位） */
 static void DJmotor_ZeroMode(DJI_motor_t *motor)
 {
     if (motor == NULL)
@@ -326,6 +338,7 @@ static void DJmotor_ZeroMode(DJI_motor_t *motor)
     }
 }
 
+/* 根据电机ID获取对应的电机结构体指针，若ID无效则返回NULL */
 DJI_motor_t *DJI_motor_GetById(uint8_t id)
 {
     if (id < 1 || id > 4)

@@ -16,6 +16,8 @@
                 "c:\\Users\\glance\\Desktop\\RC工程文件\\f4\\f4_show\\Algorithm\\Inc",
                 "c:\\Users\\glance\\Desktop\\RC工程文件\\f4\\f4_show\\Mechanism\\Inc",
                 "c:\\Users\\glance\\Desktop\\RC工程文件\\f4\\f4_show\\Motor\\Inc",
+                "c:\\Users\\glance\\Desktop\\RC工程文件\\f4\\f4_show\\Queue\\Inc",
+                "c:\\Users\\glance\\Desktop\\RC工程文件\\f4\\f4_show\\Machine\\Inc",
                 "c:\\Users\\glance\\Desktop\\RC工程文件\\f4\\f4_show\\MDK-ARM",
                 "c:\\Users\\glance\\Desktop\\RC工程文件\\f4\\f4_show\\Core\\Src",
                 "c:\\Users\\glance\\Desktop\\RC工程文件\\f4\\f4_show\\Drivers\\STM32F4xx_HAL_Driver\\Src",
@@ -26,6 +28,8 @@
                 "c:\\Users\\glance\\Desktop\\RC工程文件\\f4\\f4_show\\Algorithm\\Src",
                 "c:\\Users\\glance\\Desktop\\RC工程文件\\f4\\f4_show\\Mechanism\\Src",
                 "c:\\Users\\glance\\Desktop\\RC工程文件\\f4\\f4_show\\Motor\\Src",
+                "c:\\Users\\glance\\Desktop\\RC工程文件\\f4\\f4_show\\Queue\\Src",
+                "c:\\Users\\glance\\Desktop\\RC工程文件\\f4\\f4_show\\Machine\\Src",
                 "${default}"
             ],
             "defines": [

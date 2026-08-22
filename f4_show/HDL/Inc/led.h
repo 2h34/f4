@@ -14,12 +14,12 @@ typedef enum
   STATE_FLOW
 } led_state_t;
 
-// void LED_FlowEnter(uint32_t current_tick);
-// void LED_FlowProcess(uint32_t current_tick);
+void LED_FlowEnter(uint32_t current_tick);
+void LED_FlowProcess(uint32_t current_tick);
 void LED_Setmode(led_state_t new_state,uint32_t current_tick);
-// void LED_BreathEnter(uint32_t current_tick);
-// void LED_BreathProcess(uint32_t current_tick);
+void LED_BreathEnter(uint32_t current_tick);
+void LED_BreathProcess(uint32_t current_tick);
 void LED_Process(uint32_t current_tick);
-// void LED_OFF_mode(void);
+void LED_OFF_mode(void);
 
 #endif // __LED_H
